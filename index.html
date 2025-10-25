@@ -82,61 +82,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset minimal */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{font-family:Inter,Arial,Helvetica,sans-serif;background:#f2f2f2;color:#3b322d;display:flex;align-items:center;justify-content:center;padding:30px}
-
-    /* Card */
-    .card{width:100%;max-width:960px;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.08);overflow:hidden;border:6px solid #f6e8df}
-
-    /* Header (pasaporte look) */
-    .header{display:flex;gap:20px;padding:28px 32px;background:linear-gradient(180deg,#fff 60%,#fbf1ea 100%)}
-    .brand{flex:1}
-    .brand h1{font-family:'Playfair Display',serif;font-size:34px;color:#8b5e50;letter-spacing:1px}
-    .subtitle{color:#b07b66;margin-top:6px;font-size:14px}
-
-    .photo{width:160px;height:160px;border-radius:10px;overflow:hidden;border:4px solid #fff;box-shadow:0 6px 18px rgba(139,94,80,0.12)}
-    .photo img{width:100%;height:100%;object-fit:cover}
-
-    .content{display:grid;grid-template-columns:1fr 360px;gap:28px;padding:30px}
-
-    /* Left: invitation details */
-    .left{padding:12px}
-    .passport{background:#fff;border-radius:10px;padding:18px;border:1px dashed #e9d7cd}
-    .map-deco{width:100%;height:180px;background-image:url('assets/map.png');background-size:cover;background-position:center;border-radius:8px;opacity:0.9}
-    .info-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-    .info-item{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:8px}
-    .info-item b{font-family:'Playfair Display',serif}
-
-    /* Right: RSVP card */
-    .right{padding:12px}
-    .rsvp{background:linear-gradient(180deg,#fff,#fff);padding:18px;border-radius:10px;border:1px solid #efe1d6}
-    .rsvp h3{font-family:'Playfair Display',serif;margin-bottom:8px;color:#8b5e50}
-    label{display:block;font-size:13px;margin:8px 0 4px}
-    input[type=text],input[type=tel],input[type=email],textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6d7ce;font-size:14px}
-    .row{display:flex;gap:8px}
-    .small{flex:1}
-    .btn{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:999px;background:#8b5e50;color:#fff;border:none;cursor:pointer;font-weight:600}
-    .muted{font-size:12px;color:#7a6b64;margin-top:8px}
-
-    /* Footer */
-    .footer{padding:18px;border-top:1px solid #f0e5de;background:#fbf5f2;text-align:center;font-size:13px;color:#7a6b64}
-
-    /* Language selector */
-    .lang-select{position:absolute;right:36px;top:18px}
-
-    /* Responsive */
-    @media(max-width:880px){
-      .content{grid-template-columns:1fr;}
-      .photo{width:120px;height:120px}
-    }
-
-    /* Small animations */
-    .airplane{position:relative;display:inline-block;transform:translateY(0);animation:float 4s ease-in-out infinite}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
-
-    .success{background:#e8f8ef;border-left:4px solid #66bb6a;padding:10px;margin-top:10px;border-radius:6px;color:#1b5e20}
+    /* Reset y mobile-first */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body {font-family: Arial, sans-serif; text-align: center; padding: 20px; max-width: 480px; margin: auto; background: #faf6ef;}
+    header img {max-width: 100%; height: auto;}
+    .section {margin: 30px 0; padding: 15px; border-radius: 8px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}    
+    .btn {display: inline-block; margin-top: 15px; padding: 12px 20px; background: black; color: white; text-decoration: none; border-radius: 6px; font-size: 16px;}
+    @media(min-width:768px){body{max-width:600px;}}
   </style>
 </head>
 <body>
@@ -183,37 +135,7 @@
       <div class="right">
         <div class="rsvp">
           <h3 id="rsvp_title">Confirmar asistencia</h3>
-          <form id="rsvpForm" onsubmit="submitForm(event)">
-            <input type="hidden" id="lang_input" name="lang" value="es">
-            <label for="name" id="lbl_name">Nombre completo</label>
-            <input type="text" id="name" name="name" required placeholder="Ej: Rubén García">
-
-            <div class="row">
-              <div class="small">
-                <label id="lbl_count">Número de personas</label>
-                <select id="count" name="numPersonas">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-              <div class="small">
-                <label id="lbl_contact">Teléfono / e-mail</label>
-                <input type="text" id="contact" name="contact" placeholder="e.g. +34 600 000 000 / correo@ej.com">
-              </div>
-            </div>
-
-            <label id="lbl_allergies">Alergias / Necesidades</label>
-            <input type="text" id="alergias" name="alergias" placeholder="Ej: Sin gluten">
-
-            <label id="lbl_msg">Mensaje</label>
-            <textarea id="message" name="message" rows="3" placeholder="Algún comentario... (opcional)"></textarea>
-
-            <button class="btn" type="submit" id="btn_send">Enviar RSVP</button>
-            <div id="responseBox" aria-live="polite"></div>
-          </form>
+          <a href="https://forms.gle/TU_FORMULARIO_GOOGLE" target="_blank" class="btn">Confirmar Asistencia (RSVP)</a>
 
           <p class="muted" style="margin-top:8px" id="privacy">Tus datos se usarán solo para la organización del evento.</p>
         </div>
