@@ -181,21 +181,45 @@
     </div>
 
     <!-- Section: Detalles del Evento (boarding pass style) -->
-    <section class="section">
-      <div class="ticket" id="details-ticket">
-        <h3>Detalles del Evento</h3>
-        <p class="meta">
-          <strong data-i18n="date_label">Fecha y hora:</strong>
-          <span data-i18n="date_value">22/07/2026 — 16:00</span>
-        </p>
-
-        <hr />
-
-        <p class="meta"><strong data-i18n="place_label">Lugar:</strong> <span data-i18n="place_value">Royal Beach — San Petersburgo</span></p>
-
-        <p class="meta" style="margin-top:10px" data-i18n="note">Por favor confirma asistencia antes del 01/02/2026.</p>
+<section class="section">
+  <div class="card">
+    <div class="ticket" id="details-ticket">
+      <!-- Encabezado tipo pase de abordar -->
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3>BOARDING PASS</h3>
+        <div class="meta">Nº VUELO 22072026</div>
       </div>
-    </section>
+
+      <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
+
+      <!-- Fila con ubicación y fecha -->
+      <div class="row">
+        <div>
+          <strong data-i18n="place_label">Ubicación</strong>
+          <div class="meta" data-i18n="place_value">Royal Beach — San Petersburgo</div>
+        </div>
+        <div style="text-align:right;">
+          <strong data-i18n="date_label">Fecha y hora</strong>
+          <div class="meta" data-i18n="date_value">22/07/2026 — 16:00</div>
+        </div>
+      </div>
+
+      <div style="height:8px"></div>
+
+      <!-- Segunda fila opcional con “Destino” o nota -->
+      <div class="row">
+        <div>
+          <strong>Destino</strong>
+          <div class="meta">Celebración — Royal Beach</div>
+        </div>
+        <div style="text-align:right;">
+          <strong>Nota</strong>
+          <div class="meta" data-i18n="note">Por favor confirma asistencia antes del 01/02/2026.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Placeholder for more cards -->
     <section class="section">
