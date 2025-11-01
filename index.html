@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación de Boda</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
@@ -14,102 +14,99 @@
       --radius:12px;
       --shadow: 0 10px 30px rgba(0,0,0,.08);
     }
-    *{box-sizing:border-box; margin:0; padding:0;}
-    body{font-family:Montserrat, sans-serif; color:var(--text); background:#f8f6f4;}
-
-    /* Selector de idioma */
-    .lang-select{ text-align:right; padding:10px 16px; }
-    .lang-select select{ padding:6px 10px; border-radius:20px; border:1px solid rgba(0,0,0,0.2); font-size:14px; }
-
-    /* Portada */
-    .header{ text-align:center; padding:20px; }
-    .header img{ width:100%; max-width:400px; border-radius:12px; box-shadow:var(--shadow); }
-    .title{ font-family:'Playfair Display', serif; font-size:32px; color:var(--accent-dark); margin-top:20px; }
-    .subtitle{ font-size:14px; color:var(--accent); margin-top:6px; }
-
-    /* Botones */
-    .buttons{ margin-top:20px; display:flex; flex-direction:column; gap:10px; align-items:center; }
-    .btn{ text-decoration:none; padding:12px 20px; border-radius:30px; font-weight:600; border:1px solid var(--accent); color:var(--accent-dark); background:white; transition:0.3s; }
-    .btn.primary{ background:var(--accent); color:#fff; border:none; }
-    .btn:hover{ transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
-
-    /* Secciones */
-    section{ padding:40px 20px; max-width:900px; margin:auto; text-align:center; }
-    .countdown{ font-size:28px; font-weight:700; margin-top:20px; color:var(--accent-dark); }
+    body{margin:0;font-family:Montserrat,system-ui;-webkit-font-smoothing:antialiased;color:var(--text);}
+    header{text-align:center;padding:40px 20px;position:relative;}
+    header img{width:100%;border-radius:12px;max-height:400px;object-fit:cover;}
+    h1{font-family:'Playfair Display',serif;margin:20px 0 10px;color:var(--accent-dark);}    
+    .subtitle{font-style:italic;color:var(--accent);}    
+    .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:15px;}
+    .btn{padding:10px 18px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;transition:.3s;}
+    .btn:hover{transform:translateY(-2px);}    
+    .section{max-width:980px;margin:28px auto;padding:0 20px;}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:20px;border:1px solid rgba(0,0,0,0.04);}    
+    .ticket{border:1px dashed rgba(0,0,0,0.1);border-radius:10px;padding:16px;background:linear-gradient(180deg,#fff,#fbf8f6);}    
+    #countdown{text-align:center;font-size:20px;margin-top:20px;color:var(--accent-dark);}    
   </style>
 </head>
 <body>
-  <!-- Selector idioma -->
-  <div class="lang-select">
+  <header>
+    <img src="images/Boda1.jpg" alt="Rubén y Natasha">    
+    <h1 data-i18n="title">Rubén & Natasha</h1>
+    <p class="subtitle" data-i18n="subtitle">AQUÍ SE ESCRIBE</p>
+    <div id="countdown">Cargando...</div>
+
     <select id="languageSwitcher">
       <option value="es">Español</option>
       <option value="ru">Русский</option>
     </select>
-  </div>
 
-  <!-- Sección portada -->
-  <header class="header">
-    <img src="images/Boda1.jpg" alt="Rubén y Natasha" />
-    <h1 class="title" data-key="title">Rubén & Natasha</h1>
-    <p class="subtitle" data-key="intro">AQUÍ SE ESCRIBE</p>
-
-    <div class="buttons">
-      <a href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" class="btn primary" data-key="rsvp">Confirmar asistencia</a>
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Rubén+y+Natasha&dates=20260722T120000Z/20260722T235900Z&details=¡Te+esperamos!&location=" target="_blank" class="btn">Añadir al calendario</a>
+    <div class="controls">
+      <a class="btn" data-i18n="rsvp" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank">Confirmar asistencia</a>
+      <a class="btn" data-i18n="calendar" href="#" id="addToCalendar">Añadir al calendario</a>
     </div>
   </header>
 
-  <!-- Sección cuenta atrás -->
-  <section>
-    <h2 data-key="countdown-title">Cuenta atrás</h2>
-    <div id="countdown" class="countdown"></div>
+  <!-- TARJETA: Detalles del Evento -->
+  <section class="section">
+    <div class="card">
+      <div class="ticket">
+        <h3 data-i18n="detailsTitle" style="font-family:'Playfair Display',serif;">Detalles del Evento</h3>
+        <p class="meta" data-i18n="detailsContent">Aquí puedes escribir la información importante del evento, como hora, lugar, dirección, etc.</p>
+      </div>
+    </div>
   </section>
 
   <script>
-    // Traducciones básicas
+    // TRADUCCIONES
     const translations = {
       es: {
-        title: "Rubén & Natasha",
-        intro: "AQUÍ SE ESCRIBE",
-        rsvp: "Confirmar asistencia",
-        countdown-title: "Cuenta atrás"
+        title: 'Rubén & Natasha',
+        subtitle: 'AQUÍ SE ESCRIBE',
+        rsvp: 'Confirmar asistencia',
+        calendar: 'Añadir al calendario',
+        detailsTitle: 'Detalles del Evento',
+        detailsContent: 'Aquí puedes escribir la información importante del evento, como hora, lugar, dirección, etc.'
       },
       ru: {
-        title: "Рубен и Наташа",
-        intro: "ЗДЕСЬ ПИШЕТСЯ ТЕКСТ",
-        rsvp: "Подтвердить участие",
-        countdown-title: "Обратный отсчёт"
+        title: 'Рубен и Наташа',
+        subtitle: 'ТЕКСТ',
+        rsvp: 'Подтвердить участие',
+        calendar: 'Добавить в календарь',
+        detailsTitle: 'Детали события',
+        detailsContent: 'Здесь можно написать важную информацию: время, место, адрес и т.д.'
       }
     };
 
-    const languageSwitcher = document.getElementById('languageSwitcher');
-    languageSwitcher.addEventListener('change', (event) => {
-      const lang = event.target.value;
-      document.querySelectorAll('[data-key]').forEach((element) => {
-        const key = element.getAttribute('data-key');
-        element.textContent = translations[lang][key];
+    const switcher = document.getElementById('languageSwitcher');
+    switcher.addEventListener('change', () => {
+      const lang = switcher.value;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translations[lang][key];
       });
     });
 
-    // Cuenta atrás
-    const weddingDate = new Date('2026-07-22T00:00:00');
-    const countdownElement = document.getElementById('countdown');
-
+    // CUENTA ATRÁS
     function updateCountdown() {
+      const weddingDate = new Date('2026-07-22T00:00:00');
       const now = new Date();
       const diff = weddingDate - now;
 
       if (diff <= 0) {
-        countdownElement.textContent = '¡Hoy es el gran día!';
+        document.getElementById('countdown').innerText = '¡Hoy es el gran día!';
         return;
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      countdownElement.textContent = `${days} días para la boda`;
-    }
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
+      document.getElementById('countdown').innerText = `Faltan ${days} días, ${hours}h ${mins}m ${secs}s`;
+    }
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
   </script>
 </body>
 </html>
