@@ -1,165 +1,404 @@
-<!-- Código completo actualizado con selector de idioma con banderas redondas, reproductor de música, cuenta atrás mejorada y brújula giratoria -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación de Boda</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rubén & Natasha — Invitación</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Invitación de boda - Rubén & Natasha">
+
+  <!--
+    IMPORTANT:
+    Put these assets in your repo (paths used below):
+      /images/Boda1.jpg          (foto portada)
+      /images/Brujula.webp       (imagen brújula)
+      /images/Spain.png          (bandera España, circular)
+      /images/Russia.png         (bandera Rusia, circular)
+      /audio/myonlyone.mp3       (tu archivo mp3)
+  -->
+
   <style>
-    :root {
-      --primary: #2c3e50;
-      --secondary: #ecf0f1;
-      --accent: #b79b64;
-      --accent-dark: #8c784b;
-      --background: #fdfdfd;
-      --text: #333;
+    :root{
+      --accent: #b78a6b;
+      --accent-dark: #8b5a3f;
+      --bg: #faf4ec;
+      --card:#fff;
+      --text:#3b3029;
+      --gold: linear-gradient(90deg,#ecd59b,#f7e7c2);
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-      margin: 0;
-      padding: 0;
+    /* Basic reset & mobile first */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      justify-content:center;
+      padding:18px;
     }
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-      text-align: center;
-    }
+    .wrap{width:100%;max-width:760px}
 
-    /* Selector de idioma */
-    .language-switcher {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
+    /* top bar: language and small controls */
+    .topbar{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      align-items:center;
+      margin-bottom:8px;
     }
-    .language-switcher img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
+    .lang-btn{
+      width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
     }
-    .language-switcher img:hover {
-      transform: scale(1.1);
-    }
+    .lang-btn img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Brújula giratoria y título */
-    .logo-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 10px;
+    /* Header / portada */
+    .card-hero{
+      background:var(--card);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow: 0 18px 40px rgba(34,34,34,0.06);
+      border:1px solid rgba(0,0,0,0.03);
     }
-    .compass {
-      width: 60px;
-      height: 60px;
-      opacity: 0.95;
-      border-radius: 50%;
-      object-fit: cover;
-      animation: spin 20s linear infinite;
+    .hero-img{
+      width:100%;height:280px;object-fit:cover;display:block;
     }
-    @keyframes spin {
-      from { transform: rotate(0); }
-      to { transform: rotate(360deg); }
+    .hero-overlay{
+      padding:18px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
     }
+    .hero-title{
+      font-family:'Playfair Display',serif;
+      font-size:20px;color:var(--accent-dark);margin:0;
+    }
+    .hero-sub{color:rgba(0,0,0,0.55);font-size:13px;margin-top:6px}
 
-    /* Reproductor de música */
-    audio {
-      margin: 15px 0;
-      width: 100%;
-      border-radius: 10px;
-      outline: none;
+    /* compass row */
+    .compass-row{display:flex;align-items:center;gap:12px}
+    .compass{
+      width:64px;height:64px;border-radius:50%;object-fit:cover;animation:spin 18s linear infinite;border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.07)
     }
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
-    /* Cuenta atrás más destacada */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 25px 0;
+    /* audio */
+    .audio-wrap{padding:12px 18px;border-top:1px dashed rgba(0,0,0,0.04)}
+
+    audio{width:100%;border-radius:10px;outline:none}
+
+    /* countdown - big and elegant */
+    .countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+    .cd-item{
+      min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);
+      display:flex;flex-direction:column;align-items:center;gap:6px
     }
-    .countdown div {
-      background: var(--secondary);
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      width: 70px;
-    }
-    .countdown div span {
-      display: block;
-      font-size: 18px;
-      font-weight: bold;
-      color: var(--accent-dark);
-    }
-    .countdown div small {
-      font-size: 12px;
-      color: var(--text);
+    .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark);letter-spacing:1px}
+    .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
+
+    /* actions row */
+    .actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+    .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
+    .btn.outline{background:transparent}
+
+    /* boarding card style section */
+    .section{padding:18px;margin-top:14px}
+    .ticket{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.04)}
+    .ticket h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
+    .meta{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
+    .ticket hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
+
+    /* responsive tweaks */
+    @media(min-width:900px){
+      .hero-img{height:380px}
+      .hero-title{font-size:30px}
+      .cd-item .num{font-size:36px}
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
 
-    <!-- Selector de idioma con banderas -->
-    <div class="language-switcher">
-      <img src="bandera-es.png" alt="Español" onclick="setLanguage('es')" />
-      <img src="bandera-ru.png" alt="Ruso" onclick="setLanguage('ru')" />
-    </div>
-
-    <!-- Brújula decorativa -->
-    <div class="logo-line">
-      <img src="Brujula.webp" alt="Brújula decorativa girando" class="compass" />
-      <div>
-        <div style="font-size:12px;color:var(--accent);">PASAPORTE</div>
-        <div style="font-weight:700;color:var(--accent-dark);font-family:'Playfair Display',serif;font-size:16px">
-          INVITACIÓN
-        </div>
+    <!-- TOP: language flags (round) -->
+    <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <div class="lang-btn" title="Español" onclick="setLang('es')">
+        <img src="Spain.png" alt="ES" />
+      </div>
+      <div class="lang-btn" title="Русский" onclick="setLang('ru')">
+        <img src="Russia.png" alt="RU" />
       </div>
     </div>
 
-    <!-- Reproductor de música -->
-    <audio controls>
-      <!-- Aquí debes colocar tu archivo MP3 -->
-      <source src="myonlyone.mp3" type="audio/mpeg">
-      Tu navegador no soporta el audio.
-    </audio>
+    <!-- HERO card: portada + compass + names -->
+    <div class="card-hero">
+      <img class="hero-img" src="/images/Boda1.jpg" alt="Rubén & Natasha" />
 
-    <!-- Cuenta atrás -->
-    <h2>Cuenta atrás para nuestro gran día</h2>
-    <div class="countdown" id="countdown">
-      <div><span id="days">00</span><small>Días</small></div>
-      <div><span id="hours">00</span><small>Horas</small></div>
-      <div><span id="minutes">00</span><small>Minutos</small></div>
-      <div><span id="seconds">00</span><small>Segundos</small></div>
+      <div class="hero-overlay">
+        <div style="display:flex;flex-direction:column;align-items:flex-start">
+          <div class="hero-title" data-i18n="names">Rubén & Natasha</div>
+          <div class="hero-sub" data-i18n="subtitle">AQUI SE ESCRIBE</div>
+        </div>
+
+        <div class="compass-row" style="align-items:center">
+          <img src="Brujula.webp" alt="Brújula" class="compass" />
+        </div>
+      </div>
+
+      <!-- audio under hero -->
+      <div class="audio-wrap">
+        <audio controls preload="none">
+          <source src="myonlyone.mp3" type="audio/mpeg" />
+          Tu navegador no soporta audio.
+        </audio>
+      </div>
+
+      <!-- countdown -->
+      <div class="countdown-wrap" aria-live="polite">
+        <div class="cd-item"><div class="num" id="cd-days">00</div><small data-i18n="days">Días</small></div>
+        <div class="cd-item"><div class="num" id="cd-hours">00</div><small data-i18n="hours">Horas</small></div>
+        <div class="cd-item"><div class="num" id="cd-minutes">00</div><small data-i18n="minutes">Minutos</small></div>
+        <div class="cd-item"><div class="num" id="cd-seconds">00</div><small data-i18n="seconds">Segundos</small></div>
+      </div>
+
+      <!-- actions: RSVP + Add to calendar -->
+      <div class="actions" style="padding-bottom:18px">
+        <a class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
+
+        <div class="btn" onclick="openGoogleCalendar()" title="Añadir a Google Calendar" id="btn-gcal" data-i18n="add_gcal">Google Calendar</div>
+        <div class="btn" onclick="downloadICS()" title="Descargar evento (.ics) para Outlook / Apple" id="btn-ics" data-i18n="add_ical">Añadir al calendario</div>
+      </div>
     </div>
+
+    <!-- Section: Detalles del Evento (boarding pass style) -->
+    <section class="section">
+      <div class="ticket" id="details-ticket">
+        <h3>Detalles del Evento</h3>
+        <p class="meta">
+          <strong data-i18n="date_label">Fecha y hora:</strong>
+          <span data-i18n="date_value">22/07/2026 — 16:00</span>
+        </p>
+
+        <hr />
+
+        <p class="meta"><strong data-i18n="place_label">Lugar:</strong> <span data-i18n="place_value">Royal Beach — San Petersburgo</span></p>
+
+        <p class="meta" style="margin-top:10px" data-i18n="note">Por favor confirma asistencia antes del 01/06/2026.</p>
+      </div>
+    </section>
+
+    <!-- Placeholder for more cards -->
+    <section class="section">
+      <div class="ticket">
+        <h3 data-i18n="more_title">Información importante</h3>
+        <p class="meta" data-i18n="more_text">Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.</p>
+      </div>
+    </section>
 
   </div>
 
   <script>
-    // Lógica del contador
-    const targetDate = new Date('2026-06-03T00:00:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      document.getElementById('days').textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
-      document.getElementById('hours').textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      document.getElementById('minutes').textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      document.getElementById('seconds').textContent = Math.floor((distance % (1000 * 60)) / 1000);
-    }, 1000);
+    /**********************
+      TRANSLATIONS (ES / RU)
+    ***********************/
+    const TEXTS = {
+      es: {
+        names: 'Rubén & Natasha',
+        subtitle: 'AQUI SE ESCRIBE',
+        days: 'Días',
+        hours: 'Horas',
+        minutes: 'Minutos',
+        seconds: 'Segundos',
+        rsvp: 'Confirmar asistencia',
+        add_gcal: 'Google Calendar',
+        add_ical: 'Añadir al calendario',
+        date_label: 'Fecha y hora:',
+        date_value: '22/07/2026 — 16:00',
+        place_label: 'Lugar:',
+        place_value: 'Royal Beach — San Petersburgo',
+        note: 'Por favor confirma asistencia antes del 01/06/2026.',
+        more_title: 'Información importante',
+        more_text: 'Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.'
+      },
+      ru: {
+        names: 'Рубен & Наташа',
+        subtitle: 'ЗДЕСЬ ТЕКСТ',
+        days: 'Дней',
+        hours: 'Часов',
+        minutes: 'Минут',
+        seconds: 'Секунд',
+        rsvp: 'Подтвердить участие',
+        add_gcal: 'Google Календарь',
+        add_ical: 'Добавить в календарь',
+        date_label: 'Дата и время:',
+        date_value: '22/07/2026 — 16:00',
+        place_label: 'Место:',
+        place_value: 'Royal Beach — Санкт-Петербург',
+        note: 'Пожалуйста, подтвердите участие до 01/06/2026.',
+        more_title: 'Важная информация',
+        more_text: 'Здесь можно добавить инструкции о транспорте, проживании или дресс-коде.'
+      }
+    };
 
-    // Cambio de idioma
-    function setLanguage(lang) {
-      alert('Idioma cambiado a: ' + (lang === 'es' ? 'Español' : 'Ruso') + ' (traducción en desarrollo)');
+    // Apply translations to data-i18n elements
+    function applyLang(lang){
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(TEXTS[lang] && TEXTS[lang][key]) el.textContent = TEXTS[lang][key];
+      });
     }
+
+    // Set initial lang (detect browser or default to 'es')
+    let currentLang = (navigator.language && navigator.language.startsWith('ru')) ? 'ru' : 'es';
+    applyLang(currentLang);
+
+    function setLang(lang){
+      currentLang = lang;
+      applyLang(lang);
+      // small visual feedback: scale the clicked flag briefly
+      // (we rely on onclick on the buttons)
+    }
+
+    /**********************
+      COUNTDOWN
+    ***********************/
+    // Target: 22 July 2026 at 16:00 local time (adjust if needed)
+    const target = new Date(2026, 6, 22, 16, 0, 0); // months are 0-indexed: 6 -> July
+    function updateCountdown(){
+      const now = new Date();
+      let diff = target - now;
+      if(diff < 0){
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-minutes').textContent = '00';
+        document.getElementById('cd-seconds').textContent = '00';
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      diff -= days * (1000*60*60*24);
+      const hours = Math.floor(diff / (1000*60*60));
+      diff -= hours * (1000*60*60);
+      const minutes = Math.floor(diff / (1000*60));
+      diff -= minutes * (1000*60);
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-minutes').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('cd-seconds').textContent = String(seconds).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+
+    /**********************
+      Add to Google Calendar and ICS download
+    ***********************/
+    // event details - change if needed
+    const event = {
+      title: "Boda — Rubén & Natasha",
+      description: "¡Ven a celebrar con nosotros! Por favor confirma asistencia.",
+      location: "Royal Beach, San Petersburgo",
+      // Start and end times in UTC-ish (we'll format)
+      start: new Date(2026,6,22,16,0,0), // local
+      end: new Date(2026,6,22,20,0,0) // 4 hours later
+    };
+
+    function formatDateForGoogle(d){
+      // Google expects YYYYMMDDTHHMMSSZ in UTC – we convert date to UTC string
+      const yyyy = d.getUTCFullYear();
+      const mm = String(d.getUTCMonth()+1).padStart(2,'0');
+      const dd = String(d.getUTCDate()).padStart(2,'0');
+      const hh = String(d.getUTCHours()).padStart(2,'0');
+      const min = String(d.getUTCMinutes()).padStart(2,'0');
+      const ss = String(d.getUTCSeconds()).padStart(2,'0');
+      return `${yyyy}${mm}${dd}T${hh}${min}${ss}Z`;
+    }
+
+    function openGoogleCalendar(){
+      const s = formatDateForGoogle(event.start);
+      const e = formatDateForGoogle(event.end);
+      const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${s}/${e}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&sf=true&output=xml`;
+      window.open(url,'_blank');
+    }
+
+    function downloadICS(){
+      const pad = n => String(n).padStart(2,'0');
+      function toICSDate(d){
+        return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+      }
+      const icsLines = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Rubén&Natasha//Boda//ES',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@boda`,
+        `DTSTAMP:${toICSDate(new Date())}`,
+        `DTSTART:${toICSDate(event.start)}`,
+        `DTEND:${toICSDate(event.end)}`,
+        `SUMMARY:${event.title}`,
+        `DESCRIPTION:${event.description}`,
+        `LOCATION:${event.location}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ];
+      const blob = new Blob([icsLines.join('\r\n')], {type: 'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'boda-ruben-natasha.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    /**********************
+      Small accessibility / UX helpers
+    ***********************/
+    // Keyboard support for language buttons (optional)
+    document.querySelectorAll('.lang-btn').forEach((el,idx)=>{
+      el.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' ') { el.click(); }
+      });
+    });
+
+    // Ensure lang buttons visually reflect current language
+    function highlightLangButton(){
+      document.querySelectorAll('.lang-btn').forEach((btn)=>{
+        btn.style.outline='none';
+      });
+      // find the button with matching alt text
+      const map = {'es':'ES','ru':'RU'};
+      document.querySelectorAll('.lang-btn img').forEach(img=>{
+        if((currentLang==='es' && img.alt==='ES') || (currentLang==='ru' && img.alt==='RU')){
+          img.parentElement.style.boxShadow = '0 10px 26px rgba(139,94,80,0.18)';
+          img.parentElement.style.transform = 'scale(1.04)';
+        } else {
+          img.parentElement.style.boxShadow = '0 6px 18px rgba(0,0,0,0.06)';
+          img.parentElement.style.transform = 'scale(1)';
+        }
+      });
+    }
+    highlightLangButton();
+
+    // When language changes, update highlight
+    function setLang(lang){
+      currentLang = lang;
+      applyLang(lang);
+      highlightLangButton();
+    }
+
   </script>
 </body>
 </html>
