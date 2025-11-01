@@ -1,274 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rubén & Natasha — Invitación de Boda</title>
-  <!--
-    Proyecto: Invitación de boda (nivel TOP)
-    Estructura: este archivo es una versión "todo en uno" para que la pruebes rápido.
-    - index.html -> contiene HTML, CSS y JS (multidioma, formulario RSVP, animaciones)
-    - assets/ -> carpeta para imágenes (mapa, brújula, sellos, foto vuestra)
-
-    Instrucciones rápidas (resumen):
-    1) Sustituye las imágenes en /assets/ por las tuyas (foto.jpg, mapa.png, sello.png, compass.png)
-    2) Configura el "ENDPOINT_RSVP" en la sección de <script> para apuntar a tu Google Apps Script (ver abajo)
-    3) Sube al repo de GitHub y activa GitHub Pages en la rama main (o gh-pages)
-
-    Configuración para almacenar respuestas en una hoja de cálculo y enviar e-mails (Google Apps Script):
-    -----------------------------------------------------------------------------
-    1. Crea una hoja de cálculo en Google Sheets. Ponle nombre "RSVP - Nuestra Boda".
-    2. Ve a Extensiones → Apps Script y pega este código nuevo en el editor (archivo Code.gs):
-
-    // --- START Apps Script code ---
-    function doPost(e) {
-      // Asegúrate de desplegar como Web App: Ejecutar la app como: "Yo"; Quién tiene acceso: "Cualquiera, incluso anónimo"
-      var ss = SpreadsheetApp.openById('TU_SHEET_ID_AQUI'); // sustituye por el ID de tu sheet
-      var sheet = ss.getSheetByName('Respuestas') || ss.insertSheet('Respuestas');
-      var data = JSON.parse(e.postData.contents);
-
-      var fecha = new Date();
-      var fila = [
-        fecha,
-        data.lang || '',
-        data.nombre || '',
-        data.numPersonas || '',
-        data.alergias || '',
-        data.mensaje || '',
-        data.contacto || ''
-      ];
-      sheet.appendRow(fila);
-
-      // Enviar correo de notificación (opcional)
-      var emailTo = 'TU_EMAIL_AQUI';
-      var subject = 'Nueva RSVP: ' + (data.nombre || 'Sin nombre');
-      var body = 'Nueva respuesta recibida:
-
-' +
-                 'Nombre: ' + data.nombre + '
-' +
-                 'Número de personas: ' + data.numPersonas + '
-' +
-                 'Alergias: ' + data.alergias + '
-' +
-                 'Contacto: ' + data.contacto + '
-' +
-                 'Mensaje: ' + data.mensaje + '
-' +
-                 'Idioma: ' + data.lang + '
-' +
-                 'Fecha: ' + fecha;
-      MailApp.sendEmail(emailTo, subject, body);
-
-      return ContentService.createTextOutput(JSON.stringify({status: 'ok'}))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-    // --- END Apps Script code ---
-
-    3. Guarda. En el menú: Deploy -> New deployment -> Tipo: Web app.
-       - Ejecutar como: "Me" (tu cuenta)
-       - Quién tiene acceso: "Cualquiera" (o "Anyone" si está en inglés). Si no quieres anónimo, puedes usar permisos con Google sign-in: eso complica un poco.
-    4. Copia la URL del despliegue. Será algo como: "https://script.google.com/macros/s/XXXXX/exec"
-    5. Pega esa URL en la constante ENDPOINT_RSVP dentro del archivo index.html (busca ENDPOINT_RSVP).
-
-    Seguridad / privacidad:
-    - Si no quieres que cualquiera poste datos, cambia los permisos y usa OAuth (más complejo).
-    - Las respuestas se guardarán en la Sheet y podrás exportarlas a Excel (.xlsx) desde Google Sheets.
-
-    Si prefieres usar un servicio sin código (Formspree / Getform / Netlify forms), dímelo y adapto el formulario.
-  -->
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset y mobile-first */
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body {font-family: Arial, sans-serif; text-align: center; padding: 20px; max-width: 480px; margin: auto; background: #faf6ef;}
-    header img {max-width: 100%; height: auto;}
-    .section {margin: 30px 0; padding: 15px; border-radius: 8px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}    
-    .btn {display: inline-block; margin-top: 15px; padding: 12px 20px; background: black; color: white; text-decoration: none; border-radius: 6px; font-size: 16px;}
-    @media(min-width:768px){body{max-width:600px;}}
+    :root{
+      --accent:#b78a6b;
+      --accent-dark:#8b5a3f;
+      --text:#3b3029;
+      --card:#ffffff;
+      --radius:12px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{font-family:Montserrat, sans-serif; color:var(--text); background:#f8f6f4;}
+
+    /* Selector de idioma */
+    .lang-select{ text-align:right; padding:10px 16px; }
+    .lang-select select{ padding:6px 10px; border-radius:20px; border:1px solid rgba(0,0,0,0.2); font-size:14px; }
+
+    /* Portada */
+    .header{ text-align:center; padding:20px; }
+    .header img{ width:100%; max-width:400px; border-radius:12px; box-shadow:var(--shadow); }
+    .title{ font-family:'Playfair Display', serif; font-size:32px; color:var(--accent-dark); margin-top:20px; }
+    .subtitle{ font-size:14px; color:var(--accent); margin-top:6px; }
+
+    /* Botones */
+    .buttons{ margin-top:20px; display:flex; flex-direction:column; gap:10px; align-items:center; }
+    .btn{ text-decoration:none; padding:12px 20px; border-radius:30px; font-weight:600; border:1px solid var(--accent); color:var(--accent-dark); background:white; transition:0.3s; }
+    .btn.primary{ background:var(--accent); color:#fff; border:none; }
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+
+    /* Secciones */
+    section{ padding:40px 20px; max-width:900px; margin:auto; text-align:center; }
+    .countdown{ font-size:28px; font-weight:700; margin-top:20px; color:var(--accent-dark); }
   </style>
 </head>
 <body>
-
-  <div class="card">
-    <div class="header">
-      <div class="brand">
-        <div style="position:relative">
-          <div class="lang-select">
-            <select id="lang" onchange="switchLang(this.value)">
-              <option value="es">Español</option>
-              <option value="en">English</option>
-              <option value="ru">Русский</option>
-            </select>
-          </div>
-          <h1 id="names">Rubén & Natasha</h1>
-          <div class="subtitle" id="tagline">Pasaporte a nuestra boda — 22.07.2026</div>
-        </div>
-      </div>
-      <div class="photo">
-        <img src="assets/photo.jpg" alt="Rubén & Natasha" id="photo">
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="left">
-        <div class="passport">
-          <div class="map-deco" aria-hidden="true"></div>
-          <div class="info-list">
-            <div class="info-item"><span id="label_novio"><b>El novio</b></span><span id="groom">Rubén Moreno Torrejón</span></div>
-            <div class="info-item"><span id="label_novia"><b>La novia</b></span><span id="bride">Natasha Polkanova</span></div>
-            <div class="info-item"><span id="label_fecha"><b>Fecha y hora</b></span><span id="date">22/07/2026 — 16:00</span></div>
-            <div class="info-item"><span id="label_lugar"><b>Lugar</b></span><span id="place">Royal Beach — San Petersburgo, Rusia</span></div>
-          </div>
-          <p class="muted" id="note">Por favor, confirma asistencia antes del 01/02/2026.</p>
-        </div>
-
-        <div style="margin-top:14px">
-          <h3 style="font-family:'Playfair Display',serif;color:#8b5e50">Nuestra historia</h3>
-          <p class="muted" id="story">Un poquito de texto romántico y una breve historia de cómo nos conocimos. (Cambia este texto desde el archivo HTML.)</p>
-        </div>
-      </div>
-
-      <div class="right">
-        <div class="rsvp">
-          <h3 id="rsvp_title">Confirmar asistencia</h3>
-          <a href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" class="btn">Confirmar Asistencia (RSVP)</a>
-
-          <p class="muted" style="margin-top:8px" id="privacy">Tus datos se usarán solo para la organización del evento.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px">
-        <span class="airplane">✈️</span>
-        <div id="footer_text">El amor no necesita visa — 22/07/2026</div>
-      </div>
-    </div>
+  <!-- Selector idioma -->
+  <div class="lang-select">
+    <select id="languageSwitcher">
+      <option value="es">Español</option>
+      <option value="ru">Русский</option>
+    </select>
   </div>
 
+  <!-- Sección portada -->
+  <header class="header">
+    <img src="images/Boda1.jpg" alt="Rubén y Natasha" />
+    <h1 class="title" data-key="title">Rubén & Natasha</h1>
+    <p class="subtitle" data-key="intro">AQUÍ SE ESCRIBE</p>
+
+    <div class="buttons">
+      <a href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" class="btn primary" data-key="rsvp">Confirmar asistencia</a>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Rubén+y+Natasha&dates=20260722T120000Z/20260722T235900Z&details=¡Te+esperamos!&location=" target="_blank" class="btn">Añadir al calendario</a>
+    </div>
+  </header>
+
+  <!-- Sección cuenta atrás -->
+  <section>
+    <h2 data-key="countdown-title">Cuenta atrás</h2>
+    <div id="countdown" class="countdown"></div>
+  </section>
 
   <script>
-    /* ----------------------
-       CONFIG
-       ---------------------- */
-    // Sustituye esto por la URL de tu Google Apps Script desplegado como Web App
-    const ENDPOINT_RSVP = 'https://tu_script_google/aqui/exec'; // <- CAMBIAR
-
-    /* Texto multidioma */
-    const TEXTS = {
+    // Traducciones básicas
+    const translations = {
       es: {
-        names: 'Rubén & Natasha',
-        tagline: 'Pasaporte a nuestra boda — 22.07.2026',
-        rsvp_title: 'Confirmar asistencia',
-        lbl_name: 'Nombre completo',
-        lbl_count: 'Número de personas',
-        lbl_contact: 'Teléfono / e-mail',
-        lbl_allergies: 'Alergias / Necesidades',
-        lbl_msg: 'Mensaje',
-        btn_send: 'Enviar RSVP',
-        privacy: 'Tus datos se usarán solo para la organización del evento.',
-        note: 'Por favor, confirma asistencia antes del 01/06/2026.'
-      },
-      en: {
-        names: 'Rubén & Natasha',
-        tagline: "Wedding passport — 22.07.2026",
-        rsvp_title: 'RSVP — Please confirm',
-        lbl_name: 'Full name',
-        lbl_count: 'Number of guests',
-        lbl_contact: 'Phone / e-mail',
-        lbl_allergies: 'Allergies / Needs',
-        lbl_msg: 'Message',
-        btn_send: 'Send RSVP',
-        privacy: 'Your data will only be used for event organization.',
-        note: 'Please confirm attendance before 01/06/2026.'
+        title: "Rubén & Natasha",
+        intro: "AQUÍ SE ESCRIBE",
+        rsvp: "Confirmar asistencia",
+        countdown-title: "Cuenta atrás"
       },
       ru: {
-        names: 'Рубен & Наташа',
-        tagline: 'Паспорт нашей свадьбы — 22.07.2026',
-        rsvp_title: 'Подтвердите присутствие',
-        lbl_name: 'Полное имя',
-        lbl_count: 'Количество гостей',
-        lbl_contact: 'Телефон / e-mail',
-        lbl_allergies: 'Аллергии / Пожелания',
-        lbl_msg: 'Сообщение',
-        btn_send: 'Отправить',
-        privacy: 'Ваши данные будут использованы только для организации мероприятия.',
-        note: 'Пожалуйста, подтвердите до 01/06/2026.'
+        title: "Рубен и Наташа",
+        intro: "ЗДЕСЬ ПИШЕТСЯ ТЕКСТ",
+        rsvp: "Подтвердить участие",
+        countdown-title: "Обратный отсчёт"
       }
     };
 
-    /* Inicializa idioma */
-    function switchLang(lang){
-      document.getElementById('lang_input').value = lang;
-      document.getElementById('names').textContent = TEXTS[lang].names;
-      document.getElementById('tagline').textContent = TEXTS[lang].tagline;
-      document.getElementById('rsvp_title').textContent = TEXTS[lang].rsvp_title;
-      document.getElementById('lbl_name').textContent = TEXTS[lang].lbl_name;
-      document.getElementById('lbl_count').textContent = TEXTS[lang].lbl_count;
-      document.getElementById('lbl_contact').textContent = TEXTS[lang].lbl_contact;
-      document.getElementById('lbl_allergies').textContent = TEXTS[lang].lbl_allergies;
-      document.getElementById('lbl_msg').textContent = TEXTS[lang].lbl_msg;
-      document.getElementById('btn_send').textContent = TEXTS[lang].btn_send;
-      document.getElementById('privacy').textContent = TEXTS[lang].privacy;
-      document.getElementById('note').textContent = TEXTS[lang].note;
-    }
-
-    // set default to Spanish
-    switchLang('es');
-
-    /* Envío del formulario */
-    async function submitForm(e){
-      e.preventDefault();
-      const btn = document.getElementById('btn_send');
-      btn.disabled = true; btn.textContent = 'Enviando...';
-
-      const payload = {
-        lang: document.getElementById('lang_input').value,
-        nombre: document.getElementById('name').value.trim(),
-        numPersonas: document.getElementById('count').value,
-        alergias: document.getElementById('alergias').value.trim(),
-        mensaje: document.getElementById('message').value.trim(),
-        contacto: document.getElementById('contact').value.trim()
-      };
-
-      try{
-        const res = await fetch(ENDPOINT_RSVP, {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify(payload)
-        });
-        if(!res.ok) throw new Error('Network response was not ok');
-        const data = await res.json();
-        showSuccess();
-        document.getElementById('rsvpForm').reset();
-      }catch(err){
-        showError(err);
-      }finally{
-        btn.disabled = false; btn.textContent = TEXTS[document.getElementById('lang_input').value].btn_send;
-      }
-    }
-
-    function showSuccess(){
-      const box = document.getElementById('responseBox');
-      box.innerHTML = '<div class="success">Gracias — tu respuesta ha sido registrada. ❤️</div>';
-    }
-
-    function showError(err){
-      const box = document.getElementById('responseBox');
-      box.innerHTML = '<div class="success" style="background:#fdecea;border-left-color:#e53935;color:#8b1c1c">Ha ocurrido un error. Intenta de nuevo o escríbenos por WhatsApp.</div>';
-      console.error(err);
-    }
-
-    /* Pequeña mejora: cambiar texto del botón según idioma del selector */
-    document.getElementById('lang').addEventListener('change', (e)=>{
-      switchLang(e.target.value);
+    const languageSwitcher = document.getElementById('languageSwitcher');
+    languageSwitcher.addEventListener('change', (event) => {
+      const lang = event.target.value;
+      document.querySelectorAll('[data-key]').forEach((element) => {
+        const key = element.getAttribute('data-key');
+        element.textContent = translations[lang][key];
+      });
     });
 
-    /* TODO: añadir animaciones extra o personalizaciones en JS si quieres */
+    // Cuenta atrás
+    const weddingDate = new Date('2026-07-22T00:00:00');
+    const countdownElement = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        countdownElement.textContent = '¡Hoy es el gran día!';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      countdownElement.textContent = `${days} días para la boda`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
