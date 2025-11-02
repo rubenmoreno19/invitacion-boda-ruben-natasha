@@ -122,6 +122,12 @@
         margin-bottom: 36px;
         position: relative;
       }
+    /* Alineación del punto en la versión móvil */
+      .timeline-item::before {
+        left: -12px;  /* Ajusta la distancia del punto respecto a la línea */
+        top: 50%;  /* Lo coloca en el centro del item */
+        transform: translateY(-50%); /* Lo mantiene centrado verticalmente */
+      }  
     /*  .timeline-item::before { left: 6px; top: 50%; transform: translateY(-50%); } /* center dot */
       .timeline-item .time {
         min-width: 56px;
