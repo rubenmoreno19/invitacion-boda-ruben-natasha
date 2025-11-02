@@ -17,32 +17,29 @@
       --bg: #faf4ec;
       --card:#fff;
       --text:#3b3029;
-      --gold: linear-gradient(90deg,#ecd59b,#f7e7c2);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Arial;
       background:var(--bg);
       color:var(--text);
       display:flex;
       justify-content:center;
       padding:18px;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
 
     .wrap{width:100%;max-width:760px}
 
-    /* top bar: language */
+    /* Language */
     .lang-btn{
-      width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
-      display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
-      transition:all .2s ease;
+      width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);
+      cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+      background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);transition:all .2s ease;
     }
-    .lang-btn img{width:100%;height:100%;object-fit:cover;display:block}
+    .lang-btn img{width:100%;height:100%;object-fit:cover}
 
     /* Hero */
     .card-hero{
@@ -53,13 +50,7 @@
       border:1px solid rgba(0,0,0,0.03);
     }
     .hero-img{width:100%;height:280px;object-fit:cover;display:block}
-    .hero-overlay{
-      padding:18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
+    .hero-overlay{padding:18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
     .hero-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--accent-dark)}
     .hero-sub{color:rgba(0,0,0,0.55);font-size:13px;margin-top:6px}
     .compass{width:64px;height:64px;border-radius:50%;object-fit:cover;animation:spin 18s linear infinite;border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.07)}
@@ -69,13 +60,14 @@
     audio{width:100%;border-radius:10px}
 
     .countdown-wrap{
-      padding:18px;
-      background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));
+      padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));
       display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap
     }
     .cd-item{
-      min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);
-      border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px
+      min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.04);
+      display:flex;flex-direction:column;align-items:center;gap:6px
     }
     .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark)}
     .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
@@ -90,45 +82,55 @@
     .meta{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
     .ticket hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
 
-    /* Timeline */
+    /* Timeline vertical */
     .timeline{
       position:relative;
-      margin-top:20px;
-      padding:20px 0;
+      margin:24px 0;
+      padding-left:40px;
     }
     .timeline::before{
       content:'';
       position:absolute;
-      top:50%;
-      left:0;
-      right:0;
-      height:4px;
+      top:0;
+      left:18px;
+      width:4px;
+      height:100%;
       background:var(--accent);
-      transform:translateY(-50%);
+      border-radius:2px;
     }
-    .timeline-step{
+    .timeline-item{
       position:relative;
-      display:inline-block;
-      text-align:center;
-      width:25%;
+      margin-bottom:26px;
     }
+    .timeline-item:last-child{margin-bottom:0}
     .timeline-point{
       position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      width:18px;
-      height:18px;
-      border-radius:50%;
+      left:18px;
+      top:0;
+      transform:translate(-50%,0);
+      width:16px;
+      height:16px;
       background:var(--accent-dark);
       border:3px solid #fff;
+      border-radius:50%;
       box-shadow:0 0 0 3px var(--accent);
     }
-    .timeline-label{
-      margin-top:36px;
-      font-size:12px;
-      color:rgba(0,0,0,0.7);
-      font-weight:600;
+    .timeline-content{
+      background:var(--card);
+      padding:10px 14px;
+      border-radius:8px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+    .timeline-content strong{
+      display:block;
+      color:var(--accent-dark);
+      font-family:'Playfair Display',serif;
+      font-size:16px;
+      margin-bottom:4px;
+    }
+    .timeline-content span{
+      color:rgba(0,0,0,0.65);
+      font-size:13px;
     }
 
     @media(min-width:900px){
@@ -141,7 +143,7 @@
 <body>
   <div class="wrap">
 
-    <!-- Language buttons -->
+    <!-- Language -->
     <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
       <div class="lang-btn" title="Español" onclick="setLang('es')">
         <img src="Spain.png" alt="ES" />
@@ -182,26 +184,38 @@
       </div>
     </div>
 
-    <!-- Timeline -->
+    <!-- Timeline vertical -->
     <section class="section">
       <div class="ticket">
         <h3 data-i18n="timeline_title">Cronología del día</h3>
         <div class="timeline">
-          <div class="timeline-step">
+          <div class="timeline-item">
             <div class="timeline-point"></div>
-            <div class="timeline-label" data-i18n="timeline_1">Ceremonia</div>
+            <div class="timeline-content">
+              <strong data-i18n="timeline_1">Ceremonia</strong>
+              <span data-i18n="timeline_1_desc">Inicio a las 16:00 en los jardines principales.</span>
+            </div>
           </div>
-          <div class="timeline-step">
+          <div class="timeline-item">
             <div class="timeline-point"></div>
-            <div class="timeline-label" data-i18n="timeline_2">Banquete</div>
+            <div class="timeline-content">
+              <strong data-i18n="timeline_2">Banquete</strong>
+              <span data-i18n="timeline_2_desc">A las 18:00 en el salón Royal Beach.</span>
+            </div>
           </div>
-          <div class="timeline-step">
+          <div class="timeline-item">
             <div class="timeline-point"></div>
-            <div class="timeline-label" data-i18n="timeline_3">Brindis</div>
+            <div class="timeline-content">
+              <strong data-i18n="timeline_3">Brindis</strong>
+              <span data-i18n="timeline_3_desc">A las 20:00 — ¡Momento de los discursos y sorpresas!</span>
+            </div>
           </div>
-          <div class="timeline-step">
+          <div class="timeline-item">
             <div class="timeline-point"></div>
-            <div class="timeline-label" data-i18n="timeline_4">Baile</div>
+            <div class="timeline-content">
+              <strong data-i18n="timeline_4">Baile</strong>
+              <span data-i18n="timeline_4_desc">A las 21:00 abrimos la pista y celebramos hasta el amanecer.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -221,22 +235,30 @@
   </div>
 
   <script>
-    const TEXTS = {
-      es: {
+    const TEXTS={
+      es:{
         names:'Rubén & Natasha',
         subtitle:'¡Nos encantaría que nos acompañes a celebrar nuestro gran día!',
         days:'Días',hours:'Horas',minutes:'Minutos',seconds:'Segundos',
         rsvp:'Confirmar asistencia',add_gcal:'Google Calendar',add_ical:'Añadir a Outlook/iOS',
-        timeline_title:'Cronología del día',timeline_1:'Ceremonia',timeline_2:'Banquete',timeline_3:'Brindis',timeline_4:'Baile',
+        timeline_title:'Cronología del día',
+        timeline_1:'Ceremonia',timeline_1_desc:'Inicio a las 16:00 en los jardines principales.',
+        timeline_2:'Banquete',timeline_2_desc:'A las 18:00 en el salón Royal Beach.',
+        timeline_3:'Brindis',timeline_3_desc:'A las 20:00 — ¡Momento de los discursos y sorpresas!',
+        timeline_4:'Baile',timeline_4_desc:'A las 21:00 abrimos la pista y celebramos hasta el amanecer.',
         details_title:'Detalles del Evento',date_label:'Fecha y hora:',date_value:'22/07/2026 — 16:00',
         place_label:'Lugar:',place_value:'Royal Beach — San Petersburgo',note:'Por favor confirma asistencia antes del 01/02/2026.'
       },
-      ru: {
+      ru:{
         names:'Рубен & Наташа',
         subtitle:'Мы будем рады, если вы присоединитесь к нам, чтобы отпраздновать наш великий день!',
         days:'Дней',hours:'Часов',minutes:'Минут',seconds:'Секунд',
         rsvp:'Подтвердить участие',add_gcal:'Google Календарь',add_ical:'Добавить в Outlook/iOS',
-        timeline_title:'Хронология дня',timeline_1:'Церемония',timeline_2:'Банкет',timeline_3:'Тосты',timeline_4:'Танцы',
+        timeline_title:'Хронология дня',
+        timeline_1:'Церемония',timeline_1_desc:'Начало в 16:00 в главном саду.',
+        timeline_2:'Банкет',timeline_2_desc:'В 18:00 в зале Royal Beach.',
+        timeline_3:'Тосты',timeline_3_desc:'В 20:00 — время речей и сюрпризов!',
+        timeline_4:'Танцы',timeline_4_desc:'В 21:00 открываем танцпол и празднуем до рассвета.',
         details_title:'Детали события',date_label:'Дата и время:',date_value:'22/07/2026 — 16:00',
         place_label:'Место:',place_value:'Royal Beach — Санкт-Петербург',note:'Пожалуйста, подтвердите участие до 01/02/2026.'
       }
@@ -248,23 +270,20 @@
         if(TEXTS[lang]&&TEXTS[lang][key])el.textContent=TEXTS[lang][key];
       });
     }
-
     let currentLang=(navigator.language&&navigator.language.startsWith('ru'))?'ru':'es';
     applyLang(currentLang);
-
-    function setLang(lang){
-      currentLang=lang;
-      applyLang(lang);
-      highlightLangButton();
-    }
-
+    function setLang(lang){currentLang=lang;applyLang(lang);highlightLangButton();}
     function highlightLangButton(){
       document.querySelectorAll('.lang-btn').forEach(btn=>{
-        btn.style.transform='scale(1)';btn.style.boxShadow='0 6px 18px rgba(0,0,0,0.06)';
+        btn.style.transform='scale(1)';
+        btn.style.boxShadow='0 6px 18px rgba(0,0,0,0.06)';
       });
       const sel=currentLang==='es'?'ES':'RU';
       document.querySelectorAll('.lang-btn img').forEach(img=>{
-        if(img.alt===sel){img.parentElement.style.transform='scale(1.05)';img.parentElement.style.boxShadow='0 10px 26px rgba(139,94,80,0.18)'}
+        if(img.alt===sel){
+          img.parentElement.style.transform='scale(1.05)';
+          img.parentElement.style.boxShadow='0 10px 26px rgba(139,94,80,0.18)';
+        }
       });
     }
     highlightLangButton();
@@ -295,15 +314,18 @@
       const pad=n=>String(n).padStart(2,'0');
       const toICS=d=>`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
       const lines=[
-        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Boda//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT',
-        `UID:${Date.now()}@boda`,`DTSTAMP:${toICS(new Date())}`,
-        `DTSTART:${toICS(event.start)}`,`DTEND:${toICS(event.end)}`,
-        `SUMMARY:${event.title}`,`DESCRIPTION:${event.description}`,`LOCATION:${event.location}`,
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//RubénNatashaWedding//Invite//ES',
+        'BEGIN:VEVENT',
+        'DTSTART:'+toICS(event.start),
+        'DTEND:'+toICS(event.end),
+        'SUMMARY:'+event.title,
+        'DESCRIPTION:'+event.description,
+        'LOCATION:'+event.location,
         'END:VEVENT','END:VCALENDAR'
       ];
       const blob=new Blob([lines.join('\r\n')],{type:'text/calendar'});
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');a.href=url;a.download='boda-ruben-natasha.ics';a.click();URL.revokeObjectURL(url);
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);a.download='boda-ruben-natasha.ics';a.click();
     }
   </script>
 </body>
