@@ -10,16 +10,6 @@
 
   <meta name="description" content="Invitación de boda - Rubén & Natasha">
 
-  <!--
-    IMPORTANT:
-    Put these assets in your repo (paths used below):
-      /images/Boda1.jpg          (foto portada)
-      /images/Brujula.webp       (imagen brújula)
-      /images/Spain.png          (bandera España, circular)
-      /images/Russia.png         (bandera Rusia, circular)
-      /audio/myonlyone.mp3       (tu archivo mp3)
-  -->
-
   <style>
     :root{
       --accent: #b78a6b;
@@ -30,7 +20,6 @@
       --muted: rgba(0,0,0,0.55);
     }
 
-    /* Basic reset & mobile first */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -38,8 +27,6 @@
       font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
       background:var(--bg);
       color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       display:flex;
       justify-content:center;
       padding:18px;
@@ -47,14 +34,6 @@
 
     .wrap{width:100%;max-width:760px}
 
-    /* top bar: language and small controls */
-    .topbar{
-      display:flex;
-      justify-content:flex-end;
-      gap:12px;
-      align-items:center;
-      margin-bottom:8px;
-    }
     .lang-btn{
       width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
@@ -62,9 +41,6 @@
     }
     .lang-btn img{width:100%;height:100%;object-fit:cover;display:block}
 
-    .lang-btn:active{transform:scale(.98)}
-
-    /* Header / portada */
     .card-hero{
       background:var(--card);
       border-radius:16px;
@@ -87,19 +63,13 @@
       font-size:20px;color:var(--accent-dark);margin:0;
     }
     .hero-sub{color:var(--muted);font-size:13px;margin-top:6px}
-
-    /* compass row */
     .compass-row{display:flex;align-items:center;gap:12px}
     .compass{
       width:64px;height:64px;border-radius:50%;object-fit:cover;animation:spin 18s linear infinite;border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.07)
     }
     @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-
-    /* audio */
     .audio-wrap{padding:12px 18px;border-top:1px dashed rgba(0,0,0,0.04)}
     audio{width:100%;border-radius:10px;outline:none}
-
-    /* countdown - big and elegant */
     .countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
     .cd-item{
       min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);
@@ -107,227 +77,232 @@
     }
     .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark);letter-spacing:1px}
     .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
-
-    /* actions row */
     .actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
     .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
     .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
     .btn.outline{background:transparent}
-
-    /* boarding card style section */
     .section{padding:18px;margin-top:14px}
     .ticket{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.04)}
     .ticket h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
     .meta{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
-    .ticket hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
 
-    /* responsive tweaks */
-    @media(min-width:900px){
-      .hero-img{height:380px}
-      .hero-title{font-size:30px}
-      .cd-item .num{font-size:36px}
+    /* === TIMELINE CENTRADO CON EVENTOS A CADA LADO === */
+    .timeline.alt {
+      position: relative;
+      margin: 40px 0;
+      padding: 0;
+    }
+
+    /* Línea central */
+    .timeline.alt::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: rgba(183,138,107,0.3);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 30px;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px rgba(183,138,107,0.2);
+      z-index: 3;
+    }
+
+    .timeline-item.left::before {
+      right: -8px;
+    }
+
+    .timeline-item.right::before {
+      left: -8px;
+    }
+
+    .timeline-item .content {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      display: inline-block;
+      max-width: 90%;
+    }
+
+    .timeline-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      object-fit: cover;
+      max-height: 160px;
+    }
+
+    .timeline-item .time {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+
+    .timeline-item h4 { margin: 4px 0; font-size: 16px; color: var(--accent-dark); }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .timeline.alt::before { left: 20px; }
+      .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        text-align: left !important;
+        left: 0 !important;
+      }
+      .timeline-item::before { left: 13px; }
+    }
+
+    /* ANIMACIÓN */
+    .timeline-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
 
-    <!-- TOP: language flags (round) -->
     <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
-      <div class="lang-btn" title="Español" onclick="setLang('es')" id="btn-es">
-        <img src="Spain.png" alt="ES" />
-      </div>
-      <div class="lang-btn" title="Русский" onclick="setLang('ru')" id="btn-ru">
-        <img src="Russia.png" alt="RU" />
-      </div>
+      <div class="lang-btn" title="Español"><img src="images/Spain.png" alt="ES" /></div>
+      <div class="lang-btn" title="Русский"><img src="images/Russia.png" alt="RU" /></div>
     </div>
 
-    <!-- HERO card: portada + compass + names -->
     <div class="card-hero">
       <img class="hero-img" src="images/Boda1.jpg" alt="Rubén & Natasha" />
-
       <div class="hero-overlay">
-        <div style="display:flex;flex-direction:column;align-items:flex-start">
-          <div class="hero-title" data-i18n="names">Rubén & Natasha</div>
-          <div class="hero-sub" data-i18n="subtitle">¡Nos encantaría que nos acompañes a celebrar nuestro gran día!</div>
+        <div>
+          <div class="hero-title">Rubén & Natasha</div>
+          <div class="hero-sub">¡Nos encantaría que nos acompañes a celebrar nuestro gran día!</div>
         </div>
-
-        <div class="compass-row" style="align-items:center">
-          <img src="Brujula.webp" alt="Brújula" class="compass" />
-        </div>
+        <div class="compass-row"><img src="images/Brujula.webp" alt="Brújula" class="compass" /></div>
       </div>
-
-      <!-- audio under hero -->
       <div class="audio-wrap">
         <audio controls preload="none">
-          <source src="myonlyone.mp3" type="audio/mpeg" />
-          Tu navegador no soporta audio.
+          <source src="audio/myonlyone.mp3" type="audio/mpeg" />
         </audio>
       </div>
 
-      <!-- countdown -->
-      <div class="countdown-wrap" aria-live="polite">
-        <div class="cd-item"><div class="num" id="cd-days">00</div><small data-i18n="days">Días</small></div>
-        <div class="cd-item"><div class="num" id="cd-hours">00</div><small data-i18n="hours">Horas</small></div>
-        <div class="cd-item"><div class="num" id="cd-minutes">00</div><small data-i18n="minutes">Minutos</small></div>
-        <div class="cd-item"><div class="num" id="cd-seconds">00</div><small data-i18n="seconds">Segundos</small></div>
+      <div class="countdown-wrap">
+        <div class="cd-item"><div class="num" id="cd-days">00</div><small>Días</small></div>
+        <div class="cd-item"><div class="num" id="cd-hours">00</div><small>Horas</small></div>
+        <div class="cd-item"><div class="num" id="cd-minutes">00</div><small>Minutos</small></div>
+        <div class="cd-item"><div class="num" id="cd-seconds">00</div><small>Segundos</small></div>
       </div>
 
-      <!-- actions: RSVP + Add to calendar -->
-      <div class="actions" style="padding-bottom:18px">
-        <a class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
-
-        <div class="btn" onclick="openGoogleCalendar()" title="Añadir a Google Calendar" id="btn-gcal" data-i18n="add_gcal">Google Calendar</div>
-        <div class="btn" onclick="downloadICS()" title="Descargar evento (.ics) para Outlook / Apple" id="btn-ics" data-i18n="add_ical">Añadir a Outlook/iOS</div>
+      <div class="actions">
+        <a class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank">Confirmar asistencia</a>
+        <div class="btn" onclick="openGoogleCalendar()">Google Calendar</div>
+        <div class="btn" onclick="downloadICS()">Añadir a Outlook/iOS</div>
       </div>
     </div>
 
-    <!-- Section: Detalles del Evento (boarding pass style) -->
+    <!-- TIMELINE DEL DÍA -->
     <section class="section">
-      <div class="card">
-        <div class="ticket" id="details-ticket">
-          <!-- Encabezado tipo pase de abordar -->
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 data-i18n="bp_title">BOARDING PASS</h3>
-            <div class="meta" data-i18n="bp_flight">Nº VUELO 22072026</div>
-          </div>
+      <div class="ticket">
+        <h3 style="text-align:center; font-family:'Playfair Display',serif; color:var(--accent-dark); margin-bottom:24px;">
+          Cronograma del Día
+        </h3>
 
-          <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
-
-          <!-- Fila con ubicación y fecha -->
-          <div class="row">
-            <div>
-              <strong data-i18n="place_label">Ubicación</strong>
-              <div class="meta" data-i18n="place_value">Royal Beach — San Petersburgo</div>
-            </div>
-            <div style="text-align:right;">
-              <strong data-i18n="date_label">Fecha y hora</strong>
-              <div class="meta" data-i18n="date_value">22/07/2026 — 16:00</div>
+        <div class="timeline alt" id="timeline">
+          <div class="timeline-item left">
+            <div class="content">
+              <div class="time">16:00</div>
+              <img src="images/ceremonia.jpg" alt="Ceremonia" />
+              <h4>Ceremonia</h4>
+              <p>El momento más especial — ¡decimos sí quiero!</p>
             </div>
           </div>
 
-          <div style="height:8px"></div>
-
-          <!-- Segunda fila opcional con “Destino” o nota -->
-          <div class="row">
-            <div>
-              <strong data-i18n="bp_destination_label">Destino</strong>
-              <div class="meta" data-i18n="bp_destination_value">Celebración — Royal Beach</div>
+          <div class="timeline-item right">
+            <div class="content">
+              <div class="time">17:30</div>
+              <img src="images/coctel.jpg" alt="Cóctel" />
+              <h4>Cóctel</h4>
+              <p>Brindis junto al mar con aperitivos y música suave.</p>
             </div>
-            <div style="text-align:right;">
-              <strong data-i18n="note_label">Nota</strong>
-              <div class="meta" data-i18n="note">Por favor confirma asistencia antes del 01/02/2026.</div>
+          </div>
+
+          <div class="timeline-item left">
+            <div class="content">
+              <div class="time">19:00</div>
+              <img src="images/baile.jpg" alt="Baile" />
+              <h4>Baile</h4>
+              <p>¡A disfrutar la pista con nuestros mejores pasos!</p>
+            </div>
+          </div>
+
+          <div class="timeline-item right">
+            <div class="content">
+              <div class="time">23:00</div>
+              <img src="images/fin.jpg" alt="Fin de la fiesta" />
+              <h4>Fin de la fiesta</h4>
+              <p>Despedida con fuegos artificiales y dulces recuerdos.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Placeholder for more cards -->
     <section class="section">
       <div class="ticket">
-        <h3 data-i18n="more_title">Información importante</h3>
-        <p class="meta" data-i18n="more_text">Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.</p>
+        <h3>Información importante</h3>
+        <p class="meta">Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.</p>
       </div>
     </section>
-
   </div>
 
   <script>
-    /**********************
-      TRANSLATIONS (ES / RU)
-    ***********************/
-    const TEXTS = {
-      es: {
-        names: 'Rubén & Natasha',
-        subtitle: '¡Nos encantaría que nos acompañes a celebrar nuestro gran día!',
-        days: 'Días', hours: 'Horas', minutes: 'Minutos', seconds: 'Segundos',
-        rsvp: 'Confirmar asistencia', add_gcal: 'Google Calendar', add_ical: 'Añadir a Outlook/iOS',
-        date_label: 'Fecha y hora', date_value: '22/07/2026 — 16:00',
-        place_label: 'Ubicación', place_value: 'Royal Beach — San Petersburgo',
-        note_label: 'Nota', note: 'Por favor confirma asistencia antes del 01/02/2026.',
-        more_title: 'Información importante', more_text: 'Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.',
-        // Boarding pass specific
-        bp_title: 'BOARDING PASS',
-        bp_flight: 'Nº VUELO 22072026',
-        bp_destination_label: 'Destino',
-        bp_destination_value: 'Celebración — Royal Beach'
-      },
-      ru: {
-        names: 'Рубен & Наташа',
-        subtitle: 'Мы будем рады, если вы присоединитесь к нам, чтобы отпраздновать наш великий день!',
-        days: 'Дней', hours: 'Часов', minutes: 'Минут', seconds: 'Секунд',
-        rsvp: 'Подтвердить участие', add_gcal: 'Google Календарь', add_ical: 'Добавить в Outlook/iOS',
-        date_label: 'Дата и время', date_value: '22/07/2026 — 16:00',
-        place_label: 'Место', place_value: 'Royal Beach — Санкт-Петербург',
-        note_label: 'Примечание', note: 'Пожалуйста подтвердите участие до 01/02/2026.',
-        more_title: 'Важная информация', more_text: 'Здесь можно добавить инструкции о транспорте, проживании или дресс-коде.',
-        // Boarding pass specific translations
-        bp_title: 'ПОСАДОЧНЫЙ ТАЛОН',
-        bp_flight: 'РЕЙС № 22072026',
-        bp_destination_label: 'Пункт назначения',
-        bp_destination_value: 'Торжество — Royal Beach'
-      }
-    };
-
-    // Apply translations to data-i18n elements
-    let currentLang = (navigator.language && navigator.language.startsWith('ru')) ? 'ru' : 'es';
-    function applyLang(lang){
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(TEXTS[lang] && TEXTS[lang][key]) el.textContent = TEXTS[lang][key];
-      });
-    }
-    applyLang(currentLang);
-
-    // Highlight default flag visually
-    function highlightLangButton(){
-      const esBtn = document.getElementById('btn-es');
-      const ruBtn = document.getElementById('btn-ru');
-      if(!esBtn || !ruBtn) return;
-      if(currentLang === 'es'){
-        esBtn.style.boxShadow = '0 10px 26px rgba(139,94,80,0.18)';
-        esBtn.style.transform = 'scale(1.04)';
-        ruBtn.style.boxShadow = '0 6px 18px rgba(0,0,0,0.06)';
-        ruBtn.style.transform = 'scale(1)';
-      } else {
-        ruBtn.style.boxShadow = '0 10px 26px rgba(139,94,80,0.18)';
-        ruBtn.style.transform = 'scale(1.04)';
-        esBtn.style.boxShadow = '0 6px 18px rgba(0,0,0,0.06)';
-        esBtn.style.transform = 'scale(1)';
-      }
-    }
-    highlightLangButton();
-
-    function setLang(lang){
-      currentLang = lang;
-      applyLang(lang);
-      highlightLangButton();
-    }
-
-    /**********************
-      COUNTDOWN
-    ***********************/
-    // Target: 22 July 2026 at 16:00 local time (months 0-index)
+    // COUNTDOWN
     const target = new Date(2026, 6, 22, 16, 0, 0);
     function updateCountdown(){
       const now = new Date();
       let diff = target - now;
-      if(diff < 0){
-        document.getElementById('cd-days').textContent = '00';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-minutes').textContent = '00';
-        document.getElementById('cd-seconds').textContent = '00';
-        return;
-      }
+      if(diff < 0) return;
       const days = Math.floor(diff / (1000*60*60*24));
-      diff -= days * (1000*60*60*24);
+      diff -= days*(1000*60*60*24);
       const hours = Math.floor(diff / (1000*60*60));
-      diff -= hours * (1000*60*60);
+      diff -= hours*(1000*60*60);
       const minutes = Math.floor(diff / (1000*60));
-      diff -= minutes * (1000*60);
-      const seconds = Math.floor(diff / 1000);
-
+      diff -= minutes*(1000*60);
+      const seconds = Math.floor(diff/1000);
       document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
       document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
       document.getElementById('cd-minutes').textContent = String(minutes).padStart(2,'0');
@@ -336,79 +311,46 @@
     updateCountdown();
     setInterval(updateCountdown,1000);
 
-    /**********************
-      Add to Google Calendar and ICS download
-    ***********************/
-    // event details - change if needed
+    // GOOGLE CALENDAR / ICS
     const event = {
       title: "Boda — Rubén & Natasha",
       description: "¡Ven a celebrar con nosotros! Por favor confirma asistencia.",
       location: "Royal Beach, San Petersburgo",
-      // Start and end times in local
       start: new Date(2026,6,22,16,0,0),
       end: new Date(2026,6,22,20,0,0)
     };
-
     function formatDateForGoogle(d){
-      // Google expects YYYYMMDDTHHMMSSZ in UTC – we convert date to UTC string
-      const yyyy = d.getUTCFullYear();
-      const mm = String(d.getUTCMonth()+1).padStart(2,'0');
-      const dd = String(d.getUTCDate()).padStart(2,'0');
-      const hh = String(d.getUTCHours()).padStart(2,'0');
-      const min = String(d.getUTCMinutes()).padStart(2,'0');
-      const ss = String(d.getUTCSeconds()).padStart(2,'0');
+      const yyyy=d.getUTCFullYear(), mm=String(d.getUTCMonth()+1).padStart(2,'0'), dd=String(d.getUTCDate()).padStart(2,'0'), hh=String(d.getUTCHours()).padStart(2,'0'), min=String(d.getUTCMinutes()).padStart(2,'0'), ss=String(d.getUTCSeconds()).padStart(2,'0');
       return `${yyyy}${mm}${dd}T${hh}${min}${ss}Z`;
     }
-
     function openGoogleCalendar(){
-      const s = formatDateForGoogle(event.start);
-      const e = formatDateForGoogle(event.end);
-      const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${s}/${e}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&sf=true&output=xml`;
+      const s=formatDateForGoogle(event.start);
+      const e=formatDateForGoogle(event.end);
+      const url=`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${s}/${e}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
       window.open(url,'_blank');
     }
-
     function downloadICS(){
-      const pad = n => String(n).padStart(2,'0');
-      function toICSDate(d){
-        return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
-      }
-      const icsLines = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Rubén&Natasha//Boda//ES',
-        'CALSCALE:GREGORIAN',
-        'BEGIN:VEVENT',
-        `UID:${Date.now()}@boda`,
-        `DTSTAMP:${toICSDate(new Date())}`,
-        `DTSTART:${toICSDate(event.start)}`,
-        `DTEND:${toICSDate(event.end)}`,
-        `SUMMARY:${event.title}`,
-        `DESCRIPTION:${event.description}`,
-        `LOCATION:${event.location}`,
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ];
-      const blob = new Blob([icsLines.join('\r\n')], {type: 'text/calendar'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'boda-ruben-natasha.ics';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+      const pad=n=>String(n).padStart(2,'0');
+      function toICSDate(d){return`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;}
+      const icsLines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Rubén&Natasha//Boda//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT',`UID:${Date.now()}@boda`,`DTSTAMP:${toICSDate(new Date())}`,`DTSTART:${toICSDate(event.start)}`,`DTEND:${toICSDate(event.end)}`,`SUMMARY:${event.title}`,`DESCRIPTION:${event.description}`,`LOCATION:${event.location}`,'END:VEVENT','END:VCALENDAR'];
+      const blob=new Blob([icsLines.join('\r\n')],{type:'text/calendar'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;a.download='boda-ruben-natasha.ics';
+      document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
     }
 
-    /**********************
-      Small accessibility / UX helpers
-    ***********************/
-    // Keyboard support for language buttons (optional)
-    document.querySelectorAll('.lang-btn').forEach((el,idx)=>{
-      el.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' ') { el.click(); }
+    // ANIMACIÓN DE ENTRADA
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
-    });
-
+    }, { threshold: 0.2 });
+    timelineItems.forEach(item => observer.observe(item));
   </script>
 </body>
 </html>
