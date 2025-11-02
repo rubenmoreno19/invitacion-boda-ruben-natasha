@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rubén & Natasha — Invitación</title>
 
-  <!-- Fuentes -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <meta name="description" content="Invitación de boda - Rubén & Natasha">
@@ -17,10 +17,10 @@
       --bg: #faf4ec;
       --card:#fff;
       --text:#3b3029;
-      --muted: rgba(0,0,0,0.55);
+      --gold: linear-gradient(90deg,#ecd59b,#f7e7c2);
     }
 
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
       margin:0;
@@ -30,48 +30,43 @@
       display:flex;
       justify-content:center;
       padding:18px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
     .wrap{width:100%;max-width:760px}
 
-    /* Botones de idioma */
+    /* top bar: language */
     .lang-btn{
       width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      transition:all .2s ease;
     }
     .lang-btn img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Tarjeta principal */
+    /* Hero */
     .card-hero{
       background:var(--card);
       border-radius:16px;
       overflow:hidden;
-      box-shadow: 0 18px 40px rgba(34,34,34,0.06);
+      box-shadow:0 18px 40px rgba(34,34,34,0.06);
       border:1px solid rgba(0,0,0,0.03);
     }
-    .hero-img{
-      width:100%;height:280px;object-fit:cover;display:block;
-    }
+    .hero-img{width:100%;height:280px;object-fit:cover;display:block}
     .hero-overlay{
       padding:18px;
       display:flex;
-      gap:12px;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
+      gap:12px;
     }
-    .hero-title{
-      font-family:'Playfair Display',serif;
-      font-size:20px;color:var(--accent-dark);margin:0;
-    }
-    .hero-sub{color:var(--muted);font-size:13px;margin-top:6px}
-    .compass-row{display:flex;align-items:center;gap:12px}
-    .compass{
-      width:64px;height:64px;border-radius:50%;object-fit:cover;animation:spin 18s linear infinite;border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.07)
-    }
+    .hero-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--accent-dark)}
+    .hero-sub{color:rgba(0,0,0,0.55);font-size:13px;margin-top:6px}
+    .compass{width:64px;height:64px;border-radius:50%;object-fit:cover;animation:spin 18s linear infinite;border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.07)}
     @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
     .audio-wrap{padding:12px 18px;border-top:1px dashed rgba(0,0,0,0.04)}
-    audio{width:100%;border-radius:10px;outline:none}
+    audio{width:100%;border-radius:10px}
 
     .countdown-wrap{
       padding:18px;
@@ -79,114 +74,81 @@
       display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap
     }
     .cd-item{
-      min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);
-      box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);
-      display:flex;flex-direction:column;align-items:center;gap:6px
+      min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);
+      border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px
     }
-    .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark);letter-spacing:1px}
+    .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark)}
     .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
 
-    .actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+    .actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
     .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
     .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
-    .btn.outline{background:transparent}
 
     .section{padding:18px;margin-top:14px}
     .ticket{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.04)}
-    .ticket h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px;text-align:center;margin-bottom:24px}
+    .ticket h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
+    .meta{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
+    .ticket hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
 
-    /* === TIMELINE CENTRADO UNIVERSAL === */
-    .timeline.alt{
+    /* Timeline */
+    .timeline{
       position:relative;
-      margin:40px 0;
-      padding:0;
+      margin-top:20px;
+      padding:20px 0;
     }
-
-    /* Línea vertical */
-    .timeline.alt::before{
-      content:"";
+    .timeline::before{
+      content:'';
       position:absolute;
-      top:0;
-      bottom:0;
-      left:50%;
-      width:3px;
-      background:rgba(183,138,107,0.35);
-      transform:translateX(-50%);
-      z-index:1;
-    }
-
-    /* Ítems */
-    .timeline-item{
-      position:relative;
-      width:50%;
-      padding:20px 30px;
-      box-sizing:border-box;
-      z-index:2;
-    }
-    .timeline-item.left{left:0;text-align:right;}
-    .timeline-item.right{left:50%;text-align:left;}
-
-    /* Puntos centrados respecto a la línea */
-    .timeline-dot{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      width:16px;height:16px;
+      top:50%;
+      left:0;
+      right:0;
+      height:4px;
       background:var(--accent);
-      border-radius:50%;
-      border:3px solid #fff;
-      box-shadow:0 0 0 3px rgba(183,138,107,0.25);
-      z-index:3;
+      transform:translateY(-50%);
     }
-
-    /* Contenido */
-    .timeline-item .content{
-      background:var(--card);
-      border-radius:10px;
-      padding:16px 18px;
-      box-shadow:0 6px 16px rgba(0,0,0,0.05);
+    .timeline-step{
+      position:relative;
       display:inline-block;
-      max-width:90%;
+      text-align:center;
+      width:25%;
+    }
+    .timeline-point{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:var(--accent-dark);
+      border:3px solid #fff;
+      box-shadow:0 0 0 3px var(--accent);
+    }
+    .timeline-label{
+      margin-top:36px;
+      font-size:12px;
+      color:rgba(0,0,0,0.7);
+      font-weight:600;
     }
 
-    .timeline-item img{
-      width:100%;
-      border-radius:8px;
-      margin-bottom:8px;
-      object-fit:cover;
-      max-height:160px;
+    @media(min-width:900px){
+      .hero-img{height:380px}
+      .hero-title{font-size:30px}
+      .cd-item .num{font-size:36px}
     }
-
-    .timeline-item .time{
-      font-family:'Playfair Display',serif;
-      font-size:18px;
-      color:var(--accent-dark);
-      margin-bottom:6px;
-    }
-
-    .timeline-item h4{margin:4px 0;font-size:16px;color:var(--accent-dark);}
-    .timeline-item p{margin:0;color:var(--muted);font-size:13px;}
-
-    /* Móvil */
-    @media(max-width:768px){
-      .timeline.alt::before{left:25px;transform:none;}
-      .timeline-item{width:100%;padding-left:60px;text-align:left!important;left:0!important;}
-      .timeline-dot{left:25px;transform:translateX(-50%);}
-    }
-
-    /* Animación */
-    .timeline-item{opacity:0;transform:translateY(40px);transition:all .8s ease-out;}
-    .timeline-item.visible{opacity:1;transform:translateY(0);}
   </style>
 </head>
-
 <body>
   <div class="wrap">
 
-    <!-- Selector de idioma -->
+    <!-- Language buttons -->
     <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
-      <div class="lang-btn" title="Español"><img src="Spain.png" alt="ES" /></div>
-      <div class="lang-btn" title="Русский"><img src="Russia.png" alt="RU" /></div>
+      <div class="lang-btn" title="Español" onclick="setLang('es')">
+        <img src="Spain.png" alt="ES" />
+      </div>
+      <div class="lang-btn" title="Русский" onclick="setLang('ru')">
+        <img src="Russia.png" alt="RU" />
+      </div>
     </div>
 
     <!-- Hero -->
@@ -194,155 +156,155 @@
       <img class="hero-img" src="images/Boda1.jpg" alt="Rubén & Natasha" />
       <div class="hero-overlay">
         <div>
-          <div class="hero-title">Rubén & Natasha</div>
-          <div class="hero-sub">¡Nos encantaría que nos acompañes a celebrar nuestro gran día!</div>
+          <div class="hero-title" data-i18n="names">Rubén & Natasha</div>
+          <div class="hero-sub" data-i18n="subtitle">¡Nos encantaría que nos acompañes a celebrar nuestro gran día!</div>
         </div>
-        <div class="compass-row"><img src="Brujula.webp" alt="Brújula" class="compass" /></div>
+        <img src="images/Brujula.webp" alt="Brújula" class="compass" />
       </div>
+
       <div class="audio-wrap">
         <audio controls preload="none">
           <source src="myonlyone.mp3" type="audio/mpeg" />
         </audio>
       </div>
 
-      <!-- Countdown -->
       <div class="countdown-wrap">
-        <div class="cd-item"><div class="num" id="cd-days">00</div><small>Días</small></div>
-        <div class="cd-item"><div class="num" id="cd-hours">00</div><small>Horas</small></div>
-        <div class="cd-item"><div class="num" id="cd-minutes">00</div><small>Minutos</small></div>
-        <div class="cd-item"><div class="num" id="cd-seconds">00</div><small>Segundos</small></div>
+        <div class="cd-item"><div class="num" id="cd-days">00</div><small data-i18n="days">Días</small></div>
+        <div class="cd-item"><div class="num" id="cd-hours">00</div><small data-i18n="hours">Horas</small></div>
+        <div class="cd-item"><div class="num" id="cd-minutes">00</div><small data-i18n="minutes">Minutos</small></div>
+        <div class="cd-item"><div class="num" id="cd-seconds">00</div><small data-i18n="seconds">Segundos</small></div>
       </div>
 
-      <!-- Botones -->
       <div class="actions">
-        <a class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank">Confirmar asistencia</a>
-        <div class="btn" onclick="openGoogleCalendar()">Google Calendar</div>
-        <div class="btn" onclick="downloadICS()">Añadir a Outlook/iOS</div>
+        <a class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
+        <div class="btn" onclick="openGoogleCalendar()" data-i18n="add_gcal">Google Calendar</div>
+        <div class="btn" onclick="downloadICS()" data-i18n="add_ical">Añadir a Outlook/iOS</div>
       </div>
     </div>
 
     <!-- Timeline -->
     <section class="section">
       <div class="ticket">
-        <h3>Cronograma del Día</h3>
-
-        <div class="timeline alt" id="timeline">
-
-          <div class="timeline-item left">
-            <span class="timeline-dot" style="top:30px;"></span>
-            <div class="content">
-              <div class="time">16:00</div>
-              <img src="images/ceremonia.jpg" alt="Ceremonia" />
-              <h4>Ceremonia</h4>
-              <p>El momento más especial — ¡decimos sí quiero!</p>
-            </div>
+        <h3 data-i18n="timeline_title">Cronología del día</h3>
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-point"></div>
+            <div class="timeline-label" data-i18n="timeline_1">Ceremonia</div>
           </div>
-
-          <div class="timeline-item right">
-            <span class="timeline-dot" style="top:30px;"></span>
-            <div class="content">
-              <div class="time">17:30</div>
-              <img src="images/coctel.jpg" alt="Cóctel" />
-              <h4>Cóctel</h4>
-              <p>Brindis junto al mar con aperitivos y música suave.</p>
-            </div>
+          <div class="timeline-step">
+            <div class="timeline-point"></div>
+            <div class="timeline-label" data-i18n="timeline_2">Banquete</div>
           </div>
-
-          <div class="timeline-item left">
-            <span class="timeline-dot" style="top:30px;"></span>
-            <div class="content">
-              <div class="time">19:00</div>
-              <img src="images/baile.jpg" alt="Baile" />
-              <h4>Baile</h4>
-              <p>¡A disfrutar la pista con nuestros mejores pasos!</p>
-            </div>
+          <div class="timeline-step">
+            <div class="timeline-point"></div>
+            <div class="timeline-label" data-i18n="timeline_3">Brindis</div>
           </div>
-
-          <div class="timeline-item right">
-            <span class="timeline-dot" style="top:30px;"></span>
-            <div class="content">
-              <div class="time">23:00</div>
-              <img src="images/fin.jpg" alt="Fin de la fiesta" />
-              <h4>Fin de la fiesta</h4>
-              <p>Despedida con fuegos artificiales y dulces recuerdos.</p>
-            </div>
+          <div class="timeline-step">
+            <div class="timeline-point"></div>
+            <div class="timeline-label" data-i18n="timeline_4">Baile</div>
           </div>
-
         </div>
       </div>
     </section>
 
+    <!-- Details -->
     <section class="section">
       <div class="ticket">
-        <h3>Información importante</h3>
-        <p class="meta">Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.</p>
+        <h3 data-i18n="details_title">Detalles del Evento</h3>
+        <p class="meta"><strong data-i18n="date_label">Fecha y hora:</strong> <span data-i18n="date_value">22/07/2026 — 16:00</span></p>
+        <hr>
+        <p class="meta"><strong data-i18n="place_label">Lugar:</strong> <span data-i18n="place_value">Royal Beach — San Petersburgo</span></p>
+        <p class="meta" style="margin-top:10px" data-i18n="note">Por favor confirma asistencia antes del 01/02/2026.</p>
       </div>
     </section>
 
   </div>
 
   <script>
-    // COUNTDOWN
-    const target = new Date(2026, 6, 22, 16, 0, 0);
-    function updateCountdown(){
-      const now = new Date();
-      let diff = target - now;
-      if(diff < 0) return;
-      const days = Math.floor(diff / (1000*60*60*24));
-      diff -= days*(1000*60*60*24);
-      const hours = Math.floor(diff / (1000*60*60));
-      diff -= hours*(1000*60*60);
-      const minutes = Math.floor(diff / (1000*60));
-      diff -= minutes*(1000*60);
-      const seconds = Math.floor(diff/1000);
-      document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-      document.getElementById('cd-minutes').textContent = String(minutes).padStart(2,'0');
-      document.getElementById('cd-seconds').textContent = String(seconds).padStart(2,'0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown,1000);
-
-    // Add to Google Calendar and ICS
-    const event = {
-      title: "Boda — Rubén & Natasha",
-      description: "¡Ven a celebrar con nosotros! Por favor confirma asistencia.",
-      location: "Royal Beach, San Petersburgo",
-      start: new Date(2026,6,22,16,0,0),
-      end: new Date(2026,6,22,20,0,0)
+    const TEXTS = {
+      es: {
+        names:'Rubén & Natasha',
+        subtitle:'¡Nos encantaría que nos acompañes a celebrar nuestro gran día!',
+        days:'Días',hours:'Horas',minutes:'Minutos',seconds:'Segundos',
+        rsvp:'Confirmar asistencia',add_gcal:'Google Calendar',add_ical:'Añadir a Outlook/iOS',
+        timeline_title:'Cronología del día',timeline_1:'Ceremonia',timeline_2:'Banquete',timeline_3:'Brindis',timeline_4:'Baile',
+        details_title:'Detalles del Evento',date_label:'Fecha y hora:',date_value:'22/07/2026 — 16:00',
+        place_label:'Lugar:',place_value:'Royal Beach — San Petersburgo',note:'Por favor confirma asistencia antes del 01/02/2026.'
+      },
+      ru: {
+        names:'Рубен & Наташа',
+        subtitle:'Мы будем рады, если вы присоединитесь к нам, чтобы отпраздновать наш великий день!',
+        days:'Дней',hours:'Часов',minutes:'Минут',seconds:'Секунд',
+        rsvp:'Подтвердить участие',add_gcal:'Google Календарь',add_ical:'Добавить в Outlook/iOS',
+        timeline_title:'Хронология дня',timeline_1:'Церемония',timeline_2:'Банкет',timeline_3:'Тосты',timeline_4:'Танцы',
+        details_title:'Детали события',date_label:'Дата и время:',date_value:'22/07/2026 — 16:00',
+        place_label:'Место:',place_value:'Royal Beach — Санкт-Петербург',note:'Пожалуйста, подтвердите участие до 01/02/2026.'
+      }
     };
-    function formatDateForGoogle(d){
-      const yyyy=d.getUTCFullYear(), mm=String(d.getUTCMonth()+1).padStart(2,'0'), dd=String(d.getUTCDate()).padStart(2,'0'), hh=String(d.getUTCHours()).padStart(2,'0'), min=String(d.getUTCMinutes()).padStart(2,'0'), ss=String(d.getUTCSeconds()).padStart(2,'0');
-      return `${yyyy}${mm}${dd}T${hh}${min}${ss}Z`;
+
+    function applyLang(lang){
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key=el.getAttribute('data-i18n');
+        if(TEXTS[lang]&&TEXTS[lang][key])el.textContent=TEXTS[lang][key];
+      });
     }
+
+    let currentLang=(navigator.language&&navigator.language.startsWith('ru'))?'ru':'es';
+    applyLang(currentLang);
+
+    function setLang(lang){
+      currentLang=lang;
+      applyLang(lang);
+      highlightLangButton();
+    }
+
+    function highlightLangButton(){
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.style.transform='scale(1)';btn.style.boxShadow='0 6px 18px rgba(0,0,0,0.06)';
+      });
+      const sel=currentLang==='es'?'ES':'RU';
+      document.querySelectorAll('.lang-btn img').forEach(img=>{
+        if(img.alt===sel){img.parentElement.style.transform='scale(1.05)';img.parentElement.style.boxShadow='0 10px 26px rgba(139,94,80,0.18)'}
+      });
+    }
+    highlightLangButton();
+
+    /* Countdown */
+    const target=new Date(2026,6,22,16,0,0);
+    function updateCountdown(){
+      const now=new Date();let diff=target-now;if(diff<0)return;
+      const d=Math.floor(diff/86400000);diff-=d*86400000;
+      const h=Math.floor(diff/3600000);diff-=h*3600000;
+      const m=Math.floor(diff/60000);diff-=m*60000;
+      const s=Math.floor(diff/1000);
+      cd('days',d);cd('hours',h);cd('minutes',m);cd('seconds',s);
+    }
+    function cd(id,val){document.getElementById('cd-'+id).textContent=String(val).padStart(2,'0')}
+    setInterval(updateCountdown,1000);updateCountdown();
+
+    /* Calendar */
+    const event={title:"Boda — Rubén & Natasha",description:"¡Ven a celebrar con nosotros!",location:"Royal Beach, San Petersburgo",
+    start:new Date(2026,6,22,16,0,0),end:new Date(2026,6,22,20,0,0)};
+    function formatDateForGoogle(d){return `${d.getUTCFullYear()}${String(d.getUTCMonth()+1).padStart(2,'0')}${String(d.getUTCDate()).padStart(2,'0')}T${String(d.getUTCHours()).padStart(2,'0')}${String(d.getUTCMinutes()).padStart(2,'0')}00Z`}
     function openGoogleCalendar(){
-      const s=formatDateForGoogle(event.start);
-      const e=formatDateForGoogle(event.end);
+      const s=formatDateForGoogle(event.start),e=formatDateForGoogle(event.end);
       const url=`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${s}/${e}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
       window.open(url,'_blank');
     }
     function downloadICS(){
       const pad=n=>String(n).padStart(2,'0');
-      function toICSDate(d){return`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;}
-      const icsLines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Rubén&Natasha//Boda//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT',`UID:${Date.now()}@boda`,`DTSTAMP:${toICSDate(new Date())}`,`DTSTART:${toICSDate(event.start)}`,`DTEND:${toICSDate(event.end)}`,`SUMMARY:${event.title}`,`DESCRIPTION:${event.description}`,`LOCATION:${event.location}`,'END:VEVENT','END:VCALENDAR'];
-      const blob=new Blob([icsLines.join('\r\n')],{type:'text/calendar'});
+      const toICS=d=>`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+      const lines=[
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Boda//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT',
+        `UID:${Date.now()}@boda`,`DTSTAMP:${toICS(new Date())}`,
+        `DTSTART:${toICS(event.start)}`,`DTEND:${toICS(event.end)}`,
+        `SUMMARY:${event.title}`,`DESCRIPTION:${event.description}`,`LOCATION:${event.location}`,
+        'END:VEVENT','END:VCALENDAR'
+      ];
+      const blob=new Blob([lines.join('\r\n')],{type:'text/calendar'});
       const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');
-      a.href=url;a.download='boda-ruben-natasha.ics';
-      document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+      const a=document.createElement('a');a.href=url;a.download='boda-ruben-natasha.ics';a.click();URL.revokeObjectURL(url);
     }
-
-    // Animación de aparición del timeline
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    timelineItems.forEach(item => observer.observe(item));
   </script>
 </body>
 </html>
