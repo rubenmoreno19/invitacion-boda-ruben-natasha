@@ -197,9 +197,12 @@
     <section class="section">
       <div class="card">
         <div class="ticket" id="details-ticket">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
+          <!-- Contenedor de BOARDING PASS y Nº VUELO con flex-direction: column -->
+          <div style="display:flex; flex-direction:column; align-items:flex-start; gap:4px;">
+        <!-- Título BOARDING PASS -->
             <h3 data-i18n="bp_title">BOARDING PASS</h3>
-            <div class="meta" data-i18n="bp_flight">Nº VUELO 22072026</div>
+        <!-- Número de vuelo debajo del título -->
+          <div class="meta" data-i18n="bp_flight">RN • 22/07/2026</div>
       </div>
 
         <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
@@ -220,7 +223,7 @@
           <div class="row" style="display:flex; flex-direction:column; gap:8px;">
             <div>
               <strong data-i18n="bp_destination_label">Destino</strong>
-              <div class="meta" data-i18n="bp_destination_value">Celebración — Royal Beach</div>
+              <div class="meta" data-i18n="bp_destination_value">Royal Beach (San Petersburgo, Rusia)</div>
             </div>
             <div>
               <strong data-i18n="note_label">Nota</strong>
