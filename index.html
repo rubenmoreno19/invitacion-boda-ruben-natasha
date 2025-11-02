@@ -10,16 +10,17 @@
 
   <meta name="description" content="Invitación de boda - Rubén & Natasha">
 
-  <!-- Nota: asegúrate de subir los assets en estas rutas:
-      images/Boda1.jpg
-      images/Brujula.webp
-      images/Spain.png
-      images/Russia.png
-      images/ceremonia.jpg
-      images/coctel.jpg
-      images/baile.jpg
-      images/fin.jpg
-      audio/myonlyone.mp3
+  <!-- ASSETS:
+       Asegúrate de subir:
+       /images/Boda1.jpg
+       /images/Brujula.webp
+       /images/Spain.png
+       /images/Russia.png
+       /images/ceremonia.jpg
+       /images/coctel.jpg
+       /images/baile.jpg
+       /images/fin.jpg
+       /audio/myonlyone.mp3
   -->
 
   <style>
@@ -30,6 +31,7 @@
       --card:#fff;
       --text:#3b3029;
       --muted: rgba(0,0,0,0.55);
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
     *{box-sizing:border-box}
@@ -48,13 +50,17 @@
 
     .wrap{width:100%;max-width:760px}
 
-    /* top flags */
+    /* topbar (flags) */
     .topbar{display:flex;justify-content:flex-end;gap:12px;margin-bottom:12px}
-    .lang-btn{width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);transition: transform .16s ease, box-shadow .16s ease;}
+    .lang-btn{
+      width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
     .lang-btn img{width:100%;height:100%;object-fit:cover;display:block}
     .lang-btn:active{transform:scale(.98)}
 
-    /* HERO */
+    /* hero */
     .card-hero{background:var(--card);border-radius:16px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border:1px solid rgba(0,0,0,0.03);}
     .hero-img{width:100%;height:280px;object-fit:cover;display:block;}
     .hero-overlay{padding:18px;display:flex;gap:12px;align-items:center;justify-content:space-between;}
@@ -84,34 +90,54 @@
     /* boarding pass */
     .section{padding:18px;margin-top:14px}
     .card{background:var(--card);border-radius:12px;padding:12px}
-    .ticket{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.04)}
+    .ticket{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
     .ticket h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
     .meta{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
     .ticket hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
 
-    /* TIMELINE */
-    .timeline { position: relative; margin: 20px 0; padding-left: 48px; } /* space for line & dots */
-    .timeline::before { content: ""; position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; background: var(--accent); border-radius:2px; }
-    .timeline-item { position: relative; margin-bottom: 32px; display:flex; gap:16px; align-items:flex-start; opacity:0; transform:translateY(24px); transition: all .6s cubic-bezier(.2,.9,.2,1); }
+    /* TIMELINE: vertical line + dots, responsive-friendly */
+    .timeline { position: relative; margin: 20px 0; padding-left: 56px; } /* room for line and time */
+    .timeline::before { content: ""; position: absolute; left: 28px; top: 0; bottom: 0; width: 4px; background: var(--accent); border-radius:2px; }
+    .timeline-item { position: relative; margin-bottom: 36px; display:flex; gap:16px; align-items:flex-start; opacity:0; transform:translateY(24px); transition: all .6s cubic-bezier(.2,.9,.2,1); }
     .timeline-item.visible{ opacity:1; transform:translateY(0); }
-    .timeline-item::before { content: ""; position:absolute; left:14px; top:8px; width:16px; height:16px; background:var(--card); border-radius:50%; box-shadow:0 0 0 4px var(--accent); border:2px solid white; }
-    .timeline-item .time{ font-family:'Playfair Display',serif; font-size:16px; color:var(--accent-dark); min-width:64px; text-align:left; }
+    /* dot */
+    .timeline-item::before { content: ""; position:absolute; left:20px; top:8px; width:18px; height:18px; background:var(--card); border-radius:50%; box-shadow:0 0 0 4px var(--accent); border:2px solid white; }
+    .timeline-item .time{ font-family:'Playfair Display',serif; font-size:16px; color:var(--accent-dark); min-width:70px; text-align:right; align-self:flex-start; padding-top:6px; }
     .timeline-item .content{ background:var(--card); border-radius:10px; padding:10px 14px; box-shadow:0 6px 16px rgba(0,0,0,0.05); flex:1; }
     .timeline-item img{ width:100%; border-radius:8px; margin-bottom:8px; object-fit:cover; max-height:140px; }
     .timeline-item h4{ margin:4px 0; font-size:16px; color:var(--accent-dark); }
     .timeline-item p{ margin:0; color:var(--muted); font-size:13px; }
 
-    /* MOBILE ADJUSTMENTS: ensure time is visible and dot doesn't overlap */
+    /* MOBILE FIXES:
+       We ensure the time sits vertically centered next to the dot and never overlaps.
+       On small screens we use a compact layout where the time is visible and the dot aligns.
+    */
     @media (max-width: 600px) {
-      .timeline { padding-left: 42px; }
-      .timeline::before { left: 18px; width: 3px; }
-      .timeline-item { display:block; padding-left:0; }
-      .timeline-item::before { left: 10px; top: 18px; } /* dot aligned with line */
-      .timeline-item .time { min-width: auto; font-size:14px; margin-bottom:8px; display:block; } /* time above content */
-      .timeline-item .content { margin-left:0; }
+      .timeline { padding-left: 48px; }
+      .timeline::before { left: 24px; width: 3px; }
+      .timeline-item {
+        display: flex;
+        align-items: center; /* keep time vertically centered with dot */
+        gap: 12px;
+        margin-bottom: 36px;
+      }
+      .timeline-item::before { left: 16px; top: 50%; transform: translateY(-50%); } /* center dot */
+      .timeline-item .time {
+        min-width: 56px;
+        font-size: 14px;
+        text-align: right;
+        margin-right: 6px;
+        padding-top: 0;
+        align-self: center;
+      }
+      .timeline-item .content { padding:12px; }
     }
 
-    @media(min-width:900px){ .hero-img{height:380px} .hero-title{font-size:30px} .cd-item .num{font-size:36px} }
+    @media(min-width:900px){
+      .hero-img{height:380px}
+      .hero-title{font-size:30px}
+      .cd-item .num{font-size:36px}
+    }
   </style>
 </head>
 <body>
@@ -119,8 +145,8 @@
 
     <!-- BANDERAS -->
     <div class="topbar" aria-hidden="false">
-      <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')"><img src="Spain.png" alt="ES"></div>
-      <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')"><img src="Russia.png" alt="RU"></div>
+      <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')"><img src="images/Spain.png" alt="ES"></div>
+      <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')"><img src="images/Russia.png" alt="RU"></div>
     </div>
 
     <!-- HERO -->
@@ -132,14 +158,14 @@
           <div class="hero-sub" data-i18n="subtitle">¡Nos encantaría que nos acompañes a celebrar nuestro gran día!</div>
         </div>
         <div class="compass-row">
-          <img class="compass" src="Brujula.webp" alt="Brújula">
+          <img class="compass" src="images/Brujula.webp" alt="Brújula">
         </div>
       </div>
 
       <!-- AUDIO -->
       <div class="audio-wrap">
         <audio controls preload="none">
-          <source src="myonlyone.mp3" type="audio/mpeg">
+          <source src="audio/myonlyone.mp3" type="audio/mpeg">
           Tu navegador no soporta audio.
         </audio>
       </div>
@@ -294,8 +320,9 @@
       }
     };
 
-    /* Apply translations */
+    /* Apply translations + highlight */
     let currentLang = (navigator.language && navigator.language.startsWith('ru')) ? 'ru' : 'es';
+
     function applyLang(lang){
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
@@ -326,13 +353,14 @@
       highlightLangButton();
     }
 
-    applyLang(currentLang);
-    highlightLangButton();
+    document.addEventListener('DOMContentLoaded', ()=>{
+      applyLang(currentLang);
+      highlightLangButton();
+    });
 
     /* ===========================
        COUNTDOWN
        =========================== */
-    // Use wedding local time: 2026-07-22 16:00 (Europe/Moscow is +03:00 at that date)
     const weddingDate = new Date("2026-07-22T16:00:00+03:00").getTime();
     function updateCountdown(){
       const now = Date.now();
@@ -353,11 +381,10 @@
     setInterval(updateCountdown,1000);
 
     /* ===========================
-       Calendar helpers
+       Calendar helpers (Google + ICS)
        =========================== */
     function pad(n){return String(n).padStart(2,'0');}
     function toUTCStringForGoogle(d){
-      // returns YYYYMMDDTHHMMSSZ
       const yyyy = d.getUTCFullYear();
       const mm = pad(d.getUTCMonth()+1);
       const dd = pad(d.getUTCDate());
@@ -410,7 +437,6 @@
     /* ===========================
        TIMELINE APPEAR ON SCROLL
        =========================== */
-    // Observe timeline items and add class 'visible' when appear
     const timelineObserver = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting) entry.target.classList.add('visible');
@@ -419,16 +445,17 @@
 
     document.addEventListener('DOMContentLoaded', ()=>{
       document.querySelectorAll('.timeline-item').forEach(item=>timelineObserver.observe(item));
+
+      // keyboard accessibility for flags
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.setAttribute('tabindex','0');
+        btn.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' ') btn.click();
+        });
+      });
     });
 
-    /* Accessibility: keyboard for flags */
-    document.addEventListener('keydown', (e)=>{
-      if(document.activeElement && document.activeElement.classList.contains('lang-btn') && (e.key==='Enter' || e.key===' ')) {
-        document.activeElement.click();
-      }
-    });
-
-    // end script
+    /* End script */
   </script>
 </body>
 </html>
