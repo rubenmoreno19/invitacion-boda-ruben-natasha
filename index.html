@@ -164,6 +164,22 @@
       .hero-title{font-size:30px}
       .cd-item .num{font-size:36px}
     }
+
+    /* === AJUSTES PARA MÓVILES === */
+    @media(max-width: 600px) {
+      .timeline {
+        padding-left: 24px;
+      }
+
+      .timeline-item::before {
+        left: -6px;
+      }
+
+      .timeline-item .time {
+        min-width: 50px;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -308,7 +324,7 @@
   </div>
 
   <script>
-    /* === Traducciones, countdown y calendario (idéntico al original) === */
+    /* === Traducciones, countdown y calendario === */
     const TEXTS = {
       es: {
         names:'Rubén & Natasha', subtitle:'¡Nos encantaría que nos acompañes a celebrar nuestro gran día!',
@@ -340,30 +356,21 @@
     function setLang(lang){currentLang=lang;applyLang(lang);highlightLangButton();}
     applyLang(currentLang);highlightLangButton();
 
-    const target=new Date(2026,6,22,16,0,0);
-    function updateCountdown(){const now=new Date();let diff=target-now;if(diff<0)return;const d=Math.floor(diff/(1000*60*60*24));diff-=d*(1000*60*60*24);const h=Math.floor(diff/(1000*60*60));diff-=h*(1000*60*60);const m=Math.floor(diff/(1000*60));diff-=m*(1000*60);const s=Math.floor(diff/1000);
-      document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
-      document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
-      document.getElementById('cd-minutes').textContent=String(m).padStart(2,'0');
-      document.getElementById('cd-seconds').textContent=String(s).padStart(2,'0');
-    }
+    // Countdown
+    const weddingDate=new Date("2026-07-22T16:00:00+03:00").getTime();
+    function updateCountdown(){const now=new Date().getTime();const dist=weddingDate-now;if(dist<0)return;document.getElementById('cd-days').textContent=Math.floor(dist/(1000*60*60*24));document.getElementById('cd-hours').textContent=Math.floor((dist%(1000*60*60*24))/(1000*60*60));document.getElementById('cd-minutes').textContent=Math.floor((dist%(1000*60*60))/(1000*60));document.getElementById('cd-seconds').textContent=Math.floor((dist%(1000*60))/1000);}
     updateCountdown();setInterval(updateCountdown,1000);
 
-    const event={title:"Boda — Rubén & Natasha",description:"¡Ven a celebrar con nosotros! Por favor confirma asistencia.",location:"Royal Beach, San Petersburgo",start:new Date(2026,6,22,16,0,0),end:new Date(2026,6,22,20,0,0)};
-    function formatDateForGoogle(d){const yyyy=d.getUTCFullYear();const mm=String(d.getUTCMonth()+1).padStart(2,'0');const dd=String(d.getUTCDate()).padStart(2,'0');const hh=String(d.getUTCHours()).padStart(2,'0');const min=String(d.getUTCMinutes()).padStart(2,'0');const ss=String(d.getUTCSeconds()).padStart(2,'0');return`${yyyy}${mm}${dd}T${hh}${min}${ss}Z`;}
-    function openGoogleCalendar(){const s=formatDateForGoogle(event.start);const e=formatDateForGoogle(event.end);const url=`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${s}/${e}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&sf=true&output=xml`;window.open(url,'_blank');}
-    function downloadICS(){const pad=n=>String(n).padStart(2,'0');function toICSDate(d){return`${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;}
-      const icsLines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Rubén&Natasha//Boda//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT',`UID:${Date.now()}@boda`,`DTSTAMP:${toICSDate(new Date())}`,`DTSTART:${toICSDate(event.start)}`,`DTEND:${toICSDate(event.end)}`,`SUMMARY:${event.title}`,`DESCRIPTION:${event.description}`,`LOCATION:${event.location}`,'END:VEVENT','END:VCALENDAR'];
-      const blob=new Blob([icsLines.join('\r\n')],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='boda-ruben-natasha.ics';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+    // Calendario
+    function openGoogleCalendar(){const text='Boda Rubén y Natasha';const dates='20260722T130000Z/20260722T220000Z';const details='Ceremonia y celebración en Royal Beach';const location='Royal Beach, San Petersburgo';window.open(`https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(text)}&dates=${dates}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`,'_blank');}
+    function downloadICS(){const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20260722T130000Z\nDTEND:20260722T220000Z\nSUMMARY:Boda Rubén y Natasha\nLOCATION:Royal Beach, San Petersburgo\nDESCRIPTION:Ceremonia y celebración\nEND:VEVENT\nEND:VCALENDAR`;const blob=new Blob([ics],{type:'text/calendar'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='boda_ruben_natasha.ics';a.click();URL.revokeObjectURL(url);}
 
-    /* === EFECTO APARICIÓN SCROLL === */
+    // Animación del timeline
     const items=document.querySelectorAll('.timeline-item');
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){e.target.classList.add('visible');}
-      });
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
     },{threshold:0.2});
-    items.forEach(i=>observer.observe(i));
+    items.forEach(i=>obs.observe(i));
   </script>
 </body>
 </html>
