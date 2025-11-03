@@ -51,17 +51,7 @@
     .wrap{width:100%;max-width:760px}
 
     /* topbar (flags) */
-    /*NUEVO*/
-    .topbar {
-      display: flex;
-      flex-direction: column; /* texto arriba, banderas debajo */
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    <h3 style="text-align:center;font-family:'Playfair Display',serif;color:var(--accent-dark);margin-bottom:24px;" data-i18n="timeline_title">Selecciona el idoma</h3>
-    /* FIN NEW */
-   /* .topbar{display:flex;justify-content:center;gap:12px;margin-bottom:12px}*/
+    .topbar{display:flex;justify-content:center;gap:12px;margin-bottom:12px}
     .lang-btn{
       width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
@@ -161,14 +151,28 @@
   <div class="wrap">
 
     <!-- BANDERAS -->
-    <div class="topbar" aria-hidden="false">
-    <!--  /* <div class="lang-title">Selecciona tu idioma</div> */-->
-      <h3 data-i18n="bp_title">Selecciona tu idioma</h3>
+    <!-- BANDERAS -->
+<div class="topbar" aria-hidden="false" style="flex-direction:column;align-items:center;gap:10px;">
+  <h3 style="font-family:'Playfair Display',serif;
+             color:var(--accent-dark);
+             font-size:18px;
+             margin:0;">Selecciona el idioma</h3>
+  <div style="display:flex;justify-content:center;gap:12px;margin-top:6px;">
+    <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')">
+      <img src="Spain.png" alt="ES">
+    </div>
+    <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')">
+      <img src="Russia.png" alt="RU">
+    </div>
+  </div>
+</div>
+   
+    <!--<div class="topbar" aria-hidden="false">
         <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')">
           <img src="Spain.png" alt="ES"></div>
         <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')">
           <img src="Russia.png" alt="RU"></div>
-    </div>
+    </div>-->
 
     <!-- HERO -->
     <div class="card-hero">
