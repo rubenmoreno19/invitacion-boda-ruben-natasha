@@ -59,6 +59,27 @@
     }
     .lang-btn img{width:100%;height:100%;object-fit:cover;display:block}
     .lang-btn:active{transform:scale(.98)}
+/* NUEVO CONTENIDO */
+      .topbar {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente (opcional) */
+    gap: 10px; /* Espacio entre las banderas */
+    margin-top: 20px; /* Opcional, para separarlas del borde superior */
+  }
+
+  .lang-btn img {
+    width: 40px; /* Tamaño de las banderas */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .lang-btn img:hover {
+    transform: scale(1.1); /* Efecto al pasar el ratón */
+  }
+
+/* NUEVO CONTENIDO */
 
     /* hero */
     .card-hero{background:var(--card);border-radius:16px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border:1px solid rgba(0,0,0,0.03);}
@@ -152,8 +173,10 @@
 
     <!-- BANDERAS -->
     <div class="topbar" aria-hidden="false">
-      <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')"><img src="Spain.png" alt="ES"></div>
-      <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')"><img src="Russia.png" alt="RU"></div>
+      <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')">
+        <img src="Spain.png" alt="ES"></div>
+      <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')">
+        <img src="Russia.png" alt="RU"></div>
     </div>
 
     <!-- HERO -->
