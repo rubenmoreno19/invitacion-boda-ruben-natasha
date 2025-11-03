@@ -51,7 +51,24 @@
     .wrap{width:100%;max-width:760px}
 
     /* topbar (flags) */
-    .topbar{display:flex;justify-content:center;gap:12px;margin-bottom:12px}
+    /*NUEVO*/
+    .topbar {
+  display: flex;
+  flex-direction: column; /* texto arriba, banderas debajo */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+    /* Texto del selector de idioma */
+.lang-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: #b78a6b; /* dorado elegante */
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+   /* .topbar{display:flex;justify-content:center;gap:12px;margin-bottom:12px}*/
     .lang-btn{
       width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid rgba(0,0,0,0.06);cursor:pointer;
       display:inline-flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06);
@@ -152,10 +169,11 @@
 
     <!-- BANDERAS -->
     <div class="topbar" aria-hidden="false">
-      <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')">
-        <img src="Spain.png" alt="ES"></div>
-      <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')">
-        <img src="Russia.png" alt="RU"></div>
+      <div class="lang-title">Selecciona tu idioma</div>
+        <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')">
+          <img src="Spain.png" alt="ES"></div>
+        <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')">
+          <img src="Russia.png" alt="RU"></div>
     </div>
 
     <!-- HERO -->
