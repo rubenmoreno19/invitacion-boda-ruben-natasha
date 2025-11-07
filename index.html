@@ -102,34 +102,25 @@
     .timeline-item { position: relative; margin-bottom: 36px; display:flex; gap:16px; align-items:flex-start; opacity:0; transform:translateY(24px); transition: all .6s cubic-bezier(.2,.9,.2,1); }
     .timeline-item.visible{ opacity:1; transform:translateY(0); }
     /* dot */
-    .timeline-item::before { content: ""; position:absolute; left:-37.5px; top:8px; width:18px; height:18px; background:var(--card); border-radius:50%; box-shadow:0 0 0 4px var(--accent); border:2px solid white; }
+    .timeline-item::before { content: ""; position:absolute; left:20px; top:8px; width:18px; height:18px; background:var(--card); border-radius:50%; box-shadow:0 0 0 4px var(--accent); border:2px solid white; }
     .timeline-item .time{ font-family:'Playfair Display',serif; font-size:16px; color:var(--accent-dark); min-width:70px; text-align:right; align-self:flex-start; padding-top:6px; }
     .timeline-item .content{ background:var(--card); border-radius:10px; padding:10px 14px; box-shadow:0 6px 16px rgba(0,0,0,0.05); flex:1; }
     .timeline-item img{ width:100%; border-radius:8px; margin-bottom:8px; object-fit:cover; max-height:140px; }
     .timeline-item h4{ margin:4px 0; font-size:16px; color:var(--accent-dark); }
     .timeline-item p{ margin:0; color:var(--muted); font-size:13px; }
 
-    /* MOBILE FIXES:
-       We ensure the time sits vertically centered next to the dot and never overlaps.
-       On small screens we use a compact layout where the time is visible and the dot aligns.
-    */
+    /* MOBILE FIXES for timeline */
     @media (max-width: 600px) {
       .timeline { padding-left: 48px; }
       .timeline::before { left: 24px; width: 3px; }
       .timeline-item {
         display: flex;
-        align-items: center; /* keep time vertically centered with dot */
+        align-items: center;
         gap: 12px;
         margin-bottom: 36px;
         position: relative;
       }
-    /* Alineación del punto en la versión móvil */
-      .timeline-item::before {
-        left: -33.5px;  /* Ajusta la distancia del punto respecto a la línea */
-        top: 50%;  /* Lo coloca en el centro del item */
-        transform: translateY(-50%); /* Lo mantiene centrado verticalmente */
-      }  
-    /*  .timeline-item::before { left: 6px; top: 50%; transform: translateY(-50%); } /* center dot */
+      .timeline-item::before { left: 16px; top: 50%; transform: translateY(-50%); }
       .timeline-item .time {
         min-width: 56px;
         font-size: 14px;
@@ -145,143 +136,137 @@
       .hero-img{height:380px}
       .hero-title{font-size:30px}
       .cd-item .num{font-size:36px}
-	/* ESTILO CALENDARIO */
-
-	/* 🎨 Estilos del calendario */
-	.calendar-section {
-	  text-align: center;
-	  background-color: #fdfaf6;
-	  padding: 3rem 1rem;
-	  border-radius: 16px;
-	  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-	  margin: 4rem auto;
-	  max-width: 500px;
-	  font-family: 'Cormorant Garamond', serif;
-	}
-
-	.calendar-section h2 {
-	  font-size: 2.2rem;
-	  font-weight: 600;
-	  color: #7a4b2a;
-	  margin-bottom: 0.2rem;
-	  text-transform: uppercase;
-	  letter-spacing: 1px;
-	}
-	
-	.calendar-section h3 {
-	  font-size: 1.2rem;
-	  font-weight: 500;
-	  color: #a67855;
-	  margin-bottom: 2rem;
-	  text-transform: uppercase;
-	  letter-spacing: 1px;
-	}
-	
-	.calendar {
-	  display: inline-block;
-	  background-color: #f5eee6;
-	  padding: 2rem;
-	  border-radius: 20px;
-	  border: 1px solid #e2d3c2;
-	  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-	}
-	
-	.calendar-header {
-	  display: grid;
-	  grid-template-columns: repeat(7, 1fr);
-	  gap: 0.5rem;
-	  font-weight: 600;
-	  color: #7a4b2a;
-	  font-size: 1rem;
-	  margin-bottom: 1rem;
-	}
-	
-	.calendar-days {
-	  display: grid;
-	  grid-template-columns: repeat(7, 1fr);
-	  gap: 0.4rem;
-	  font-size: 1rem;
-	  color: #6b4b2e;
-	}
-	
-	.calendar-days span {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  width: 2.5rem;
-	  height: 2.5rem;
-	  border-radius: 50%;
-	  background-color: transparent;
-	}
-	
-	.calendar-days span.empty {
-	  visibility: hidden;
-	}
-	
-	.calendar-days span.special-day {
-	  position: relative;
-	  font-weight: bold;
-	  color: #7a4b2a;
-	}
-	
-	.calendar-days span.special-day::before {
-	  content: "♡";
-	  position: absolute;
-	  color: #d4a373;
-	  font-size: 1.8rem;
-	  top: -0.2rem;
-	  left: 50%;
-	  transform: translateX(-50%);
-	  opacity: 0.8;
-	  z-index: -1;
-	}
-	
-	/* 📱 Responsive */
-	@media (max-width: 480px) {
-	  .calendar-section {
-	    padding: 2rem 1rem;
-	  }
-	
-	  .calendar {
-	    padding: 1rem;
-	  }
-	
-	  .calendar-days span {
-	    width: 2rem;
-	    height: 2rem;
-	    font-size: 0.9rem;
-	  }
-	
-	  .calendar-days span.special-day::before {
-	    font-size: 1.4rem;
-	  }
-	}
-	/* FIN ESTILO CALENDARIO */
-
     }
+
+    /* ====== CALENDAR STYLES (aplican en todo tamaño) ====== */
+    .calendar-section {
+      text-align: center;
+      background-color: #fdfaf6;
+      padding: 2.25rem 1rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      margin: 2.5rem auto;
+      max-width: 520px;
+      font-family: 'Playfair Display', serif; /* match design */
+    }
+
+    .calendar-section h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin: 0 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .calendar-section h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .calendar {
+      display: inline-block;
+      background-color: #f5eee6;
+      padding: 1rem;
+      border-radius: 20px;
+      border: 1px solid #e2d3c2;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .calendar-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.35rem;
+      font-size: 1rem;
+      color: #6b4b2e;
+      width: 100%;
+    }
+
+    .calendar-days .day {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      min-height: 36px;
+      border-radius: 50%;
+      background-color: transparent;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--accent-dark);
+      position: relative;
+      z-index: 1;
+    }
+
+    .calendar-days .empty {
+      visibility: hidden;
+    }
+
+    /* special day: heart behind number */
+    .calendar-days .special-day {
+      font-weight: 700;
+      color: var(--accent-dark);
+      z-index: 2;
+    }
+
+    .calendar-days .special-day::before {
+      content: "♡"; /* outline heart */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 2.2rem;
+      color: #f3e3d2; /* light background heart */
+      -webkit-text-stroke: 2px #d4a373; /* outlined look */
+      text-stroke: 2px #d4a373;
+      opacity: 0.95;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* when screen is small, make grid smaller and heart scale down */
+    @media (max-width: 480px) {
+      .calendar-section { padding: 1.5rem 0.6rem; margin: 1.6rem auto; }
+      .calendar { padding: 0.5rem; }
+      .calendar-header { font-size: 0.78rem; }
+      .calendar-days .day { min-width: 30px; min-height: 30px; font-size: 0.92rem; }
+      .calendar-days .special-day::before { font-size: 1.6rem; -webkit-text-stroke:1.6px #d4a373; text-stroke:1.6px #d4a373; }
+    }
+    /* ====== END CALENDAR STYLES ====== */
+
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- BANDERAS OK -->
-  <div class="topbar" aria-hidden="false" 
-     style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
-  
-  <h3 style="font-family:'Playfair Display',serif;
-             color:var(--accent-dark);
-             font-size:18px;
-             margin:0;">Selecciona el idioma / Выберите язык</h3>
-  <div style="display:flex;justify-content:center;gap:12px;margin-top:6px;">
-    <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')">
-      <img src="Spain.png" alt="ES">
+    <!-- BANDERAS -->
+    <div class="topbar" aria-hidden="false">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:12px">
+        <h3 style="font-family:'Playfair Display',serif;color:var(--accent-dark);font-size:16px;margin:0;">Selecciona el idioma</h3>
+        <div style="font-size:12px;color:var(--muted)">Выберите язык</div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:12px;align-items:center;">
+        <div class="lang-btn" id="btn-es" title="Español" onclick="setLang('es')"><img src="images/Spain.png" alt="ES"></div>
+        <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')"><img src="images/Russia.png" alt="RU"></div>
+      </div>
     </div>
-    <div class="lang-btn" id="btn-ru" title="Русский" onclick="setLang('ru')">
-      <img src="Russia.png" alt="RU">
-    </div>
-  </div>
-</div>
-    <!-- HERO OK-->
+
+    <!-- HERO -->
     <div class="card-hero">
       <img class="hero-img" src="images/Boda1.jpg" alt="Rubén & Natasha">
       <div class="hero-overlay">
@@ -290,18 +275,19 @@
           <div class="hero-sub" data-i18n="subtitle">Este día del año va a ser muy especial para nosotros. Queremos estar rodeados de las personas más cercanas. Os invitamos a este día tan importante en nuestra vida: NUESTRA BODA!</div>
         </div>
         <div class="compass-row">
-          <img class="compass" src="Brujula.webp" alt="Brújula">
+          <img class="compass" src="images/Brujula.webp" alt="Brújula">
         </div>
       </div>
-		
-       <!-- AUDIO OK -->
+
+      <!-- AUDIO -->
       <div class="audio-wrap">
-	      <div style="display:flex;flex-direction:column;align-items:flex-start">
-		      <div class="audio-mus" data-i18n="music">Escucha nuestra canción</div>
-        <audio controls preload="none">
-            <source src="myonlyone.mp3" type="audio/mpeg">
+        <div style="display:flex;flex-direction:column;align-items:flex-start">
+          <div class="audio-mus" data-i18n="music">Escucha nuestra canción</div>
+          <audio controls preload="none">
+            <source src="audio/myonlyone.mp3" type="audio/mpeg">
             Tu navegador no soporta audio.
           </audio>
+        </div>
       </div>
 
       <!-- COUNTDOWN -->
@@ -320,88 +306,32 @@
       </div>
     </div>
 
-	<!-- SECCION CALENDARIO -->
-		
-		<!-- 🗓️ SECCIÓN CALENDARIO -->
-	<section id="calendario" class="calendar-section">
-	  <h2 data-lang="el-gran-dia">El Gran Día</h2>
-	  <h3 data-lang="mes-ano">Julio 2026</h3>
-	
-	  <div class="calendar">
-	    <div class="calendar-header">
-	      <span data-lang="lun">LUN</span>
-	      <span data-lang="mar">MAR</span>
-	      <span data-lang="mie">MIE</span>
-	      <span data-lang="jue">JUE</span>
-	      <span data-lang="vie">VIE</span>
-	      <span data-lang="sab">SAB</span>
-	      <span data-lang="dom">DOM</span>
-	    </div>
-	    <div class="calendar-days">
-	      <!-- Primera fila -->
-	      <span class="empty"></span>
-	      <span class="empty"></span>
-	      <span class="empty"></span>
-	      <span class="1">1</span>
-	      <span>2</span>
-	      <span>3</span>
-	      <span>4</span>
-	
-	      <!-- Segunda fila -->
-	      <span>5</span>
-	      <span>6</span>
-	      <span>7</span>
-	      <span>8</span>
-	      <span>9</span>
-	      <span>10</span>
-	      <span>11</span>
-	
-	      <!-- Tercera fila -->
-	      <span>12</span>
-	      <span>13</span>
-	      <span>14</span>
-	      <span>15</span>
-	      <span>16</span>
-	      <span>17</span>
-	      <span>18</span>
-	
-	      <!-- Cuarta fila -->
-	      <span>19</span>
-	      <span>20</span>
-	      <span>21</span>
-	      <span class="special-day">22</span>
-	      <span>23</span>
-	      <span>24</span>
-	      <span>25</span>
-	
-	      <!-- Quinta fila -->
-	      <span>26</span>
-	      <span>27</span>
-	      <span>28</span>
-	      <span>29</span>
-	      <span>30</span>
-	      <span>31</span>
-	      <span class="empty"></span>
-	    </div>
-	  </div>
-	</section>
+    <!-- ================= CALENDAR SECTION (dynamic) ================= -->
+    <section id="calendario" class="calendar-section" aria-label="Calendario">
+      <h2 data-i18n="calendar_title">El Gran Día</h2>
+      <h3 id="calendar-month" data-i18n="calendar_month">Julio 2026</h3>
 
-	<!-- FIN SECCION CALENDARIO -->
-	
+      <div class="calendar" role="application" aria-labelledby="calendar-month">
+        <div class="calendar-header" aria-hidden="true">
+          <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span>SAB</span><span>DOM</span>
+        </div>
+        <div class="calendar-days" id="calendar-days">
+          <!-- JS will render days here -->
+        </div>
+      </div>
+    </section>
+    <!-- ================ END CALENDAR ================= -->
+
     <!-- BOARDING PASS -->
     <section class="section">
       <div class="card">
         <div class="ticket" id="details-ticket">
-          <!-- Contenedor de BOARDING PASS y Nº VUELO con flex-direction: column -->
           <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-           <!--<div style="display:flex; flex-direction:column; align-items:flex-start; gap:4px;"> <!--
-        <!-- Título BOARDING PASS -->
             <h3 data-i18n="bp_title">BOARDING PASS</h3>
-        <!-- Número de vuelo debajo del título -->
-          <div class="meta" data-i18n="bp_flight">RN • 22/07/2026</div>
-      </div>
+            <div class="meta" data-i18n="bp_flight">RN • 22/07/2026</div>
+          </div>
 
-        <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
+          <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
 
           <div class="row" style="display:flex; flex-direction:column; gap:8px;">
             <div>
@@ -419,7 +349,7 @@
           <div class="row" style="display:flex; flex-direction:column; gap:8px;">
             <div>
               <strong data-i18n="bp_destination_label">Destino</strong>
-              <div class="meta" data-i18n="bp_destination_value">Royal Beach (San Petersburgo, Rusia)</div>
+              <div class="meta" data-i18n="bp_destination_value">Royal Beach, San Petersburgo (Rusia)</div>
             </div>
             <div>
               <strong data-i18n="note_label">Nota</strong>
@@ -506,7 +436,8 @@
         t2_title: 'Cóctel', t2_text: 'Brindis junto al mar con aperitivos y música suave.',
         t3_title: 'Baile', t3_text: '¡A disfrutar la pista con nuestros mejores pasos!',
         t4_title: 'Fin de la fiesta', t4_text: 'Despedida con fuegos artificiales y dulces recuerdos.',
-        more_title: 'Información importante', more_text: 'Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.'
+        more_title: 'Información importante', more_text: 'Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.',
+        calendar_title: 'El Gran Día', calendar_month: 'Julio 2026'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -524,7 +455,8 @@
         t2_title: 'Коктейль', t2_text: 'Тосты у моря с закусками и мягкой музыкой.',
         t3_title: 'Танцы', t3_text: 'Наслаждаемся танцевальной площадкой и нашими лучшими па!',
         t4_title: 'Завершение праздника', t4_text: 'Прощание с фейерверками и сладкими воспоминаниями.',
-        more_title: 'Важная информация', more_text: 'Здесь можно добавить инструкции по транспорту, проживанию или дресс-коду.'
+        more_title: 'Важная информация', more_text: 'Здесь можно добавить инструкции по транспорту, проживанию или дресс-коду.',
+        calendar_title: 'Большой день', calendar_month: 'Июль 2026'
       }
     };
 
@@ -536,6 +468,9 @@
         const key = el.getAttribute('data-i18n');
         if(TEXTS[lang] && TEXTS[lang][key]) el.textContent = TEXTS[lang][key];
       });
+      // calendar headings
+      if(TEXTS[lang] && TEXTS[lang].calendar_title) document.querySelector('[data-i18n="calendar_title"]')?.setAttribute('data-i18n', 'calendar_title');
+      if(TEXTS[lang] && TEXTS[lang].calendar_month) document.getElementById('calendar-month').textContent = TEXTS[lang].calendar_month;
     }
 
     function highlightLangButton(){
@@ -587,6 +522,62 @@
     }
     updateCountdown();
     setInterval(updateCountdown,1000);
+
+    /* ===========================
+       Calendar renderer (Mon-first)
+       =========================== */
+    function renderCalendar(year, month, highlightDay){
+      // month: 1-12
+      const container = document.getElementById('calendar-days');
+      container.innerHTML = '';
+      const first = new Date(year, month-1, 1);
+      // JS getDay(): 0=Sun ... 6=Sat. We want Mon-first (0=Mon)
+      const firstWeekday = (first.getDay() + 6) % 7; // 0..6 where 0 = Monday
+      // number of days in month:
+      const daysInMonth = new Date(year, month, 0).getDate();
+
+      // add empty slots for days before the 1st
+      for(let i=0;i<firstWeekday;i++){
+        const span = document.createElement('div');
+        span.className = 'empty';
+        container.appendChild(span);
+      }
+
+      // add days
+      for(let d=1; d<=daysInMonth; d++){
+        const span = document.createElement('div');
+        span.className = 'day';
+        span.textContent = d;
+        if(d === highlightDay){
+          span.classList.add('special-day');
+          span.setAttribute('aria-label', `Día destacado ${d}`);
+        }
+        container.appendChild(span);
+      }
+
+      // fill remaining cells to complete last week (optional)
+      const totalCells = container.children.length;
+      const remainder = totalCells % 7;
+      if(remainder !== 0){
+        const toAdd = 7 - remainder;
+        for(let i=0;i<toAdd;i++){
+          const span = document.createElement('div');
+          span.className = 'empty';
+          container.appendChild(span);
+        }
+      }
+
+      // set month label (if translations exist)
+      const monthLabel = `${['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][month-1]} ${year}`;
+      if(TEXTS[currentLang] && TEXTS[currentLang].calendar_month){
+        document.getElementById('calendar-month').textContent = TEXTS[currentLang].calendar_month;
+      } else {
+        document.getElementById('calendar-month').textContent = monthLabel;
+      }
+    }
+
+    // render July 2026 with 22 highlighted
+    renderCalendar(2026, 7, 22);
 
     /* ===========================
        Calendar helpers (Google + ICS)
