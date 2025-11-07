@@ -145,6 +145,119 @@
       .hero-img{height:380px}
       .hero-title{font-size:30px}
       .cd-item .num{font-size:36px}
+	/* ESTILO CALENDARIO */
+
+	/* 🎨 Estilos del calendario */
+	.calendar-section {
+	  text-align: center;
+	  background-color: #fdfaf6;
+	  padding: 3rem 1rem;
+	  border-radius: 16px;
+	  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+	  margin: 4rem auto;
+	  max-width: 500px;
+	  font-family: 'Cormorant Garamond', serif;
+	}
+
+	.calendar-section h2 {
+	  font-size: 2.2rem;
+	  font-weight: 600;
+	  color: #7a4b2a;
+	  margin-bottom: 0.2rem;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	}
+	
+	.calendar-section h3 {
+	  font-size: 1.2rem;
+	  font-weight: 500;
+	  color: #a67855;
+	  margin-bottom: 2rem;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	}
+	
+	.calendar {
+	  display: inline-block;
+	  background-color: #f5eee6;
+	  padding: 2rem;
+	  border-radius: 20px;
+	  border: 1px solid #e2d3c2;
+	  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+	}
+	
+	.calendar-header {
+	  display: grid;
+	  grid-template-columns: repeat(7, 1fr);
+	  gap: 0.5rem;
+	  font-weight: 600;
+	  color: #7a4b2a;
+	  font-size: 1rem;
+	  margin-bottom: 1rem;
+	}
+	
+	.calendar-days {
+	  display: grid;
+	  grid-template-columns: repeat(7, 1fr);
+	  gap: 0.4rem;
+	  font-size: 1rem;
+	  color: #6b4b2e;
+	}
+	
+	.calendar-days span {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  width: 2.5rem;
+	  height: 2.5rem;
+	  border-radius: 50%;
+	  background-color: transparent;
+	}
+	
+	.calendar-days span.empty {
+	  visibility: hidden;
+	}
+	
+	.calendar-days span.special-day {
+	  position: relative;
+	  font-weight: bold;
+	  color: #7a4b2a;
+	}
+	
+	.calendar-days span.special-day::before {
+	  content: "♡";
+	  position: absolute;
+	  color: #d4a373;
+	  font-size: 1.8rem;
+	  top: -0.2rem;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  opacity: 0.8;
+	  z-index: -1;
+	}
+	
+	/* 📱 Responsive */
+	@media (max-width: 480px) {
+	  .calendar-section {
+	    padding: 2rem 1rem;
+	  }
+	
+	  .calendar {
+	    padding: 1rem;
+	  }
+	
+	  .calendar-days span {
+	    width: 2rem;
+	    height: 2rem;
+	    font-size: 0.9rem;
+	  }
+	
+	  .calendar-days span.special-day::before {
+	    font-size: 1.4rem;
+	  }
+	}
+	/* FIN ESTILO CALENDARIO */
+
     }
   </style>
 </head>
@@ -207,6 +320,74 @@
       </div>
     </div>
 
+	<!-- SECCION CALENDARIO -->
+		
+		<!-- 🗓️ SECCIÓN CALENDARIO -->
+	<section id="calendario" class="calendar-section">
+	  <h2 data-lang="el-gran-dia">El Gran Día</h2>
+	  <h3 data-lang="mes-ano">Julio 2026</h3>
+	
+	  <div class="calendar">
+	    <div class="calendar-header">
+	      <span data-lang="lun">LUN</span>
+	      <span data-lang="mar">MAR</span>
+	      <span data-lang="mie">MIE</span>
+	      <span data-lang="jue">JUE</span>
+	      <span data-lang="vie">VIE</span>
+	      <span data-lang="sab">SAB</span>
+	      <span data-lang="dom">DOM</span>
+	    </div>
+	    <div class="calendar-days">
+	      <!-- Primera fila -->
+	      <span class="empty"></span>
+	      <span class="empty"></span>
+	      <span class="empty"></span>
+	      <span class="1">1</span>
+	      <span>2</span>
+	      <span>3</span>
+	      <span>4</span>
+	
+	      <!-- Segunda fila -->
+	      <span>5</span>
+	      <span>6</span>
+	      <span>7</span>
+	      <span>8</span>
+	      <span>9</span>
+	      <span>10</span>
+	      <span>11</span>
+	
+	      <!-- Tercera fila -->
+	      <span>12</span>
+	      <span>13</span>
+	      <span>14</span>
+	      <span>15</span>
+	      <span>16</span>
+	      <span>17</span>
+	      <span>18</span>
+	
+	      <!-- Cuarta fila -->
+	      <span>19</span>
+	      <span>20</span>
+	      <span>21</span>
+	      <span class="special-day">22</span>
+	      <span>23</span>
+	      <span>24</span>
+	      <span>25</span>
+	
+	      <!-- Quinta fila -->
+	      <span>26</span>
+	      <span>27</span>
+	      <span>28</span>
+	      <span>29</span>
+	      <span>30</span>
+	      <span>31</span>
+	      <span class="empty"></span>
+	    </div>
+	  </div>
+	</section>
+
+	<!-- FIN SECCION CALENDARIO -->
+	
     <!-- BOARDING PASS -->
     <section class="section">
       <div class="card">
