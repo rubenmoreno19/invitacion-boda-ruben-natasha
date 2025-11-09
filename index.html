@@ -88,8 +88,10 @@
     audio{width:100%;border-radius:10px;outline:none}
 
     /* countdown */
-    .countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
-    .cd-item{min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px}
+    /*.countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}*/
+    .countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    /*.cd-item{min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px}*/
+    .cd-item{min-width:60px;padding:8px 10px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
     .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark);letter-spacing:1px}
     .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
 
@@ -148,6 +150,17 @@
       .cd-item .num{font-size:36px}
     }
 
+     /* MOBILE FIXES for Countdown */
+    @media (max-width: 420px) {
+      .cd-item .num {
+        font-size: 22px;
+      }
+      .cd-item {
+        min-width: 55px;
+        padding: 6px 8px;
+      }
+    }
+    
     /* ====== CALENDAR STYLES (aplican en todo tamaño) ====== */
     .calendar-section {
       text-align: center;
