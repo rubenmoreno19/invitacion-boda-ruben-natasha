@@ -98,6 +98,14 @@
     .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
     .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
 
+    /* passport */
+    .section-passport{padding:18px;margin-top:6px;}
+    .card-passport{background:var(--card);border-radius:12px;padding:12px}
+    .ticket-passport{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
+    .ticket-passport h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
+    .meta-passport{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
+    .ticket-passport hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
+    
     /* boarding pass */
     .section{padding:18px;margin-top:6px;}
     .card{background:var(--card);border-radius:12px;padding:12px}
@@ -334,7 +342,38 @@
     <!-- FIN SEGUNDA SECCIÓN (CALENDARIO) OK -->
 
     <!-- INICIO TERCERA SECCIÓN (PASAPORTE) -->
-
+    <section class="section-passport">
+      <div class="card-passport">
+        <div class="ticket-passport" id="details-ticket">
+          <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+            <h3 data-i18n="bp_title">BOARDING PASS</h3>
+            <div class="meta-passport" data-i18n="bp_flight">RN • 22/07/2026</div>
+          </div>
+          <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
+          <div class="row" style="display:flex; flex-direction:column; gap:8px;">
+            <div>
+              <strong data-i18n="place_label">Ubicación</strong>
+              <div class="meta-passport" data-i18n="place_value">San Petersburgo (Rusia)</div>
+            </div>
+            <div>
+              <strong data-i18n="date_label">Fecha y hora</strong>
+              <div class="meta-passport" data-i18n="date_value">22/07/2026 — 16:00</div>
+            </div>
+          </div>
+          <div style="height:8px"></div>
+          <div class="row" style="display:flex; flex-direction:column; gap:8px;">
+            <div>
+              <strong data-i18n="bp_destination_label">Destino</strong>
+              <div class="meta-passport" data-i18n="bp_destination_value">Royal Beach, San Petersburgo (Rusia)</div>
+            </div>
+            <div>
+              <strong data-i18n="note_label">Nota</strong>
+              <div class="meta-passport" data-i18n="note">Por favor confirma asistencia antes del 01/02/2026.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     <!-- FIN TERCERA SECCIÓN (PASAPORTE) -->
@@ -368,9 +407,7 @@
             <h3 data-i18n="bp_title">BOARDING PASS</h3>
             <div class="meta" data-i18n="bp_flight">RN • 22/07/2026</div>
           </div>
-
           <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
-
           <div class="row" style="display:flex; flex-direction:column; gap:8px;">
             <div>
               <strong data-i18n="place_label">Ubicación</strong>
@@ -381,9 +418,7 @@
               <div class="meta" data-i18n="date_value">22/07/2026 — 16:00</div>
             </div>
           </div>
-
           <div style="height:8px"></div>
-
           <div class="row" style="display:flex; flex-direction:column; gap:8px;">
             <div>
               <strong data-i18n="bp_destination_label">Destino</strong>
