@@ -261,7 +261,8 @@
 <body>
   <div class="wrap">
 
-        <!-- BANDERAS OK -->
+    <!-- INICIO PÁGINA-->
+    <!-- BANDERAS OK -->
       <div class="topbar" aria-hidden="false" 
          style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
       
@@ -278,7 +279,10 @@
         </div>
       </div>
     </div>
-    <!-- HERO -->
+   
+    <!-- INICIO PRIMERA SECCIÓN -->
+    
+    <!-- HERO (PHOTO & TEXT) OK-->
     <div class="card-hero">
       <img class="hero-img" src="images/Boda1.jpg" alt="Rubén & Natasha">
       <div class="hero-overlay">
@@ -301,7 +305,10 @@
           </audio>
         </div>
       </div>
+     </div> <!-- Cierre PRIMERA SECCIÓN -->
 
+    <!-- NUEVA SECCIÓN: Countdown + Actions -->
+    <section class="section">
       <!-- COUNTDOWN -->
       <div class="countdown-wrap" aria-live="polite">
         <div class="cd-item"><div class="num" id="cd-days">00</div><small data-i18n="days">Días</small></div>
@@ -316,7 +323,8 @@
         <button class="btn" onclick="openGoogleCalendar()" data-i18n="add_gcal">Google Calendar</button>
         <button class="btn" onclick="downloadICS()" data-i18n="add_ical">Añadir a Outlook/iOS</button>
       </div>
-    </div>
+    </section>
+    <!-- FIN SECCIÓN: Countdown + Actions -->
 
     <!-- ================= CALENDAR SECTION (dynamic) ================= -->
     <section id="calendario" class="calendar-section" aria-label="Calendario">
