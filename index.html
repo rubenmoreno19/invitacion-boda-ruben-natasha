@@ -250,7 +250,7 @@
     }
     /* when screen is small, make grid smaller and heart scale down */
     @media (max-width: 480px) {
-      .calendar-section { padding: 0.8rem 0.4rem; margin: 0.3rem auto; }
+      .calendar-section { padding: 1rem 0.4rem; margin: 0.3rem auto; }
       .calendar { padding: 0.5rem; }
       .calendar-header { font-size: 0.78rem; }
       .calendar-days .day { min-width: 34px; min-height: 34px; font-size: 1.1rem; }
@@ -318,7 +318,13 @@
 
       <div class="calendar" role="application" aria-labelledby="calendar-month">
         <div class="calendar-header" aria-hidden="true">
-          <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span>SAB</span><span>DOM</span>
+          <span data-i18n="day_mon">LUN</span>
+          <span data-i18n="day_tue">MAR</span>
+          <span data-i18n="day_wed">MIE</span>
+          <span data-i18n="day_thu">JUE</span>
+          <span data-i18n="day_fri">VIE</span>
+          <span data-i18n="day_sat">SAB</span>
+          <span data-i18n="day_sun">DOM</span>
         </div>
         <div class="calendar-days" id="calendar-days">
           <!-- JS will render days here -->
@@ -465,7 +471,15 @@
         t3_title: 'Baile', t3_text: '¡A disfrutar la pista con nuestros mejores pasos!',
         t4_title: 'Fin de la fiesta', t4_text: 'Despedida con fuegos artificiales y dulces recuerdos.',
         more_title: 'Información importante', more_text: 'Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.',
-        calendar_title: 'El Gran Día', calendar_month: 'Julio 2026'
+        calendar_title: 'El Gran Día', 
+        calendar_month: 'Julio 2026',
+        day_mon: "LUN",
+        day_tue: "MAR",
+        day_wed: "MIE",
+        day_thu: "JUE",
+        day_fri: "VIE",
+        day_sat: "SAB",
+        day_sun: "DOM"
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -484,7 +498,15 @@
         t3_title: 'Танцы', t3_text: 'Наслаждаемся танцевальной площадкой и нашими лучшими па!',
         t4_title: 'Завершение праздника', t4_text: 'Прощание с фейерверками и сладкими воспоминаниями.',
         more_title: 'Важная информация', more_text: 'Здесь можно добавить инструкции по транспорту, проживанию или дресс-коду.',
-        calendar_title: 'Большой день', calendar_month: 'Июль 2026'
+        calendar_title: 'Большой день', 
+        calendar_month: 'Июль 2026',
+        day_mon: "ПН",
+        day_tue: "ВТ",
+        day_wed: "СР",
+        day_thu: "ЧТ",
+        day_fri: "ПТ",
+        day_sat: "СБ",
+        day_sun: "ВС",
       }
     };
 
