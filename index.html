@@ -83,24 +83,95 @@
     @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
     /* audio */
-    /*.audio-wrap{padding:12px 18px;border-top:1px dashed rgba(0,0,0,0.04)}*/
     .audio-wrap{padding:12px 18px;}
     .audio-mus{font-family:'Playfair Display',serif;font-size:20px;color:var(--accent-dark);margin: 0;font-weight:bold;margin-bottom: 6px;text-align:center;width:100%;}
     audio{width:100%;border-radius:10px;outline:none}
 
+    /*PRUEBA SECCION NUEVA */
+    /* ===== SECCIÓN COUNTDOWN + ACCIONES ===== */
+    .count_act-section {
+      background: linear-gradient(180deg, #fff, #fbf6f2);
+      border-radius: 16px;
+      border: 1px dashed rgba(0,0,0,0.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 24px;
+      margin-top: 24px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    /* Countdown */
+    .countdown-wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cd-item {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      padding: 12px 16px;
+      text-align: center;
+      min-width: 70px;
+    }
+    
+    .cd-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 6vw, 36px);
+      color: #8b5a3f;
+    }
+    
+    .cd-item small {
+      font-size: 12px;
+      color: rgba(0,0,0,0.6);
+      text-transform: uppercase;
+    }
+    
+    /* Acciones */
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .actions .btn {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #fff;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+    }
+    
+    .actions .btn.primary {
+      background: #b78a6b;
+      color: #fff;
+      border: none;
+      box-shadow: 0 8px 18px rgba(183,155,107,0.14);
+    }
+    /* FIN SECCION PRUEBA */
+    
     /* countdown */
-    /*.countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}*/
-    /*.countdown-wrap{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,240,0.6));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}*/
-    .countdown-wrap{margin-top:6px;padding:18px;background:transparent;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:nowrap;hoverflow-x:auto;-webkit-overflow-scrolling:touch;box-shadow:none;border:none}
-    /*.cd-item{min-width:70px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:0 8px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px}*/
+    /*.countdown-wrap{margin-top:6px;padding:18px;background:transparent;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:nowrap;hoverflow-x:auto;-webkit-overflow-scrolling:touch;box-shadow:none;border:none}
     .cd-item{background:#fff;min-width:60px;padding:8px 10px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
     .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark);letter-spacing:1px}
-    .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
+    .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}*/
 
     /* actions */
-    .actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+    /*.actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
     .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
-    .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
+    .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}*/
 
     /* boarding pass */
     .section{padding:18px;margin-top:6px;}
@@ -151,8 +222,16 @@
       .hero-title{font-size:30px}
       .cd-item .num{font-size:36px}
     }
-
-     /* MOBILE FIXES for Countdown */
+      /* MOVIL COUNT + ACT */
+    @media (min-width: 700px) {
+      .count_act-section {
+        flex-direction: column;
+      }
+      .countdown-wrap {
+        justify-content: center;
+      }
+    }
+     /* MOBILE FIXES for Countdown 
     @media (max-width: 420px) {
       .cd-item .num {
         font-size: 22px;
@@ -161,7 +240,7 @@
         min-width: 55px;
         padding: 6px 8px;
       }
-    }
+    }*/
     
     /* ====== CALENDAR STYLES (aplican en todo tamaño) ====== */
     .calendar-section {
@@ -328,7 +407,8 @@
 
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
     <section class="section">
-      <div class="calendar-section">
+      <div class="count_act-section">
+      <!--<div class="calendar-section"> -->
       <!-- COUNTDOWN -->
       <div class="countdown-wrap" aria-live="polite">
         <div class="cd-item"><div class="num" id="cd-days">00</div><small data-i18n="days">Días</small></div>
