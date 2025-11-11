@@ -24,7 +24,7 @@
       PASOS:
       Sección1: Hasta la canción se queda como está -> OK
       Sección2: Calendario -> OK
-      Sección3: Pasaporte
+      Sección3: Pasaporte -> OK
       Sección4: Boarding pass
       Sección5: Cronología
       Sección6: Scroll fotos
@@ -104,18 +104,16 @@
     .card-passport{background:var(--card);border-radius:12px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border: 1px solid rgba(0,0,0,0.03);}
     .ticket-passport{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
     .ticket-passport h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
-    .meta-passport{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
-    /*.passport-titulos h2{margin-top:10px;color:var(--accent-dark);font-size:14px}*/
     .passport-titulos h3{margin-top:10px;color:var(--accent);font-size:18px;margin-top:0;}
     .ticket-passport hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
     
     /* boarding pass */
-    .section{padding:18px;margin-top:6px;}
-    .card{background:var(--card);border-radius:12px;padding:12px}
-    .ticket{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
-    .ticket h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
-    .meta{margin-top:10px;color:rgba(0,0,0,0.6);font-size:14px}
-    .ticket hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
+    .section-boarding{padding:18px;margin-top:6px;}
+    .card-boarding{background:var(--card);border-radius:12px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border: 1px solid rgba(0,0,0,0.03);}
+    .ticket-boarding{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
+    .ticket-boarding h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
+    .boarding-titulos h3{margin-top:10px;color:var(--accent);font-size:18px;margin-top:0;}
+    .ticket-boarding hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
 
     /* TIMELINE: vertical line + dots, responsive-friendly */
     .timeline { position: relative; margin: 20px 0; padding-left: 56px; } /* room for line and time */
@@ -268,9 +266,9 @@
       .calendar-days .special-day::before { font-size: 2.2rem; -webkit-text-stroke:2.2px #d4a373; text-stroke:2px #d4a373; transform: translate(-50%,-40%);}
     }
     /* ====== END CALENDAR STYLES ====== */
+    
     @media (max-width: 480px) {
       .section-passport { padding: 1rem 0.4rem; margin-top: 0.3rem auto;margin-bottom: 0.3rem;}
-     /*  .section-passport {padding: 1rem 0.4rem;margin-top: 0.3rem;margin-bottom: 0.3rem;}*/
       }
 
   </style>
@@ -397,9 +395,60 @@
         </div>
       </div>
     </section>
+    <!-- FIN TERCERA SECCIÓN (PASAPORTE) OK -->
 
-
-    <!-- FIN TERCERA SECCIÓN (PASAPORTE) -->
+    <!-- INICIO CUARTA SECCIÓN (BOARDING PASS) -->
+    <section class="section-boarding">
+      <div class="card-boarding">
+        <div class="ticket-boarding" id="details-ticket">
+          <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+            <h3>BOARDING PASS</h3>
+           <!-- <div class="passport-titulos" data-i18n="bp_flight">RN • 22/07/2026</div> -->
+          </div>
+          <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
+          <div class="row" style="display:flex; flex-direction:column; gap:8px;">
+           <div>
+             <strong style="color:var(--accent-dark);"data-i18n="date">FECHA</strong>
+               <div class="passport-titulos">
+                  <h3>22/07/2026</h3>
+               </div>
+            </div>
+            <div>
+             <strong style="color:var(--accent-dark);"data-i18n="gate">PUERTA DE EMBARQUE</strong>
+               <div class="passport-titulos">
+                  <h3 data-i18n="gate_1">Royal Beach, San Petersburgo, Rusia</h3>
+               </div>
+            </div>
+            <div>
+             <strong style="color:var(--accent-dark);"data-i18n="time">HORA DE EMBARQUE</strong>
+               <div class="passport-titulos">
+                  <h3>16:00</h3>
+               </div>
+            </div>
+            <div>
+             <strong style="color:var(--accent-dark);"data-i18n="n_vuelo">NÚMERO DE VUELO</strong>
+               <div class="passport-titulos">
+                  <h3>RN 22072026</h3>
+               </div>
+            </div>
+            <div>
+             <strong style="color:var(--accent-dark);"data-i18n="aerolinea">AEROLINEA</strong>
+               <div class="passport-titulos">
+                  <h3>Love Airlines</h3>
+               </div>
+            </div>
+            div>
+             <strong style="color:var(--accent-dark);"data-i18n="h_desp">HORA DE DESPEGUE</strong>
+               <div class="passport-titulos">
+                  <h3>17.00</h3>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- FIN CUARTA  SECCIÓN (BOARDING PASS) -->
 
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
     <section class="section">
@@ -522,11 +571,6 @@
         music: 'Escucha nuestra canción',
         days: 'Días', hours: 'Horas', minutes: 'Minutos', seconds: 'Segundos',
         rsvp: 'Confirmar asistencia', add_gcal: 'Google Calendar', add_ical: 'Añadir a Outlook/iOS',
-        bp_title: 'BOARDING PASS', bp_flight: 'RN • 22/07/2026',
-        place_label: 'Ubicación', place_value: 'San Petersburgo (Rusia)',
-        date_label: 'Fecha y hora', date_value: '22/07/2026 — 16:00',
-        bp_destination_label: 'Destino', bp_destination_value: 'Royal Beach, San Petersburgo (Rusia)',
-        note_label: 'Nota', note: 'Por favor confirma asistencia antes del 01/02/2026.',
         timeline_title: 'Cronograma del Día',
         t1_title: 'Ceremonia', t1_text: 'El momento más especial — ¡decimos sí quiero!',
         t2_title: 'Cóctel', t2_text: 'Brindis junto al mar con aperitivos y música suave.',
@@ -546,7 +590,8 @@
         date_time_1:'22.07.26 | 16.00',
         location:'UBICACIÓN',
         location_1:'Royal Beach, San Petersburgo (Rusia)',
-        nota:'Por favor, agradeceríamos vuestra confirmación de asistencia a la boda antes del día 1 de febrero de 2026'
+        nota:'Por favor, agradeceríamos vuestra confirmación de asistencia a la boda antes del día 1 de febrero de 2026',
+        date: 'FECHA', gate: 'PUERTA DE EMBARQUE', gate_1: 'Royal Beach, San Petersburgo, Rusia', time: 'HORA DE EMBARQUE', n_vuelo: 'NÚMERO DE VUELO', aerolínea: 'AEROLINEA', h_desp: 'HORA DE DESPEGUE'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -554,11 +599,6 @@
         music: 'Послушайте нашу песню',
         days: 'Дней', hours: 'Часов', minutes: 'Минут', seconds: 'Секунд',
         rsvp: 'Подтвердить участие', add_gcal: 'Google Календарь', add_ical: 'Добавить в Outlook/iOS',
-        bp_title: 'ПОСАДОЧНЫЙ ТАЛОН', bp_flight: 'RN • 22/07/2026',
-        place_label: 'Место', place_value: 'Санкт-Петербург (Россия)',
-        date_label: 'Дата и время', date_value: '22/07/2026 — 16:00',
-        bp_destination_label: 'Пункт назначения', bp_destination_value: 'Royal Beach, Санкт-Петербург (Россия)',
-        note_label: 'Примечание', note: 'Пожалуйста подтвердите участие до 01/02/2026.',
         timeline_title: 'Расписание дня',
         t1_title: 'Церемония', t1_text: 'Самый особенный момент — мы говорим «да»!',
         t2_title: 'Коктейль', t2_text: 'Тосты у моря с закусками и мягкой музыкой.',
@@ -578,7 +618,8 @@
         date_time_1:'22.07.26 | 16.00',
         location:'Место переведения',
         location_1:'Royal Beach, Санкт-Петербург (Россия)',
-        nota:'Очень просим подтвердить вас свое присутствие на нашем празднике до 1го февраля 2026 года'
+        nota:'Очень просим подтвердить вас свое присутствие на нашем празднике до 1го февраля 2026 года',
+        date: 'ДАТА',
       }
     };
 
