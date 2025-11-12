@@ -117,6 +117,7 @@
 
     /* TIMELINE: vertical line + dots, responsive-friendly */
 	.section-timeline{padding:18px;margin-top:6px;}
+	.ticket-timeline{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
     .timeline { position: relative; margin: 20px 0; padding-left: 56px; } /* room for line and time */
     .timeline::before { content: ""; position: absolute; left: 28px; top: 0; bottom: 0; width: 4px; background: var(--accent); border-radius:2px; }
     .timeline-item { position: relative; margin-bottom: 36px; display:flex; gap:16px; align-items:flex-start; opacity:0; transform:translateY(24px); transition: all .6s cubic-bezier(.2,.9,.2,1); }
@@ -457,7 +458,7 @@
 	<!-- INICIO QUINTA CRONOLOGÍA -->
 
     <section class="section-timeline">
-      <div class="ticket">
+      <div class="ticket-timeline">
         <h3 style="text-align:center;font-family:'Playfair Display',serif;color:var(--accent-dark);margin-bottom:24px;" data-i18n="timeline_title">Cronograma del Día</h3>
 
         <div class="timeline">
