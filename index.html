@@ -25,7 +25,7 @@
       Sección1: Hasta la canción se queda como está -> OK
       Sección2: Calendario -> OK
       Sección3: Pasaporte -> OK
-      Sección4: Boarding pass -> CASI OK, FALTA DISTANCIA ENTRE TARJETAS
+      Sección4: Boarding pass -> OK, FALTA DISTANCIA ENTRE TARJETAS
       Sección5: Cronología
 		Cóctel de bienvenida -> 16.00
 		Ceremonia -> 17.00
@@ -466,43 +466,52 @@
     <section class="section-timeline">
       <div class="ticket-timeline">
         <h3 style="text-align:center;font-family:'Playfair Display',serif;color:var(--accent-dark);margin-bottom:24px;" data-i18n="timeline_title">Cronograma del Día</h3>
-
         <div class="timeline">
-          <div class="timeline-item">
+          <div class="timeline-item"> <!-- Crono1 -->
             <div class="time">16:00</div>
             <div class="content">
-              <img src="images/ceremonia.jpg" alt="Ceremonia">
-              <h4 data-i18n="t1_title">Ceremonia</h4>
-              <p data-i18n="t1_text">El momento más especial — ¡decimos sí quiero!</p>
+              <img src="images/ceremonia.jpg" alt="Cóctel bienvenida">
+              <h4 data-i18n="t1_title">Cóctel de bienvenida</h4>
+              <p data-i18n="t1_text">Comenzamos con el cóctel en el jardín nupcial.</p>
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item"> <!-- Crono2 -->
+            <div class="time">17:00</div>
+            <div class="content">
+              <img src="images/ceremonia.jpg" alt="Ceremonia">
+              <h4 data-i18n="t2_title">Ceremonia</h4>
+              <p data-i18n="t2_text">El momento más especial — ¡decimos sí quiero!</p>
+            </div>
+          </div>
+
+          <div class="timeline-item"> <!-- Crono3 -->
             <div class="time">17:30</div>
             <div class="content">
-              <img src="images/coctel.jpg" alt="Cóctel">
-              <h4 data-i18n="t2_title">Cóctel</h4>
-              <p data-i18n="t2_text">Brindis junto al mar con aperitivos y música suave.</p>
+              <img src="images/coctel.jpg" alt="Celebración">
+              <h4 data-i18n="t3_title">Celebración</h4>
+              <p data-i18n="t3_text">Celebración de la boda con el banquete nupcial.</p>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="time">19:00</div>
+          <div class="timeline-item"> <!-- Crono4 -->
+            <div class="time">21:00</div>
             <div class="content">
-              <img src="images/baile.jpg" alt="Baile">
-              <h4 data-i18n="t3_title">Baile</h4>
-              <p data-i18n="t3_text">¡A disfrutar la pista con nuestros mejores pasos!</p>
+              <img src="images/baile.jpg" alt="Baile y fiesta">
+              <h4 data-i18n="t4_title">Baile y fiesta</h4>
+              <p data-i18n="t4_text">Nuestro primer baile y ¡A disfrutar la pista con nuestros mejores pasos!</p>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="time">23:00</div>
+          <div class="timeline-item"> <!-- Crono5 -->
+            <div class="time">24:00</div>
             <div class="content">
               <img src="images/fin.jpg" alt="Fin de la fiesta">
-              <h4 data-i18n="t4_title">Fin de la fiesta</h4>
-              <p data-i18n="t4_text">Despedida con fuegos artificiales y dulces recuerdos.</p>
+              <h4 data-i18n="t5_title">Fin de la fiesta</h4>
+              <p data-i18n="t5_text">Despedida de la fiesta y gracias a los invitados.</p>
             </div>
           </div>
+			
         </div>
       </div>
     </section>
@@ -554,10 +563,11 @@
         days: 'Días', hours: 'Horas', minutes: 'Minutos', seconds: 'Segundos',
         rsvp: 'Confirmar asistencia', add_gcal: 'Google Calendar', add_ical: 'Añadir a Outlook/iOS',
         timeline_title: 'Cronograma del Día',
-        t1_title: 'Ceremonia', t1_text: 'El momento más especial — ¡decimos sí quiero!',
-        t2_title: 'Cóctel', t2_text: 'Brindis junto al mar con aperitivos y música suave.',
-        t3_title: 'Baile', t3_text: '¡A disfrutar la pista con nuestros mejores pasos!',
-        t4_title: 'Fin de la fiesta', t4_text: 'Despedida con fuegos artificiales y dulces recuerdos.',
+		t1_title: 'Cóctel de bienvenida', t1_text: 'Comenzamos con el cóctel en el jardín nupcial.',
+		t2_title: 'Ceremonia', t2_text: 'El momento más especial — ¡decimos sí quiero!',
+		t3_title: 'Celebración', t3_text: 'Celebración de la boda con el banquete nupcial.',
+		t4_title: 'Baile y fiesta', t4_text: 'Nuestro primer baile y ¡A disfrutar la pista con nuestros mejores pasos!',
+		t5_title: 'Fin de la fiesta', t5_text: 'Despedida de la fiesta y gracias a los invitados.',
         more_title: 'Información importante', more_text: 'Aquí puedes añadir instrucciones sobre transporte, alojamiento o dress code.',
         calendar_title: 'El Gran Día', 
         calendar_month: 'Julio 2026',
@@ -582,10 +592,11 @@
         days: 'Дней', hours: 'Часов', minutes: 'Минут', seconds: 'Секунд',
         rsvp: 'Подтвердить участие', add_gcal: 'Google Календарь', add_ical: 'Добавить в Outlook/iOS',
         timeline_title: 'Расписание дня',
-        t1_title: 'Церемония', t1_text: 'Самый особенный момент — мы говорим «да»!',
-        t2_title: 'Коктейль', t2_text: 'Тосты у моря с закусками и мягкой музыкой.',
-        t3_title: 'Танцы', t3_text: 'Наслаждаемся танцевальной площадкой и нашими лучшими па!',
-        t4_title: 'Завершение праздника', t4_text: 'Прощание с фейерверками и сладкими воспоминаниями.',
+		t1_title: "Приветственный коктейль", t1_text: "Начинаем с коктейля в свадебном саду.",
+		t2_title: "Церемония", t2_text: "Самый особенный момент — мы говорим «да»!",
+		t3_title: "Праздничный ужин", t3_text: "Отмечаем нашу свадьбу за свадебным банкетом.",
+		t4_title: "Танцы и веселье", t4_text: "Наш первый танец — и на танцпол, наслаждаться вечером!",
+		t5_title: "Окончание праздника", t5_text: "Прощание с гостями и благодарность за то, что были с нами.",
         more_title: 'Важная информация', more_text: 'Здесь можно добавить инструкции по транспорту, проживанию или дресс-коду.',
         calendar_title: 'Большой день', 
         calendar_month: 'Июль 2026',
