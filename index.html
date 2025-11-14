@@ -137,6 +137,29 @@
     .timeline-item h4{ margin:4px 0; font-size:16px; color:var(--accent-dark); }
     .timeline-item p{ margin:0; color:var(--muted); font-size:13px; }
 
+	/* SLIDER PHOTOS */
+	.photo-slider-section {margin-top: 30px;text-align: center;}
+	.photo-slider-section h2 {font-family: "Playfair Display", serif;font-size: 28px;margin-bottom: 14px;color: #8b5a3f;}
+	.photo-slider {width: 92%;max-width: 520px;margin: auto;overflow: hidden;border-radius: 18px;box-shadow: 0 10px 25px rgba(0,0,0,0.10);border: 1px solid rgba(0,0,0,0.08);}
+	.slides {display: flex;width: 100%;animation: slideShow 18s infinite;}
+	.slides img {width: 100%;flex-shrink: 0;object-fit: cover;height: 260px;}
+
+	/* Animation: 4 fotos → 4 pasos */
+	@keyframes slideShow {
+	  0%   { transform: translateX(0%); }
+	  20%  { transform: translateX(0%); }
+	  25%  { transform: translateX(-100%); }
+	
+	  45%  { transform: translateX(-100%); }
+	  50%  { transform: translateX(-200%); }
+	
+	  70%  { transform: translateX(-200%); }
+	  75%  { transform: translateX(-300%); }
+	
+	  95%  { transform: translateX(-300%); }
+	  100% { transform: translateX(0%); }
+	}
+
     /* MOBILE FIXES for timeline */
     @media (max-width: 480px) {
       .timeline { padding-left: 48px; }
@@ -493,9 +516,9 @@
       </div>
     </section>
   
-    <!-- FIN CUARTA  SECCIÓN (BOARDING PASS) OK -->
+    <!-- FIN CUARTA SECCIÓN (BOARDING PASS) OK -->
 
-	<!-- INICIO QUINTA CRONOLOGÍA -->
+	<!-- INICIO QUINTA SECCIÓN CRONOLOGÍA -->
 
     <section class="section-timeline">
       <div class="ticket-timeline">
@@ -550,7 +573,23 @@
       </div>
     </section>
 	
-	<!-- FIN QUINTA CRONOLOGÍA -->
+	<!-- FIN QUINTA SECCIÓN CRONOLOGÍA OK-->
+
+	<!-- INICIO SEXTA SECCIÓN SLIDES -->
+
+	<section class="photo-slider-section">
+		<h2 data-i18n="slider_title">Momentos juntos</h2>
+		<div class="photo-slider">
+			<div class="slides">
+				<img src="img/foto1.jpg" alt="Foto 1">
+				<img src="img/foto2.jpg" alt="Foto 2">
+				<img src="img/foto3.jpg" alt="Foto 3">
+				<img src="img/foto4.jpg" alt="Foto 4">
+			</div>
+		</div>
+	</section>
+
+	<!-- FIN SEXTA SECCIÓN SLIDES -->
 
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
     <section class="section">
@@ -617,7 +656,8 @@
         location:'UBICACIÓN',
         location_1:'Royal Beach, San Petersburgo (Rusia)',
         nota:'Por favor, agradeceríamos vuestra confirmación de asistencia a la boda antes del día 1 de febrero de 2026',
-        date: 'FECHA', gate: 'PUERTA DE EMBARQUE', gate_1: 'Royal Beach, San Petersburgo, Rusia', time: 'HORA DE EMBARQUE', n_vuelo: 'NÚMERO DE VUELO', aerolínea: 'AEROLINEA', h_desp: 'HORA DE DESPEGUE'
+        date: 'FECHA', gate: 'PUERTA DE EMBARQUE', gate_1: 'Royal Beach, San Petersburgo, Rusia', time: 'HORA DE EMBARQUE', n_vuelo: 'NÚMERO DE VUELO', aerolínea: 'AEROLINEA', h_desp: 'HORA DE DESPEGUE',
+		slider_title: 'Momentos juntos'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -646,7 +686,8 @@
         location:'Место переведения',
         location_1:'Royal Beach, Санкт-Петербург, Россия',
         nota:'Очень просим подтвердить вас свое присутствие на нашем празднике до 1го февраля 2026 года',
-        date: 'ДАТА', gate: 'ВЫХОД НА ПОСАДКУ',gate_1: 'Royal Beach, Санкт-Петербург, Россия', time: 'ВРЕМЯ ПОСАДКИ', n_vuelo: 'НОМЕР РЕЙСА', aerolínea: 'ПЕРЕВОЗЧИК', h_desp: 'ВРЕМЯ ОТПРАВЛЕНИЯ'
+        date: 'ДАТА', gate: 'ВЫХОД НА ПОСАДКУ',gate_1: 'Royal Beach, Санкт-Петербург, Россия', time: 'ВРЕМЯ ПОСАДКИ', n_vuelo: 'НОМЕР РЕЙСА', aerolínea: 'ПЕРЕВОЗЧИК', h_desp: 'ВРЕМЯ ОТПРАВЛЕНИЯ',
+		slider_title: 'Наши моменты'
       }
     };
 
