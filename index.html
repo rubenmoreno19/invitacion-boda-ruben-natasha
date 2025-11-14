@@ -131,58 +131,18 @@
     /* dot */
     .timeline-item::before { content: ""; position:absolute; left:-37px; top:8px; width:18px; height:18px; background:var(--card); border-radius:50%; box-shadow:0 0 0 4px var(--accent); border:2px solid white; }
     .timeline-item .time{ font-family:'Playfair Display',serif; font-size:20px; color:var(--accent-dark); min-width:70px; text-align:right; align-self:flex-start; padding-top:6px; }
-    /*.timeline-item .content{ background:linear-gradient(180deg,#fff,#fbf6f2); border-radius:10px; padding:10px 14px; box-shadow:0 6px 16px rgba(0,0,0,0.05); flex:1; }*/
-	.timeline-item .content{ background:var(--card); border-radius:10px; padding:10px 14px; box-shadow:0 6px 16px rgba(0,0,0,0.05); flex:1; }
+   	.timeline-item .content{ background:var(--card); border-radius:10px; padding:10px 14px; box-shadow:0 6px 16px rgba(0,0,0,0.05); flex:1; }
     .timeline-item img{ width:100%; border-radius:8px; margin-bottom:8px; object-fit:cover; max-height:200px; }
     .timeline-item h4{ margin:4px 0; font-size:16px; color:var(--accent-dark); }
     .timeline-item p{ margin:0; color:var(--muted); font-size:13px; }
 
 	/* SLIDER PHOTOS */
-	.photo-slider-section {
-	  margin-top: 30px;
-	  text-align: center;
-	}
-	
-	.photo-slider-section h2 {
-	  font-family: "Playfair Display", serif;
-	  font-size: 28px;
-	  margin-bottom: 14px;
-	  color: #8b5a3f;
-	}
-	
-	/* --- MÓVIL: CUADRADO --- */
-	.photo-slider {
-	  width: 100%;
-	  max-width: 400px;
-	  height: 400px;       /* 🔥 cuadrado perfecto en móvil */
-	  margin: auto;
-	  overflow: hidden;
-	  background-color: transparent; 
-	  border-radius: 18px;
-	  box-shadow: 0 10px 25px rgba(0,0,0,0.10);
-	  border: 1px solid rgba(0,0,0,0.08);
-	}
-	
-	/* Fila horizontal de imágenes */
-	.slides {
-	  display: flex;
-	  height: 100%;
-	  animation: slideShow 18s infinite;
-	}
-	.slide{
-		flex: 0 0 100%;
-		height: 100%;
-		background-size: cover;       /* no deforma */
-		background-position: center;    /* centra la imagen */
-		background-repeat: no-repeat;
-	}
-	
-	.slides img {
-	  width: 100%;
-	  height: 100%;
-	  flex: 0 0 100%;
-	  object-fit: contain; /* 🔥 recorta sin deformar */
-	}
+	.photo-slider-section {margin-top: 30px;text-align: center;}	
+	.photo-slider-section h2 {font-family:"Playfair Display", serif;font-size: 28px;margin-bottom: 14px;color: #8b5a3f;}	
+	.photo-slider {width: 100%;max-width: 400px;height: 400px;margin: auto;overflow: hidden;background-color: transparent;border-radius: 18px;box-shadow: 0 10px 25px rgba(0,0,0,0.10);border: 1px solid rgba(0,0,0,0.08);}
+	.slides {display: flex;height: 100%;animation: slideShow 28s infinite;}
+	.slide{flex: 0 0 100%;height: 100%;background-size: cover;background-position: center;background-repeat: no-repeat;}
+	.slides img {width: 100%;height: 100%;flex: 0 0 100%;object-fit: contain;}	
 	
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -192,50 +152,6 @@
 	  75%, 95% { transform: translateX(-300%); }
 	  100% { transform: translateX(0%); }
 	}
-	  
-	  /* SLIDER PHOTOS 
-	.photo-slider-section {margin-top: 30px;text-align: center;}
-	.photo-slider-section h2 {font-family: "Playfair Display", serif;font-size: 28px;margin-bottom: 14px;color: #8b5a3f;}
-	.photo-slider {width: 92%;max-width: 520px;height: 400px;margin: auto;overflow: hidden;border-radius: 18px;box-shadow: 0 10px 25px rgba(0,0,0,0.10);border: 1px solid rgba(0,0,0,0.08);}
-	.slides {display: flex;width: 100%;height: 100%;animation: slideShow 18s infinite;}
-	/*.slides img {width: 100%;height:500px;flex-shrink: 0;object-fit: cover;height: 260px;object-fit:cover;margin-bottom:8px;}
-	/*.slides img {width:100%;aspect-ratio: 1/1;object-fit: cover;border-radius: 14px;flex-shrink: 0;margin-bottom: 8px;}
-	.slides img {width: auto;flex: 0 0 auto;height: 100%;aspect-ratio: 1/1;object-fit: cover;border-radius: 0;margin-right: 8px;}
-
-	@keyframes slideShow {
-	  0%   { transform: translateX(0); }
-	  20%  { transform: translateX(0); }
-	  
-	  /* 1 foto 
-	  25%  { transform: translateX(calc(-100% - 8px)); }
-	  45%  { transform: translateX(calc(-100% - 8px)); }
-	
-	  /* 2 fotos 
-	  50%  { transform: translateX(calc(-200% - 16px)); }
-	  70%  { transform: translateX(calc(-200% - 16px)); }
-	
-	  /* 3 fotos 
-	  75%  { transform: translateX(calc(-300% - 24px)); }
-	  95%  { transform: translateX(calc(-300% - 24px)); }
-	
-	  100% { transform: translateX(0); }
-	}*/
-
-	/* Animation: 4 fotos → 4 pasos 
-	@keyframes slideShow {
-	  0%   { transform: translateX(0%); }
-	  20%  { transform: translateX(0%); }
-	  25%  { transform: translateX(-100%); }
-	
-	  45%  { transform: translateX(-100%); }
-	  50%  { transform: translateX(-200%); }
-	
-	  70%  { transform: translateX(-200%); }
-	  75%  { transform: translateX(-300%); }
-	
-	  95%  { transform: translateX(-300%); }
-	  100% { transform: translateX(0%); }
-	}*/
 
     /* MOBILE FIXES for timeline */
     @media (max-width: 480px) {
@@ -267,8 +183,6 @@
 	  .photo-slider{max-width:1200px; height: 1200px;}
 	  .slides img {height:100%}
     }
-	  
-
 
 	  @media (min-width: 900px) { /* centra la hora y el punto respecto al contenido */
 		  .timeline-item {
@@ -410,15 +324,6 @@
       .calendar-days .special-day::before { font-size: 2.2rem; -webkit-text-stroke:2.2px #d4a373; text-stroke:2px #d4a373; transform: translate(-50%,-40%);}
     }
     /* ====== END CALENDAR STYLES ====== */
-    
-    /*@media (max-width: 480px) {
-      .section-passport { padding: 1rem 0.4rem; margin-top: 0.3rem auto} 
-      }
-    @media (max-width: 480px) {
-      /*.section-boarding { padding: 1rem 0.4rem; margin-top: 0.3rem auto;margin-bottom: 0.3rem;} margin: 1.2rem auto;margin-bottom: 0.3rem;
-      .section-boarding { padding: 1rem 0.4rem}
-      }*/
-
   </style>
 </head>
 <body>
@@ -664,15 +569,11 @@
 				<div class="slide" style="background-image: url('images/Slides2.jpg');" aria-label="Foto 2"></div>
 				<div class="slide" style="background-image: url('images/Slides3.jpg');" aria-label="Foto 3"></div>
 				<div class="slide" style="background-image: url('images/Slides4.jpg');" aria-label="Foto 4"></div>
-				<!-- I<img src="images/Slides1.jpg" alt="Foto 1">
-				<img src="images/Slides2.jpg" alt="Foto 2">
-				<img src="images/Slides3.jpg" alt="Foto 3">
-				<img src="images/Slides4.jpg" alt="Foto 4"> -->
 			</div>
 		</div>
 	</section>
 
-	<!-- FIN SEXTA SECCIÓN SLIDES -->
+	<!-- FIN SEXTA SECCIÓN SLIDES OK-->
 
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
     <section class="section">
@@ -971,7 +872,6 @@
         });
       });
     });
-
     /* End script */
   </script>
 </body>
