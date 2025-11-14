@@ -164,6 +164,20 @@
       .hero-title{font-size:30px}
       .cd-item .num{font-size:36px}
     }
+	  
+	/* ====== MEDIA PARA TIMELINE ====== */ 
+	@media (min-width: 900px) {
+	  .timeline-item img {
+	    max-height: 350px;   /* más grande y cuadrado */
+	    height: 350px;
+	    object-fit: cover;   /* mantiene la estética */
+	    width: 350px;        /* cuadrada */
+	  }
+	.timeline-item .content {
+    	max-width: calc(100% - 380px); /* evita que el texto salte */
+  		}
+	}
+/* ====== FIN MEDIA TIMILINE ====== */
 
      /* MOBILE FIXES for Countdown */
     @media (max-width: 420px) {
