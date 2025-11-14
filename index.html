@@ -140,17 +140,18 @@
 	.photo-slider-section {margin-top: 30px;text-align: center;}	
 	.photo-slider-section h2 {font-family:"Playfair Display", serif;font-size: 28px;margin-bottom: 14px;color: #8b5a3f;}	
 	.photo-slider {width: 100%;max-width: 400px;height: 400px;margin: auto;overflow: hidden;background-color: transparent;border-radius: 18px;box-shadow: 0 10px 25px rgba(0,0,0,0.10);border: 1px solid rgba(0,0,0,0.08);}
-	.slides {display: flex;height: 100%;animation: slideShow 28s infinite;}
+	.slides {display: flex;height: 100%;animation: slideShow 35s infinite;}
 	.slide{flex: 0 0 100%;height: 100%;background-size: cover;background-position: center;background-repeat: no-repeat;}
 	.slides img {width: 100%;height: 100%;flex: 0 0 100%;object-fit: contain;}	
 	
 	/* Animación 4 fotos */
 	@keyframes slideShow {
-	  0%, 20% { transform: translateX(0%); }
-	  25%, 45% { transform: translateX(-100%); }
-	  50%, 70% { transform: translateX(-200%); }
-	  75%, 95% { transform: translateX(-300%); }
-	  100% { transform: translateX(0%); }
+	  0%, 19%   { transform: translateX(0%); }   /* Foto 1 */
+	  20%, 39%  { transform: translateX(-100%); } /* Foto 2 */
+	  40%, 59%  { transform: translateX(-200%); } /* Foto 3 */
+	  60%, 79%  { transform: translateX(-300%); } /* Foto 4 */
+	  80%, 99%  { transform: translateX(-400%); } /* Foto 5 */
+	  100%      { transform: translateX(0%); }    /* Vuelve a inicio */
 	}
 
     /* MOBILE FIXES for timeline */
@@ -569,6 +570,7 @@
 				<div class="slide" style="background-image: url('images/Slides2.jpg');" aria-label="Foto 2"></div>
 				<div class="slide" style="background-image: url('images/Slides3.jpg');" aria-label="Foto 3"></div>
 				<div class="slide" style="background-image: url('images/Slides4.jpg');" aria-label="Foto 4"></div>
+				<div class="slide" style="background-image: url('images/Slides5.jpg');" aria-label="Foto 5"></div>
 			</div>
 		</div>
 	</section>
