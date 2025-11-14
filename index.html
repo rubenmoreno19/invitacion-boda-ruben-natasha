@@ -153,7 +153,6 @@
 	/* --- MÓVIL: CUADRADO --- */
 	.photo-slider {
 	  width: 100%;
-	  position: relative;
 	  max-width: 400px;
 	  height: 400px;       /* 🔥 cuadrado perfecto en móvil */
 	  margin: auto;
@@ -168,13 +167,7 @@
 	.slides {
 	  display: flex;
 	  height: 100%;
-	  /*animation: slideShow 18s infinite;*/
-	}
-	.slides.auto {
-		animation: slideShow 18s infinite;
-	}
-	.slides.manual {
-		animation: none !important;
+	  animation: slideShow 18s infinite;
 	}
 	.slide{
 		flex: 0 0 100%;
@@ -189,33 +182,6 @@
 	  height: 100%;
 	  flex: 0 0 100%;
 	  object-fit: contain; /* 🔥 recorta sin deformar */
-	}
-	  /* Botones */
-	.slider-btn {
-	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  background: rgba(0,0,0,0.35);
-	  border: none;
-	  color: #fff;
-	  padding: 10px 14px;
-	  font-size: 22px;
-	  cursor: pointer;
-	  z-index: 10;
-	  border-radius: 50%;
-	  transition: 0.3s;
-	}
-	
-	.slider-btn:hover {
-	  background: rgba(0,0,0,0.55);
-	}
-	
-	.slider-btn.prev { left: 10px; }
-	.slider-btn.next { right: 10px; }
-	
-	/* Pausar animación si JS agrega la clase */
-	.slides.paused {
-	  animation-play-state: paused;
 	}
 	
 	/* Animación 4 fotos */
@@ -694,12 +660,10 @@
 		<h2 data-i18n="slider_title">Momentos juntos</h2>
 		<div class="photo-slider">
 			<div class="slides">
-				<button class="slider-btn prev">❮</button>
-				<button class="slider-btn next">❯</button>
-					<div class="slide" style="background-image: url('images/Slides1.jpg');" aria-label="Foto 1"></div>
-					<div class="slide" style="background-image: url('images/Slides2.jpg');" aria-label="Foto 2"></div>
-					<div class="slide" style="background-image: url('images/Slides3.jpg');" aria-label="Foto 3"></div>
-					<div class="slide" style="background-image: url('images/Slides4.jpg');" aria-label="Foto 4"></div>
+				<div class="slide" style="background-image: url('images/Slides1.jpg');" aria-label="Foto 1"></div>
+				<div class="slide" style="background-image: url('images/Slides2.jpg');" aria-label="Foto 2"></div>
+				<div class="slide" style="background-image: url('images/Slides3.jpg');" aria-label="Foto 3"></div>
+				<div class="slide" style="background-image: url('images/Slides4.jpg');" aria-label="Foto 4"></div>
 				<!-- I<img src="images/Slides1.jpg" alt="Foto 1">
 				<img src="images/Slides2.jpg" alt="Foto 2">
 				<img src="images/Slides3.jpg" alt="Foto 3">
@@ -1007,54 +971,6 @@
         });
       });
     });
-
-	// asdad
-	const slides = document.querySelector('.slides');
-	const totalSlides = document.querySelectorAll('.slide').length;
-	
-	let currentIndex = 0;
-	
-	// Activamos la animación automática al iniciar
-	slides.classList.add('auto');
-	
-	/* Quita la animación CSS para permitir control manual */
-	function pauseAuto() {
-	    slides.classList.remove('auto');
-	    slides.classList.add('manual');
-	}
-	
-	/* Después de 5 segundos sin usar botones, vuelve la animación auto */
-	let autoTimeout;
-	
-	function resumeAuto() {
-	    clearTimeout(autoTimeout);
-	    autoTimeout = setTimeout(() => {
-	        slides.classList.remove('manual');
-	        slides.classList.add('auto');
-	    }, 5000);
-	}
-	
-	/* Mover manualmente */
-	function updateSlide() {
-	    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-	}
-	
-	/* Siguiente */
-	document.querySelector('.next').addEventListener('click', () => {
-	    pauseAuto();
-	    currentIndex = (currentIndex + 1) % totalSlides;
-	    updateSlide();
-	    resumeAuto();
-	});
-	
-	/* Anterior */
-	document.querySelector('.prev').addEventListener('click', () => {
-	    pauseAuto();
-	    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-	    updateSlide();
-	    resumeAuto();
-	});
-
 
     /* End script */
   </script>
