@@ -168,7 +168,13 @@
 	.slides {
 	  display: flex;
 	  height: 100%;
-	  animation: slideShow 18s infinite;
+	  /*animation: slideShow 18s infinite;*/
+	}
+	.slides.auto {
+		animation: slideShow 18s infinite;
+	}
+	.slides.manual {
+		animation: none !important;
 	}
 	.slide{
 		flex: 0 0 100%;
@@ -1008,40 +1014,47 @@
 	
 	let currentIndex = 0;
 	
-	/* Pausar animación CSS cuando el usuario usa botones */
-	function pauseAnimation() {
-	    slides.classList.add('paused');
+	// Activamos la animación automática al iniciar
+	slides.classList.add('auto');
+	
+	/* Quita la animación CSS para permitir control manual */
+	function pauseAuto() {
+	    slides.classList.remove('auto');
+	    slides.classList.add('manual');
 	}
 	
-	/* Reanudar animación después de 5s sin tocar nada */
-	let resumeTimeout;
-	function resumeAnimation() {
-	    clearTimeout(resumeTimeout);
-	    resumeTimeout = setTimeout(() => {
-	        slides.classList.remove('paused');
+	/* Después de 5 segundos sin usar botones, vuelve la animación auto */
+	let autoTimeout;
+	
+	function resumeAuto() {
+	    clearTimeout(autoTimeout);
+	    autoTimeout = setTimeout(() => {
+	        slides.classList.remove('manual');
+	        slides.classList.add('auto');
 	    }, 5000);
 	}
 	
-	/* Actualizar la posición manualmente */
+	/* Mover manualmente */
 	function updateSlide() {
 	    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
 	}
 	
-	/* Botón siguiente */
+	/* Siguiente */
 	document.querySelector('.next').addEventListener('click', () => {
-	    pauseAnimation();
+	    pauseAuto();
 	    currentIndex = (currentIndex + 1) % totalSlides;
 	    updateSlide();
-	    resumeAnimation();
+	    resumeAuto();
 	});
 	
-	/* Botón anterior */
+	/* Anterior */
 	document.querySelector('.prev').addEventListener('click', () => {
-	    pauseAnimation();
+	    pauseAuto();
 	    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
 	    updateSlide();
-	    resumeAnimation();
+	    resumeAuto();
 	});
+
 
     /* End script */
   </script>
