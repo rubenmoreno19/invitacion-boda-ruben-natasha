@@ -171,6 +171,14 @@
 		  .timeline-item {
 			  align-items: center;
 		  }
+		  .timeline-item .time {
+			  padding-top: 0;
+			  align-self: center;
+		  }
+		  .timeline-item::before {
+			  top: 50%;
+			  transform: translateY(-50%);
+		  }
 		  /* content en columna pero con ancho limitado */
 		  .timeline-item .content {
 			  max-width: 100%;
