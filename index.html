@@ -553,10 +553,10 @@
 			  <div class="gift-card-face gift-card-back">
 				<div>
 				  <strong>ES25 0182 5978 8102 0165 1446</strong><br>Rubén Moreno Torrejón</div>
-				  	<button class="copy-btn" onclick="copyIBAN(event)">Copiar</button>
 			  </div>
 			</div>
 		  </div>
+			  <button class="copy-btn" onclick="copyIBAN()">Copiar número</button>
 		</div>
 			
 			<hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
@@ -880,20 +880,11 @@
       });
     });
 
-	function copyIBAN(event) {
-		event.stopPropagation(); // evita que la tarjeta se gire
-		const ibanElement = document.getElementById("iban-text");
-		const iban = ibanElement.textContent || ibanElement.innerText; // asegúrate de obtener el texto
-
-  // Crear un textarea temporal para copiar (compatibilidad máxima)
-		const tempInput = document.createElement("textarea");
-		tempInput.value = iban;
-		document.body.appendChild(tempInput);
-		tempInput.select();
-		tempInput.setSelectionRange(0, 99999); // para móviles
-		document.execCommand("copy"); // copia al portapapeles
-		document.body.removeChild(tempInput);
-		alert("Número de cuenta copiado ✔️");
+	function copyIBAN() {
+	  const iban = "ES12 3456 7890 1234 5678 9012"; // lo defines aquí o lo lees de algún lado
+	  navigator.clipboard.writeText(iban).then(() => {
+	    alert("Número de cuenta copiado ✔️");
+	  });
 	}
     /* End script */
   </script>
