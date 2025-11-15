@@ -170,54 +170,11 @@
 	.contact-icons a {display: flex;align-items: center;gap: 6px;color: var(--accent-dark);text-decoration: none;font-weight: 500;transition: opacity 0.2s ease;}
 	.contact-icons a:hover {opacity: 0.8;}
 	.icon {width: 20px;height: 20px;object-fit: contain;}
-	/* NEW */
-	/* Tarjeta flip */
-	.gift-card-container {
-	  perspective: 1000px;
-	  display: flex;
-	  justify-content: center;
-	  margin-top: 14px;
-	}
-	
-	.gift-card {
-	  width: 400px;
-	  height: 40px;
-	  position: relative;
-	  transform-style: preserve-3d;
-	  transition: transform 0.6s;
-	  cursor: pointer;
-	}
-	
-	.gift-card.flip {
-	  transform: rotateY(180deg);
-	}
-	
-	.gift-card-face {
-	  position: absolute;
-	  width: 100%;
-	  height: 100%;
-	  backface-visibility: hidden;
-	  border-radius: 12px;
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  text-align: center;
-	  padding: 14px;
-	  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-	  background: var(--card);
-	  border: 1px solid rgba(0,0,0,0.04);
-	  font-weight: 600;
-	  color: var(--accent-dark);
-	  font-size: 14px;
-	  white-space: nowrap;
-	}
-	
-	.gift-card-back {
-	  transform: rotateY(180deg);
-	  background: linear-gradient(180deg,#fff,#fbf6f2);
-	  border: 1px dashed rgba(0,0,0,0.09);
-	}
-
+	.gift-card-container {perspective: 1000px;display: flex;justify-content: center;margin-top: 14px;}
+	.gift-card {width: 400px;height: 40px;position: relative;transform-style: preserve-3d;transition: transform 0.6s;cursor: pointer;}	
+	.gift-card.flip {transform: rotateY(180deg);}
+	.gift-card-face {position: absolute;width: 100%;height: 100%;backface-visibility: hidden;border-radius: 12px;display: flex;justify-content: center;align-items: center;text-align: center;padding: 14px;box-shadow: 0 12px 32px rgba(0,0,0,0.06);background: var(--card);border: 1px solid rgba(0,0,0,0.04);font-weight: 600;color: var(--accent-dark);font-size: 14px;white-space: nowrap;}
+	.gift-card-back {transform: rotateY(180deg);background: linear-gradient(180deg,#fff,#fbf6f2);border: 1px dashed rgba(0,0,0,0.09);}
 
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -573,13 +530,13 @@
 	      <hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
 
 		<div style="margin-top:20px; text-align:center;">
-		  <p data-i18n="gift_text" style="color:var(--muted); font-size:14px;">Si queréis hacernos un regalo, aquí tenéis nuestra información bancaria. ¡Gracias por vuestro cariño!</p>
+		  <p data-i18n="gift_text" style="color:var(--muted); font-size:14px;" data_i18n="info_5">Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!</p>
 		  <div class="gift-card-container">
 			<div class="gift-card" onclick="this.classList.toggle('flip')">
-			  <div class="gift-card-face gift-card-front">Información de cuenta</div>
+			  <div class="gift-card-face gift-card-front"; data_i18n="info_6">Información de cuenta</div>
 			  <div class="gift-card-face gift-card-back">
 				<div>
-				  <strong>ES12 3456 7890 1234 5678 9012</strong><br>Titular: Rubén y Natasha</div>
+				  <strong ES12 3456 7890 1234 5678 9012</strong><br>Titular: Rubén Moreno Torrejón</div>
 			  </div>
 			</div>
 		  </div>
@@ -671,7 +628,8 @@
         nota:'Por favor, agradeceríamos vuestra confirmación de asistencia a la boda antes del día 1 de febrero de 2026',
         date: 'FECHA', gate: 'PUERTA DE EMBARQUE', gate_1: 'Royal Beach, San Petersburgo, Rusia', time: 'HORA DE EMBARQUE', n_vuelo: 'NÚMERO DE VUELO', aerolínea: 'AEROLINEA', h_desp: 'HORA DE DESPEGUE',
 		slider_title: 'Momentos juntos',
-		info_1:'Información importante', info_2:'Para cualquier duda que tengáis, no dudéis en contactar con nosotros pulsando en el número de teléfono o en el usuario.', info_3:'Rubén Moreno Torrejón', info_4:'Natasha Polkanova'
+		info_1:'Información importante', info_2:'Para cualquier duda que tengáis, no dudéis en contactar con nosotros pulsando en el número de teléfono o en el usuario.', info_3:'Rubén Moreno Torrejón', info_4:'Natasha Polkanova',
+		info_5:'Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!', info_6:'Información de cuenta'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -702,7 +660,8 @@
         nota:'Очень просим подтвердить вас свое присутствие на нашем празднике до 1го февраля 2026 года',
         date: 'ДАТА', gate: 'ВЫХОД НА ПОСАДКУ',gate_1: 'Royal Beach, Санкт-Петербург, Россия', time: 'ВРЕМЯ ПОСАДКИ', n_vuelo: 'НОМЕР РЕЙСА', aerolínea: 'ПЕРЕВОЗЧИК', h_desp: 'ВРЕМЯ ОТПРАВЛЕНИЯ',
 		slider_title: 'Наши моменты',
-		info_1:'Важная информация', info_2:'Если у вас есть какие-либо вопросы, не стесняйтесь обращаться к нам, позвонив по телефону или написав в чат.', info_3:'Rubén Moreno Torrejón', info_4:'Наташа Полканова'
+		info_1:'Важная информация', info_2:'Если у вас есть какие-либо вопросы, не стесняйтесь обращаться к нам, позвонив по телефону или написав в чат.', info_3:'Rubén Moreno Torrejón', info_4:'Наташа Полканова',
+		info_5:'Ваше присутствие – лучший подарок для нас, но если вы хотите сделать нам более особенный подарок, вы можете ознакомиться со следующей карточкой. Спасибо вам от всего сердца!', info_6:'Информация об учетной записи'
       }
     };
 
