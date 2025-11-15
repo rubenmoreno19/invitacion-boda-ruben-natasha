@@ -157,58 +157,19 @@
 	.slide{flex: 0 0 100%;height: 100%;background-size: cover;background-position: center;background-repeat: no-repeat;}
 	.slides img {width: 100%;height: 100%;flex: 0 0 100%;object-fit: contain;}
 
-	    /* Info */
+	/* Info */
     .section-info{padding:18px;margin-top:6px;}
     .card-infp{background:var(--card);border-radius:12px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border: 1px solid rgba(0,0,0,0.03);}
     .ticket-info{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
     .ticket-info h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
     .info-titulos h3{margin-top:10px;color:var(--accent);font-weight:600;font-size:18px;margin-top:0;}
     .ticket-info hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
-	/* NEW*/
-	  /* Contact info */
 	.contact-sub{color:var(--muted);font-size:13px;margin-top:6px;font-weight:bold;}
-	.contact-item {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  text-align: center;
-	  gap: 6px;
-	}
-	
-	/*.contact-icons {
-	  display: flex;
-	  gap: 10px;
-	  align-items: center;
-	  font-size: 14px;
-	  color: var(--accent-dark);
-	}*/
-	.contact-icons {
-	  display: flex;
-	  flex-direction: row;
-	  flex-wrap: wrap;
-	  gap: 10px;
-	  justify-content: center;
-	  align-items: center;
-	}
-	.contact-icons a {
-	  display: flex;
-	  align-items: center;
-	  gap: 6px;
-	  color: var(--accent-dark);
-	  text-decoration: none;
-	  font-weight: 500;
-	  transition: opacity 0.2s ease;
-	}
-	
-	.contact-icons a:hover {
-	  opacity: 0.8;
-	}
-	
-	.icon {
-	  width: 20px;
-	  height: 20px;
-	  object-fit: contain;
-	}
+	.contact-item {display: flex;flex-direction: column;align-items: center;text-align: center;gap: 6px;}
+	.contact-icons {display: flex;flex-direction: row;flex-wrap: wrap;gap: 10px;justify-content: center;align-items: center;}
+	.contact-icons a {display: flex;align-items: center;gap: 6px;color: var(--accent-dark);text-decoration: none;font-weight: 500;transition: opacity 0.2s ease;}
+	.contact-icons a:hover {opacity: 0.8;}
+	.icon {width: 20px;height: 20px;object-fit: contain;}
 
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -567,7 +528,6 @@
 	        <div style="display:flex; justify-content:center; align-items:center; text-align:center;">
 				<div class="contact-sub" data-i18n="info_2">Para cualquier duda que tengáis, no dudéis en contactar con nosotros pulsando en el número de teléfono o en el usuario.</div> 
 	        </div>
-	        <!-- NUEVA SECCIÓN DE CONTACTO -->
 	        <div class="contact-item">
 	          <strong style="color:var(--accent-dark);"data-i18n="info_3">Rubén Moreno Torrejón</strong>
 	          <div class="contact-icons">
@@ -579,7 +539,6 @@
 				  </a>
 	          </div>
 	        </div>
-	
 	        <div class="contact-item">
 	          <strong style="color:var(--accent-dark);"data-i18n="info_4">Natasha Polkanova</strong>
 	          <div class="contact-icons">
@@ -595,8 +554,6 @@
 	    </div> 
 	  </div> 
 	</section>
-
-			
 
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
     <section class="section">
