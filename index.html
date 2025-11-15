@@ -880,13 +880,21 @@
       });
     });
 
-	  function copyIBAN(event) {
-		  event.stopPropagation(); // <-- evita que la tarjeta se gire
-		  const iban = document.getElementById("iban-text").innerText;
-		  navigator.clipboard.writeText(iban).then(() => {
-			  alert("Número de cuenta copiado ✔️");
-		  });
-	  }
+	function copyIBAN(event) {
+		event.stopPropagation(); // evita que la tarjeta se gire
+		const ibanElement = document.getElementById("iban-text");
+		const iban = ibanElement.textContent || ibanElement.innerText; // asegúrate de obtener el texto
+
+  // Crear un textarea temporal para copiar (compatibilidad máxima)
+		const tempInput = document.createElement("textarea");
+		tempInput.value = iban;
+		document.body.appendChild(tempInput);
+		tempInput.select();
+		tempInput.setSelectionRange(0, 99999); // para móviles
+		document.execCommand("copy"); // copia al portapapeles
+		document.body.removeChild(tempInput);
+		alert("Número de cuenta copiado ✔️");
+	}
     /* End script */
   </script>
 </body>
