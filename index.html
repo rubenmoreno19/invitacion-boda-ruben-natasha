@@ -605,7 +605,7 @@
 
       <!-- ACTIONS -->
       <div class="actions">
-        <a class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
+        <a id="rsvp-link" class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
         <button class="btn" onclick="openGoogleCalendar()" data-i18n="add_gcal">Google Calendar</button>
         <button class="btn" onclick="downloadICS()" data-i18n="add_ical">Añadir a Outlook/iOS</button>
       </div>
@@ -687,6 +687,32 @@
 
     /* Apply translations + highlight */
     let currentLang = (navigator.language && navigator.language.startsWith('ru')) ? 'ru' : 'es';
+
+	/*NEW*/
+	const RSVP_LINKS = {
+	  es: "https://forms.gle/Y3iuPmjdmrtKARxb8",
+	  ru: "https://as.com"
+	};
+	
+	function updateRsvpLink(lang) {
+	  const link = document.getElementById("rsvp-link");
+	  if(link && RSVP_LINKS[lang]) {
+	    link.href = RSVP_LINKS[lang];
+	  }
+	}
+	
+	function setLang(lang){
+	  currentLang = lang;
+	  applyLang(lang);
+	  highlightLangButton();
+	  updateRsvpLink(lang); // 🔹 actualizamos el enlace
+	}
+	
+	document.addEventListener('DOMContentLoaded', ()=>{
+	  applyLang(currentLang);
+	  highlightLangButton();
+	  updateRsvpLink(currentLang); // 🔹 enlace correcto desde el inicio
+	});
 
     function applyLang(lang){
       document.querySelectorAll('[data-i18n]').forEach(el=>{
