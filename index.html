@@ -186,6 +186,7 @@
 	.actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
     .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
     .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
+	.actions-sub{color:var(--muted);font-size:13px;margin-top:6px;font-weight:bold;}
 
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -614,10 +615,15 @@
 	      </div>
 	      <hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
 			<div style="margin-top:20px; text-align:center;">
-				<p class="contact-sub" data-i18n="action_2">Contamos con tu asistencia para este día tan bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.</p>
+				<p class="actions-sub" data-i18n="action_2">Contamos con tu asistencia para este día tan bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.</p>
 			</div>
 			<div class="actions">
 				<a id="rsvp-link" class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
+			</div>
+			<div style="margin-top:20px; text-align:center;">
+				<p class="actions-sub" data-i18n="action_3">Además, si quieres, ¡puedes añadir la fecha a tu calendario!</p>
+			</div>
+			<div class="actions">
 				<button class="btn" onclick="openGoogleCalendar()" data-i18n="add_gcal">Google Calendar</button>
 				<button class="btn" onclick="downloadICS()" data-i18n="add_ical">Añadir a Outlook/iOS</button>
 			</div>
@@ -666,7 +672,8 @@
 		info_1:'Información importante', info_2:'Para cualquier duda que tengáis, no dudéis en contactar con nosotros pulsando en el número de teléfono o en el usuario.', info_3:'Rubén Moreno Torrejón', info_4:'Natasha Polkanova',
 		info_5:'Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!', info_6:'Información de cuenta',
 		copy_text:'Copiar texto', copy_success: 'Número de cuenta copiado ✔️',
-		action_1:'Confirma tu asistencia', action_2: 'Contamos con tu asistencia para este día taa bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.'
+		action_1:'Confirma tu asistencia', action_2: 'Contamos con tu asistencia para este día tan bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.',
+		action_3: 'Además, si quieres, ¡puedes añadir la fecha a tu calendario!'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -700,7 +707,8 @@
 		info_1:'Важная информация', info_2:'Если у вас есть какие-либо вопросы, не стесняйтесь обращаться к нам, позвонив по телефону или написав в чат.', info_3:'Rubén Moreno Torrejón', info_4:'Наташа Полканова',
 		info_5:'Ваше присутствие – лучший подарок для нас, но если вы хотите сделать нам более особенный подарок, вы можете ознакомиться со следующей карточкой. Спасибо вам от всего сердца!', info_6:'Информация об учетной записи',
 		copy_text: 'Копировать текст', copy_success: 'Номер счета скопирован ✔️',
-		action_1: 'Подтвердите свое участие', action_2: 'Мы рассчитываем на ваше участие в этом прекрасном дне. Подтвердите свое участие, нажав и заполнив форму. Если вы не можете присоединиться к нам, также укажите это в форме.'
+		action_1: 'Подтвердите свое участие', action_2: 'Мы рассчитываем на ваше участие в этом прекрасном дне. Подтвердите свое участие, нажав и заполнив форму. Если вы не можете присоединиться к нам, также укажите это в форме.',
+		action_3: 'Кроме того, если хотите, вы можете добавить дату в свой календарь!'
       }
     };
 
