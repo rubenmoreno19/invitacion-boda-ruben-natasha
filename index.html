@@ -101,9 +101,6 @@
     .cd-item small{font-size:11px;color:rgba(0,0,0,0.6);text-transform:uppercase}
 
     /* actions */
-    .actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
-    .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
-    .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
 
 	/* ====== CALENDAR STYLES (aplican en todo tamaño) ====== */
     .calendar-section {margin-top:6px;text-align: center;background-color: #fdfaf6;padding: 1.5rem 1rem;border-radius: 16px;box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);margin: 2rem auto;max-width: 800px;font-family: 'Playfair Display', serif;}
@@ -160,7 +157,7 @@
 
 	/* Info */
     .section-info{padding:18px;margin-top:6px;}
-    .card-infp{background:var(--card);border-radius:12px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border: 1px solid rgba(0,0,0,0.03);}
+    .card-info{background:var(--card);border-radius:12px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border: 1px solid rgba(0,0,0,0.03);}
     .ticket-info{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
     .ticket-info h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
     .info-titulos h3{margin-top:10px;color:var(--accent);font-weight:600;font-size:18px;margin-top:0;}
@@ -178,6 +175,17 @@
 	.gift-card-back {transform: rotateY(180deg);background: linear-gradient(180deg,#fff,#fbf6f2);border: 1px dashed rgba(0,0,0,0.09);}
 	.copy-btn {margin-top: 8px;padding: 4px 10px;border: none;border-radius: 6px;background: var(--accent);color: white;font-size: 12px;cursor: pointer;transition: opacity 0.2s ease;}
 	.copy-btn:hover {opacity: 0.8;}
+
+	/* Actions */
+	.section-actions{padding:18px;margin-top:6px;}
+    .card-actions{background:var(--card);border-radius:12px;overflow:hidden;box-shadow: 0 18px 40px rgba(34,34,34,0.06);border: 1px solid rgba(0,0,0,0.03);}
+    .ticket-actions{background:linear-gradient(180deg,#fff,#fbf6f2);border-radius:12px;padding:14px;border:1px dashed rgba(0,0,0,0.06);box-shadow:var(--shadow)}
+    .ticket-actions h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
+    .info-actions h3{margin-top:10px;color:var(--accent);font-weight:600;font-size:18px;margin-top:0;}
+    .ticket-actions hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
+	.actions{padding:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+    .btn{padding:10px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);background:var(--card);cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
 
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -594,19 +602,32 @@
       </div>
 	</section>
 
-	<!-- FIN OCTAVA SECCIÓN COUNTDOWN -->
+	<!-- FIN OCTAVA SECCIÓN COUNTDOWN  OK-->
+
+	<!-- INICIO NOVENA SECCIÓN ASISTENCIA -->
+
+	<section class="section-actions">
+	  <div class="card-actions">
+	    <div class="ticket-actions" id="action-details">
+	      <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+	        <h3 data-i18n="action_1">Confirma tu asistencia</h3>
+	      </div>
+	      <hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
+			<div style="margin-top:20px; text-align:center;">
+				<p class="contact-sub" data-i18n="action_2">Contamos con tu asistencia para este día tan bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.</p>
+			</div>
+			<div class="actions">
+				<a id="rsvp-link" class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
+				<button class="btn" onclick="openGoogleCalendar()" data-i18n="add_gcal">Google Calendar</button>
+				<button class="btn" onclick="downloadICS()" data-i18n="add_ical">Añadir a Outlook/iOS</button>
+			</div>
+		</div>
+	  </div>
+	</section>
+	  
+	<!-- FIN NOVENA SECCIÓN ASISTENCIA -->
+
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
-    <section class="section">
-
-
-      <!-- ACTIONS -->
-      <div class="actions">
-        <a id="rsvp-link" class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
-        <button class="btn" onclick="openGoogleCalendar()" data-i18n="add_gcal">Google Calendar</button>
-        <button class="btn" onclick="downloadICS()" data-i18n="add_ical">Añadir a Outlook/iOS</button>
-      </div>
-      </div>
-    </section>
     <!-- FIN SECCIÓN: Countdown + Actions -->
   <script>
     /* ===========================
@@ -644,7 +665,8 @@
 		slider_title: 'Momentos juntos',
 		info_1:'Información importante', info_2:'Para cualquier duda que tengáis, no dudéis en contactar con nosotros pulsando en el número de teléfono o en el usuario.', info_3:'Rubén Moreno Torrejón', info_4:'Natasha Polkanova',
 		info_5:'Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!', info_6:'Información de cuenta',
-		copy_text:'Copiar texto', copy_success: 'Número de cuenta copiado ✔️'
+		copy_text:'Copiar texto', copy_success: 'Número de cuenta copiado ✔️',
+		action_1:'Confirma tu asistencia', action_2: 'Contamos con tu asistencia para este día taa bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -677,7 +699,8 @@
 		slider_title: 'Наши моменты',
 		info_1:'Важная информация', info_2:'Если у вас есть какие-либо вопросы, не стесняйтесь обращаться к нам, позвонив по телефону или написав в чат.', info_3:'Rubén Moreno Torrejón', info_4:'Наташа Полканова',
 		info_5:'Ваше присутствие – лучший подарок для нас, но если вы хотите сделать нам более особенный подарок, вы можете ознакомиться со следующей карточкой. Спасибо вам от всего сердца!', info_6:'Информация об учетной записи',
-		copy_text: 'Копировать текст', copy_success: 'Номер счета скопирован ✔️'
+		copy_text: 'Копировать текст', copy_success: 'Номер счета скопирован ✔️',
+		action_1: 'Подтвердите свое участие', action_2: 'Мы рассчитываем на ваше участие в этом прекрасном дне. Подтвердите свое участие, нажав и заполнив форму. Если вы не можете присоединиться к нам, также укажите это в форме.'
       }
     };
 
