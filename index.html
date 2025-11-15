@@ -94,6 +94,7 @@
     audio{width:100%;border-radius:10px;outline:none}
 
     /* countdown */
+	.countdown-section {margin-top: 30px;text-align: center;}
     .countdown-wrap{margin-top:6px;padding:18px;background:transparent;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;box-shadow:none;border:none}
     .cd-item{background:#fff;min-width:60px;padding:8px 10px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.04)display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
     .cd-item .num{font-family:'Playfair Display',serif;font-size:28px;color:var(--accent-dark);letter-spacing:1px}
@@ -175,22 +176,8 @@
 	.gift-card.flip {transform: rotateY(180deg);}
 	.gift-card-face {position: absolute;width: 100%;height: 100%;backface-visibility: hidden;border-radius: 12px;display: flex;justify-content: center;align-items: center;text-align: center;padding: 14px;box-shadow: 0 12px 32px rgba(0,0,0,0.06);background: var(--card);border: 1px solid rgba(0,0,0,0.04);font-weight: 600;color: var(--accent-dark);font-size: 14px;white-space: nowrap;}
 	.gift-card-back {transform: rotateY(180deg);background: linear-gradient(180deg,#fff,#fbf6f2);border: 1px dashed rgba(0,0,0,0.09);}
-
-	.copy-btn {
-	  margin-top: 8px;
-	  padding: 4px 10px;
-	  border: none;
-	  border-radius: 6px;
-	  background: var(--accent);
-	  color: white;
-	  font-size: 12px;
-	  cursor: pointer;
-	  transition: opacity 0.2s ease;
-	}
-	
-	.copy-btn:hover {
-	  opacity: 0.8;
-	}
+	.copy-btn {margin-top: 8px;padding: 4px 10px;border: none;border-radius: 6px;background: var(--accent);color: white;font-size: 12px;cursor: pointer;transition: opacity 0.2s ease;}
+	.copy-btn:hover {opacity: 0.8;}
 
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -591,17 +578,24 @@
 	    </div> 
 	  </div> 
 	</section>
+	  
+	<!-- FIN SÉPTIMA SECCIÓN INFO OK -->
 
-    <!-- NUEVA SECCIÓN: Countdown + Actions -->
-    <section class="section">
-      <div class="calendar-section">
-      <!-- COUNTDOWN -->
+	<!-- INICIO OCTAVA SECCIÓN COUNTDOWN -->
+
+	<section class="countdown-section">
       <div class="countdown-wrap" aria-live="polite">
         <div class="cd-item"><div class="num" id="cd-days">00</div><small data-i18n="days">Días</small></div>
         <div class="cd-item"><div class="num" id="cd-hours">00</div><small data-i18n="hours">Horas</small></div>
         <div class="cd-item"><div class="num" id="cd-minutes">00</div><small data-i18n="minutes">Minutos</small></div>
         <div class="cd-item"><div class="num" id="cd-seconds">00</div><small data-i18n="seconds">Segundos</small></div>
       </div>
+	</section>
+
+	<!-- FIN OCTAVA SECCIÓN COUNTDOWN -->
+    <!-- NUEVA SECCIÓN: Countdown + Actions -->
+    <section class="section">
+
 
       <!-- ACTIONS -->
       <div class="actions">
