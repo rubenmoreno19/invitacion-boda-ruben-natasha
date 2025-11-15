@@ -34,7 +34,7 @@
 		Fin -> 00.00
       Sección6: Slides fotos -> OK
       Sección7: Dress code y números -> OK
-      Sección8: Countdown y formulario
+      Sección8: Countdown y formulario -> OK
       Sección9: Foto final y see you on 22nd	
       Sección10: Mapa
   -->
@@ -186,6 +186,14 @@
     .btn.primary{background:var(--accent);color:white;border-color:transparent;box-shadow:0 8px 18px rgba(183,155,107,0.14)}
 	.actions-sub{color:var(--muted);font-size:13px;margin-top:6px;font-weight:bold;}
 
+	/* See you */
+	.see-you-section {margin-top: 30px;text-align: center;}	
+	.see-you-section h2 {font-family:"Playfair Display", serif;font-size: 28px;margin-bottom: 14px;color: #8b5a3f;}	
+	.see-you-slider {width: 100%;max-width: 400px;height: 400px;margin: auto;overflow: hidden;background-color: transparent;border-radius: 18px;box-shadow: 0 10px 25px rgba(0,0,0,0.10);border: 1px solid rgba(0,0,0,0.08);}
+	.see-you-1 {display: flex;height: 100%;animation: slideShow 35s infinite;}
+	.see-you-2{flex: 0 0 100%;height: 100%;background-size: cover;background-position: center;background-repeat: no-repeat;}
+	.see-you-1 img {width: 100%;height: 100%;flex: 0 0 100%;object-fit: contain;}
+
 	/* Animación 4 fotos */
 	@keyframes slideShow {
 	  0%, 19%   { transform: translateX(0%); }   /* Foto 1 */
@@ -225,6 +233,7 @@
       .cd-item .num{font-size:36px}
 	  .photo-slider{max-width:1200px; height: 1200px;}
 	  .slides img {height:100%}
+	  .see-you-1 img {height:100%}
     }
 
 	  @media (min-width: 900px) { /* centra la hora y el punto respecto al contenido */
@@ -629,10 +638,21 @@
 	  </div>
 	</section>
 	  
-	<!-- FIN NOVENA SECCIÓN ASISTENCIA -->
+	<!-- FIN NOVENA SECCIÓN ASISTENCIA OK -->
 
-    <!-- NUEVA SECCIÓN: Countdown + Actions -->
-    <!-- FIN SECCIÓN: Countdown + Actions -->
+	<!-- INICIO DÉCIMA SECCIÓN SEE YOU -->
+
+	<section class="see-you-section">
+		<h2 data-i18n="seeyou_title">¡NOS VEMOS EL 22 DE JULIO DE 2026!</h2>
+		<div class="photo-seeyou">
+			<div class="see-you-1">
+				<div class="see-you-2" style="background-image: url('images/Slides1.jpg');" aria-label="Foto 1"></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FIN DÉCIMA SECCIÓN SEE YOU -->
+	  
   <script>
     /* ===========================
        TRANSLATIONS ES / RU
@@ -671,7 +691,8 @@
 		info_5:'Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!', info_6:'Información de cuenta',
 		copy_text:'Copiar texto', copy_success: 'Número de cuenta copiado ✔️',
 		action_1:'Confirma tu asistencia', action_2: 'Contamos con tu asistencia para este día tan bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.',
-		action_3: 'Además, si quieres, ¡puedes añadir la fecha a tu calendario!'
+		action_3: 'Además, si quieres, ¡puedes añadir la fecha a tu calendario!',
+		seeyou_title: '¡NOS VEMOS EL 22 DE JULIO DE 2026!'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -706,7 +727,8 @@
 		info_5:'Ваше присутствие – лучший подарок для нас, но если вы хотите сделать нам более особенный подарок, вы можете ознакомиться со следующей карточкой. Спасибо вам от всего сердца!', info_6:'Информация об учетной записи',
 		copy_text: 'Копировать текст', copy_success: 'Номер счета скопирован ✔️',
 		action_1: 'Подтвердите свое участие', action_2: 'Мы рассчитываем на ваше участие в этом прекрасном дне. Подтвердите свое участие, нажав и заполнив форму. Если вы не можете присоединиться к нам, также укажите это в форме.',
-		action_3: 'Кроме того, если хотите, вы можете добавить дату в свой календарь!'
+		action_3: 'Кроме того, если хотите, вы можете добавить дату в свой календарь!',
+		seeyou_title: 'УВИДИМСЯ 22 ИЮЛЯ 2026 ГОДА!'
       }
     };
 
