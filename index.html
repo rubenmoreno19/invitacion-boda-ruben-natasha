@@ -176,6 +176,22 @@
 	.gift-card-face {position: absolute;width: 100%;height: 100%;backface-visibility: hidden;border-radius: 12px;display: flex;justify-content: center;align-items: center;text-align: center;padding: 14px;box-shadow: 0 12px 32px rgba(0,0,0,0.06);background: var(--card);border: 1px solid rgba(0,0,0,0.04);font-weight: 600;color: var(--accent-dark);font-size: 14px;white-space: nowrap;}
 	.gift-card-back {transform: rotateY(180deg);background: linear-gradient(180deg,#fff,#fbf6f2);border: 1px dashed rgba(0,0,0,0.09);}
 
+	.copy-btn {
+	  margin-top: 8px;
+	  padding: 4px 10px;
+	  border: none;
+	  border-radius: 6px;
+	  background: var(--accent);
+	  color: white;
+	  font-size: 12px;
+	  cursor: pointer;
+	  transition: opacity 0.2s ease;
+	}
+	
+	.copy-btn:hover {
+	  opacity: 0.8;
+	}
+
 	/* Animación 4 fotos */
 	@keyframes slideShow {
 	  0%, 19%   { transform: translateX(0%); }   /* Foto 1 */
@@ -536,7 +552,9 @@
 			  <div class="gift-card-face gift-card-front"; data-i18n="info_6">Información de cuenta</div>
 			  <div class="gift-card-face gift-card-back">
 				<div>
-				  <strong>ES25 0182 5978 8102 0165 1446</strong><br>Rubén Moreno Torrejón</div>
+				  <strong>ES25 0182 5978 8102 0165 1446</strong>
+					<button class="copy-btn" onclick="copyIBAN()">Copiar</button>
+					<br>Rubén Moreno Torrejón</div>
 			  </div>
 			</div>
 		  </div>
@@ -862,6 +880,13 @@
         });
       });
     });
+
+	function copyIBAN() {
+		const iban = document.getElementById("iban-text").innerText;
+		navigator.clipboard.writeText(iban).then(() => {
+			alert("Número de cuenta copiado ✔️");
+		});
+	}
     /* End script */
   </script>
 </body>
