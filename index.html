@@ -701,13 +701,6 @@
 	  }
 	}
 	
-	function setLang(lang){
-	  currentLang = lang;
-	  applyLang(lang);
-	  highlightLangButton();
-	  updateRsvpLink(lang); // 🔹 actualizamos el enlace
-	}
-	
 	document.addEventListener('DOMContentLoaded', ()=>{
 	  applyLang(currentLang);
 	  highlightLangButton();
@@ -745,6 +738,7 @@
       currentLang = lang;
       applyLang(lang);
       highlightLangButton();
+	  updateRsvpLink(lang); // 🔹 actualizamos el enlace
     }
 
     document.addEventListener('DOMContentLoaded', ()=>{
