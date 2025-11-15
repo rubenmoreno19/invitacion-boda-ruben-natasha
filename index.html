@@ -164,8 +164,30 @@
     .ticket-info h3{font-family:'Playfair Display',serif;margin:0;color:var(--accent-dark);font-size:18px}
     .info-titulos h3{margin-top:10px;color:var(--accent);font-weight:600;font-size:18px;margin-top:0;}
     .ticket-info hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
-
+	/* NEW*/
+	  /* Contact info */
+	.contact-item {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  text-align: center;
+	  gap: 6px;
+	}
 	
+	.contact-icons {
+	  display: flex;
+	  gap: 10px;
+	  align-items: center;
+	  font-size: 14px;
+	  color: var(--accent-dark);
+	}
+	
+	.icon {
+	  width: 18px;
+	  height: 18px;
+	  object-fit: contain;
+	}
+
 	/* Animación 4 fotos */
 	@keyframes slideShow {
 	  0%, 19%   { transform: translateX(0%); }   /* Foto 1 */
@@ -528,6 +550,50 @@
 		</div> <!-- cierre ticket-info -->
 	  </div> <!-- cierre card-info -->
 	</section>
+
+
+	<!-- PRUEBA INFO -->
+
+
+	  <!-- INICIO SÉPTIMA SECCIÓN INFO -->
+	<section class="section-info">
+	  <div class="card-info">
+	    <div class="ticket-info" id="info-details">
+	      <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+	        <h3 data-i18n="more_title">Información importante</h3>
+	      </div>
+	      <hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
+	      
+	      <div class="row" style="display:flex; flex-direction:column; gap:12px;">
+	        <div style="display:flex; justify-content:center; align-items:center; text-align:center;">
+	          <strong style="color:var(--accent-dark)" data-i18n="nota">
+	            Para cualquier duda que tengáis, no dudéis en contactar con nosotros
+	          </strong>
+	        </div>
+	
+	        <!-- NUEVA SECCIÓN DE CONTACTO -->
+	        <div class="contact-item">
+	          <strong>Rubén:</strong>
+	          <div class="contact-icons">
+	            <img src="assets/img/whatsapp.png" alt="WhatsApp" class="icon" /> +34 656 307 981
+	            <img src="assets/img/telegram.png" alt="Telegram" class="icon" /> @rubenmoreno19
+	          </div>
+	        </div>
+	
+	        <div class="contact-item">
+	          <strong>Natalia:</strong>
+	          <div class="contact-icons">
+	            <img src="assets/img/whatsapp.png" alt="WhatsApp" class="icon" /> +7 900 000 000
+	            <img src="assets/img/telegram.png" alt="Telegram" class="icon" /> @natalia
+	          </div>
+	        </div>
+	        <!-- FIN NUEVA SECCIÓN -->
+	        
+	      </div> <!-- cierre row -->
+	    </div> <!-- cierre ticket-info -->
+	  </div> <!-- cierre card-info -->
+	</section>
+
 			
 
     <!-- NUEVA SECCIÓN: Countdown + Actions -->
