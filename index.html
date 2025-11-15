@@ -170,6 +170,52 @@
 	.contact-icons a {display: flex;align-items: center;gap: 6px;color: var(--accent-dark);text-decoration: none;font-weight: 500;transition: opacity 0.2s ease;}
 	.contact-icons a:hover {opacity: 0.8;}
 	.icon {width: 20px;height: 20px;object-fit: contain;}
+	/* NEW */
+	/* Tarjeta flip */
+	.gift-card-container {
+	  perspective: 1000px;
+	  display: flex;
+	  justify-content: center;
+	  margin-top: 14px;
+	}
+	
+	.gift-card {
+	  width: 220px;
+	  height: 120px;
+	  position: relative;
+	  transform-style: preserve-3d;
+	  transition: transform 0.6s;
+	  cursor: pointer;
+	}
+	
+	.gift-card.flip {
+	  transform: rotateY(180deg);
+	}
+	
+	.gift-card-face {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  backface-visibility: hidden;
+	  border-radius: 12px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+	  padding: 14px;
+	  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+	  background: var(--card);
+	  border: 1px solid rgba(0,0,0,0.04);
+	  font-weight: 600;
+	  color: var(--accent-dark);
+	}
+	
+	.gift-card-back {
+	  transform: rotateY(180deg);
+	  background: linear-gradient(180deg,#fff,#fbf6f2);
+	  border: 1px dashed rgba(0,0,0,0.09);
+	}
+
 
 	/* Animación 4 fotos */
 	@keyframes slideShow {
@@ -523,7 +569,21 @@
 	        <h3 data-i18n="info_1">Información importante</h3>
 	      </div>
 	      <hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
-	      
+
+		<div style="margin-top:20px; text-align:center;">
+		  <p data-i18n="gift_text" style="color:var(--muted); font-size:14px;">Si queréis hacernos un regalo, aquí tenéis nuestra información bancaria. ¡Gracias por vuestro cariño!</p>
+		  <div class="gift-card-container">
+			<div class="gift-card" onclick="this.classList.toggle('flip')">
+			  <div class="gift-card-face gift-card-front">Información de cuenta</div>
+			  <div class="gift-card-face gift-card-back">
+				<div>
+				  <strong>ES12 3456 7890 1234 5678 9012</strong><br>Titular: Rubén y Natasha</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+			
+			<hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
 	      <div class="row" style="display:flex; flex-direction:column; gap:12px;">
 	        <div style="display:flex; justify-content:center; align-items:center; text-align:center;">
 				<div class="contact-sub" data-i18n="info_2">Para cualquier duda que tengáis, no dudéis en contactar con nosotros pulsando en el número de teléfono o en el usuario.</div> 
