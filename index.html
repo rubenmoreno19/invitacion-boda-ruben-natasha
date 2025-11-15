@@ -553,7 +553,7 @@
 			  <div class="gift-card-face gift-card-back">
 				<div>
 				  <strong>ES25 0182 5978 8102 0165 1446</strong>
-					<button class="copy-btn" onclick="copyIBAN()">Copiar</button>
+					<button class="copy-btn" onclick="copyIBAN(event)">Copiar</button>
 					<br>Rubén Moreno Torrejón</div>
 			  </div>
 			</div>
@@ -881,12 +881,13 @@
       });
     });
 
-	function copyIBAN() {
-		const iban = document.getElementById("iban-text").innerText;
-		navigator.clipboard.writeText(iban).then(() => {
-			alert("Número de cuenta copiado ✔️");
-		});
-	}
+	  function copyIBAN(event) {
+		  event.stopPropagation(); // <-- evita que la tarjeta se gire
+		  const iban = document.getElementById("iban-text").innerText;
+		  navigator.clipboard.writeText(iban).then(() => {
+			  alert("Número de cuenta copiado ✔️");
+		  });
+	  }
     /* End script */
   </script>
 </body>
