@@ -166,6 +166,7 @@
     .ticket-info hr{border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0}
 	/* NEW*/
 	  /* Contact info */
+	.contact-sub{color:var(--muted);font-size:13px;margin-top:6px;font-weight:bold;}
 	.contact-item {
 	  display: flex;
 	  flex-direction: column;
@@ -535,45 +536,19 @@
 	<!-- INICIO SÉPTIMA SECCIÓN INFO -->
 	<section class="section-info">
 	  <div class="card-info">
-		<div class="ticket-info" id="info-details">
-		  <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-			<h3 data-i18n="more_title">Información importante</h3>
-		  </div>
-		  <hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0"/>
-		  <div class="row" style="display:flex; flex-direction:column; gap:8px;">
-			<div style="display:flex; justify-content:center; align-items:center; text-align:center;">
-			  <strong style="color:var(--accent-dark)" data-i18n="nota">
-				Para cualquier duda que tengáis, no dudéis en contactar con nosotros
-			  </strong>
-			</div>
-		  </div>
-		</div> <!-- cierre ticket-info -->
-	  </div> <!-- cierre card-info -->
-	</section>
-
-
-	<!-- PRUEBA INFO -->
-
-
-	  <!-- INICIO SÉPTIMA SECCIÓN INFO -->
-	<section class="section-info">
-	  <div class="card-info">
 	    <div class="ticket-info" id="info-details">
 	      <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-	        <h3 data-i18n="more_title">Información importante</h3>
+	        <h3 data-i18n="info_1">Información importante</h3>
 	      </div>
 	      <hr style="border:none; border-top:1px dashed rgba(0,0,0,0.06); margin:12px 0;"/>
 	      
 	      <div class="row" style="display:flex; flex-direction:column; gap:12px;">
 	        <div style="display:flex; justify-content:center; align-items:center; text-align:center;">
-	          <strong style="color:var(--accent-dark)" data-i18n="nota">
-	            Para cualquier duda que tengáis, no dudéis en contactar con nosotros
-	          </strong>
+				<div class="contact-sub" data-i18n="info_2">Para cualquier duda que tengáis, no dudéis en contactar con nosotros</div> 
 	        </div>
-	
 	        <!-- NUEVA SECCIÓN DE CONTACTO -->
 	        <div class="contact-item">
-	          <strong>Rubén:</strong>
+	          <strong style="color:var(--accent-dark);"data-i18n="info_3">Rubén Moreno Torrejón</strong>
 	          <div class="contact-icons">
 	            <img src="images/Whatsapp.png" alt="WhatsApp" class="icon" /> +34 656 307 981
 	            <img src="images/Telegram.png" alt="Telegram" class="icon" /> @rubenmoreno19
@@ -581,17 +556,15 @@
 	        </div>
 	
 	        <div class="contact-item">
-	          <strong>Natalia:</strong>
+	          <strong style="color:var(--accent-dark);"data-i18n="info_4">Natasha Polkanova</strong>
 	          <div class="contact-icons">
-	            <img src="images/Whatsapp.png alt="WhatsApp" class="icon" /> +7 900 000 000
-	            <img src="images/Telegram.png" alt="Telegram" class="icon" /> @natalia
+	            <img src="images/Whatsapp.png" alt="WhatsApp" class="icon" /> +7 985 362 6911
+	            <img src="images/Telegram.png" alt="Telegram" class="icon" /> @nataly555335
 	          </div>
 	        </div>
-	        <!-- FIN NUEVA SECCIÓN -->
-	        
-	      </div> <!-- cierre row -->
-	    </div> <!-- cierre ticket-info -->
-	  </div> <!-- cierre card-info -->
+	      </div> 
+	    </div> 
+	  </div> 
 	</section>
 
 			
@@ -649,7 +622,8 @@
         location_1:'Royal Beach, San Petersburgo (Rusia)',
         nota:'Por favor, agradeceríamos vuestra confirmación de asistencia a la boda antes del día 1 de febrero de 2026',
         date: 'FECHA', gate: 'PUERTA DE EMBARQUE', gate_1: 'Royal Beach, San Petersburgo, Rusia', time: 'HORA DE EMBARQUE', n_vuelo: 'NÚMERO DE VUELO', aerolínea: 'AEROLINEA', h_desp: 'HORA DE DESPEGUE',
-		slider_title: 'Momentos juntos'
+		slider_title: 'Momentos juntos',
+		info_1:'Información importante', info_2:'Para cualquier duda que tengáis, no dudéis en contactar con nosotros.', info_3:'Rubén Moreno Torrejón', info_4:'Natasha Polkanova'
       },
       ru: {
         names: 'Рубен & Наташа',
@@ -679,7 +653,8 @@
         location_1:'Royal Beach, Санкт-Петербург, Россия',
         nota:'Очень просим подтвердить вас свое присутствие на нашем празднике до 1го февраля 2026 года',
         date: 'ДАТА', gate: 'ВЫХОД НА ПОСАДКУ',gate_1: 'Royal Beach, Санкт-Петербург, Россия', time: 'ВРЕМЯ ПОСАДКИ', n_vuelo: 'НОМЕР РЕЙСА', aerolínea: 'ПЕРЕВОЗЧИК', h_desp: 'ВРЕМЯ ОТПРАВЛЕНИЯ',
-		slider_title: 'Наши моменты'
+		slider_title: 'Наши моменты',
+		info_1:'Важная информация', info_2:'Если у вас есть какие-либо вопросы, не стесняйтесь обращаться к нам.', info_3:'Rubén Moreno Torrejón', info_4:'Наташа Полканова'
       }
     };
 
