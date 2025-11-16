@@ -633,6 +633,13 @@
 				<a id="rsvp-link" class="btn primary" href="https://forms.gle/Y3iuPmjdmrtKARxb8" target="_blank" rel="noopener" data-i18n="rsvp">Confirmar asistencia</a>
 			</div>
 			<div style="margin-top:20px; text-align:center;">
+				<p class="actions-sub" data-i18n="action_4">Mira la ubicación que tenemos preparada para la celebración del evento del año.</p>
+			</div>
+			<div class="actions">
+				<button class="btn" onclick="openGoogleCalendar()" data-i18n="add_maps">Google Maps</button>
+				<button class="btn" onclick="openYandexMaps()" data-i18n="add_maps_1">Yandex Maps</button>
+			</div>
+			<div style="margin-top:20px; text-align:center;">
 				<p class="actions-sub" data-i18n="action_3">Además, si quieres, ¡puedes añadir la fecha a tu calendario!</p>
 			</div>
 			<div class="actions">
@@ -673,7 +680,7 @@
         subtitle: 'Este día del año va a ser muy especial para nosotros. Queremos estar rodeados de las personas más cercanas. Os invitamos a este día tan importante en nuestra vida: NUESTRA BODA!',
         music: 'Escucha nuestra canción',
         days: 'Días', hours: 'Horas', minutes: 'Minutos', seconds: 'Segundos',
-        rsvp: 'Confirmar asistencia', add_gcal: 'Google Calendar', add_ical: 'Añadir a Outlook/iOS',
+        rsvp: 'Confirmar asistencia', add_gcal: 'Google Calendar', add_ical: 'Añadir a Outlook/iOS', add_maps: 'Google Maps', add_maps_1:'Yandex Maps',
         timeline_title: 'Cronograma del Día',
 		t1_title: 'Cóctel de bienvenida', t1_text: 'Comenzamos con el cóctel en el jardín nupcial.',
 		t2_title: 'Ceremonia', t2_text: 'El momento más especial — ¡decimos sí quiero!',
@@ -701,7 +708,7 @@
 		info_5:'Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!', info_6:'Información de cuenta',
 		copy_text:'Copiar texto', copy_success: 'Número de cuenta copiado ✔️',
 		action_1:'Confirma tu asistencia', action_2: 'Contamos con tu asistencia para este día tan bonito, confirma tu asistencia pulsando y rellenando el formulario. Si no puedes acompañarnos, indícalo también en el formulario.',
-		action_3: 'Además, si quieres, ¡puedes añadir la fecha a tu calendario!',
+		action_3: 'Además, si quieres, ¡puedes añadir la fecha a tu calendario!', action_4: 'Mira la ubicación que tenemos preparada para la celebración del evento del año.',
 		seeyou_title: '¡NOS VEMOS EL 22 DE JULIO DE 2026!', final: 'Hecho con ❤ — Rubén y Natalia'
       },
       ru: {
@@ -709,7 +716,7 @@
         subtitle: 'Один день в этом году будет для нас особенным и мы хотим провести его в кругу близких и друзей! С большим удовольствием приглашаем Вас на замечательный праздник- НАШУ СВАДЬБУ!',
         music: 'Послушайте нашу песню',
         days: 'Дней', hours: 'Часов', minutes: 'Минут', seconds: 'Секунд',
-        rsvp: 'Подтвердить участие', add_gcal: 'Google Календарь', add_ical: 'Добавить в Outlook/iOS',
+        rsvp: 'Подтвердить участие', add_gcal: 'Google Календарь', add_ical: 'Добавить в Outlook/iOS', add_maps: 'Google Карты', add_maps_1:'Яндекс Карты',
         timeline_title: 'Расписание дня',
 		t1_title: "Приветственный коктейль", t1_text: "Начинаем с коктейля в свадебном саду.",
 		t2_title: "Церемония", t2_text: "Самый особенный момент — мы говорим «да»!",
@@ -737,7 +744,7 @@
 		info_5:'Ваше присутствие – лучший подарок для нас, но если вы хотите сделать нам более особенный подарок, вы можете ознакомиться со следующей карточкой. Спасибо вам от всего сердца!', info_6:'Информация об учетной записи',
 		copy_text: 'Копировать текст', copy_success: 'Номер счета скопирован ✔️',
 		action_1: 'Подтвердите свое участие', action_2: 'Мы рассчитываем на ваше участие в этом прекрасном дне. Подтвердите свое участие, нажав и заполнив форму. Если вы не можете присоединиться к нам, также укажите это в форме.',
-		action_3: 'Кроме того, если хотите, вы можете добавить дату в свой календарь!',
+		action_3: 'Кроме того, если хотите, вы можете добавить дату в свой календарь!', action_4: 'Посмотрите, какое место мы подготовили для проведения мероприятия года.',
 		seeyou_title: 'УВИДИМСЯ 22 ИЮЛЯ 2026 ГОДА!', final: 'Сделано с любовью ❤ — Рубен и Наталья'
       }
     };
@@ -909,6 +916,12 @@
       const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${s}/${e}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
       window.open(url,'_blank');
     }
+	function openGoogleMaps() {
+		window.open(`https://maps.app.goo.gl/QTREfGqoez3A1Z6Q7`, "_blank");
+	}
+	function openYandexMaps() {
+		window.open(`https://yandex.com/maps/-/CLGKEBM7`, "_blank");
+	}
 
     function downloadICS(){
       function toICSDate(d){
