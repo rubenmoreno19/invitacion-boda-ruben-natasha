@@ -801,6 +801,7 @@
 
     function setLang(lang){
       currentLang = lang;
+	  document.documentElement.setAttribute("lang", lang);
       applyLang(lang);
       highlightLangButton();
 	  updateRsvpLink(lang); // 🔹 actualizamos el enlace
