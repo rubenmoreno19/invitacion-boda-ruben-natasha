@@ -174,6 +174,7 @@
 	.gift-card-back {transform: rotateY(180deg);background: linear-gradient(180deg,#fff,#fbf6f2);border: 1px dashed rgba(0,0,0,0.09);}
 	.copy-btn {margin-top: 8px;padding: 4px 10px;border: none;border-radius: 6px;background: var(--accent);color: white;font-size: 12px;cursor: pointer;transition: opacity 0.2s ease;}
 	.copy-btn:hover {opacity: 0.8;}
+	html[lang="ru"] .only-es {display: none !important;}
 
 	/* Actions */
 	.section-actions{padding:18px;margin-top:6px;}
@@ -557,7 +558,7 @@
 
 		<div style="margin-top:20px; text-align:center;">
 		  <p class="contact-sub" data-i18n="info_5">Vuestra presencia es nuestro mejor regalo pero si quieres hacernos un regalo más especial, puedes consultar la siguiente tarjeta. ¡Gracias de corazón!</p>
-		  <div class="gift-card-container">
+		  <div class="gift-card-container" class="only-es">
 			<div class="gift-card" onclick="this.classList.toggle('flip')">
 			  <div class="gift-card-face gift-card-front"; data-i18n="info_6">Información de cuenta</div>
 			  <div class="gift-card-face gift-card-back">
